@@ -1,0 +1,76 @@
+/* /home/beams/MENGBRET/test/Euresys_Coaxlink_TLDataStream_6_1_1 */ 
+
+createParam(COAXLINK_Stream_StreamIDString, asynParamOctet, &COAXLINK_Stream_StreamID);
+
+createParam(COAXLINK_Stream_StreamTypeString, asynParamInt32, &COAXLINK_Stream_StreamType);
+
+createParam(COAXLINK_Stream_PixelFormatString, asynParamInt32, &COAXLINK_Stream_PixelFormat);
+
+createParam(COAXLINK_Stream_PixelFormatNamespaceString, asynParamInt32, &COAXLINK_Stream_PixelFormatNamespace);
+
+createParam(COAXLINK_Stream_PixelSizeString, asynParamInt32, &COAXLINK_Stream_PixelSize);
+
+createParam(COAXLINK_Stream_WidthString, asynParamInt32, &COAXLINK_Stream_Width);
+
+createParam(COAXLINK_Stream_HeightString, asynParamInt32, &COAXLINK_Stream_Height);
+
+createParam(COAXLINK_Stream_UnpackingModeString, asynParamInt32, &COAXLINK_Stream_UnpackingMode);
+
+createParam(COAXLINK_Stream_RedBlueSwapString, asynParamInt32, &COAXLINK_Stream_RedBlueSwap);
+
+createParam(COAXLINK_Stream_PayloadSizeString, asynParamInt32, &COAXLINK_Stream_PayloadSize);
+
+createParam(COAXLINK_Stream_StreamAnnouncedBufferCountString, asynParamInt32, &COAXLINK_Stream_StreamAnnouncedBufferCount);
+
+createParam(COAXLINK_Stream_StreamBufferHandlingModeString, asynParamInt32, &COAXLINK_Stream_StreamBufferHandlingMode);
+
+createParam(COAXLINK_Stream_StreamAnnounceBufferMinimumString, asynParamInt32, &COAXLINK_Stream_StreamAnnounceBufferMinimum);
+
+createParam(COAXLINK_Stream_StreamAcquisitionModeSelectorString, asynParamInt32, &COAXLINK_Stream_StreamAcquisitionModeSelector);
+
+createParam(COAXLINK_Stream_StartOfScanTriggerSourceString, asynParamInt32, &COAXLINK_Stream_StartOfScanTriggerSource);
+
+createParam(COAXLINK_Stream_EndOfScanTriggerSourceString, asynParamInt32, &COAXLINK_Stream_EndOfScanTriggerSource);
+
+createParam(COAXLINK_Stream_ScanLengthString, asynParamInt32, &COAXLINK_Stream_ScanLength);
+
+createParam(COAXLINK_Stream_BufferHeightString, asynParamInt32, &COAXLINK_Stream_BufferHeight);
+
+createParam(COAXLINK_Stream_StartScanString, asynParamInt32, &COAXLINK_Stream_StartScan);
+
+createParam(COAXLINK_Stream_StopScanString, asynParamInt32, &COAXLINK_Stream_StopScan);
+
+createParam(COAXLINK_Stream_StreamResetString, asynParamInt32, &COAXLINK_Stream_StreamReset);
+
+createParam(COAXLINK_Stream_ErrorSelectorString, asynParamInt32, &COAXLINK_Stream_ErrorSelector);
+
+createParam(COAXLINK_Stream_ErrorCountString, asynParamInt32, &COAXLINK_Stream_ErrorCount);
+
+createParam(COAXLINK_Stream_ErrorCountResetString, asynParamInt32, &COAXLINK_Stream_ErrorCountReset);
+
+createParam(COAXLINK_Stream_StatisticsSamplingSelectorString, asynParamInt32, &COAXLINK_Stream_StatisticsSamplingSelector);
+
+createParam(COAXLINK_Stream_StatisticsFrameRateString, asynParamFloat64, &COAXLINK_Stream_StatisticsFrameRate);
+
+createParam(COAXLINK_Stream_StatisticsLineRateString, asynParamFloat64, &COAXLINK_Stream_StatisticsLineRate);
+
+createParam(COAXLINK_Stream_StatisticsDataRateString, asynParamFloat64, &COAXLINK_Stream_StatisticsDataRate);
+
+createParam(COAXLINK_Stream_StatisticsStartSamplingString, asynParamInt32, &COAXLINK_Stream_StatisticsStartSampling);
+
+createParam(COAXLINK_Stream_StatisticsStopSamplingString, asynParamInt32, &COAXLINK_Stream_StatisticsStopSampling);
+
+createParam(COAXLINK_Stream_EventSelectorString, asynParamInt32, &COAXLINK_Stream_EventSelector);
+
+createParam(COAXLINK_Stream_EventNotificationString, asynParamInt32, &COAXLINK_Stream_EventNotification);
+
+createParam(COAXLINK_Stream_EventNotificationContext1String, asynParamInt32, &COAXLINK_Stream_EventNotificationContext1);
+
+createParam(COAXLINK_Stream_EventNotificationContext2String, asynParamInt32, &COAXLINK_Stream_EventNotificationContext2);
+
+createParam(COAXLINK_Stream_EventNotificationContext3String, asynParamInt32, &COAXLINK_Stream_EventNotificationContext3);
+
+createParam(COAXLINK_Stream_EventCountString, asynParamInt32, &COAXLINK_Stream_EventCount);
+
+createParam(COAXLINK_Stream_EventCountResetString, asynParamInt32, &COAXLINK_Stream_EventCountReset);
+

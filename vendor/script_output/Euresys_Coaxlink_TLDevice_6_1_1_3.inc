@@ -1,0 +1,82 @@
+/* /home/beams/MENGBRET/test/Euresys_Coaxlink_TLDevice_6_1_1 */ 
+
+createParam(COAXLINK_Device_DeviceIDString, asynParamOctet, &COAXLINK_Device_DeviceID);
+
+createParam(COAXLINK_Device_DeviceVendorNameString, asynParamOctet, &COAXLINK_Device_DeviceVendorName);
+
+createParam(COAXLINK_Device_DeviceModelNameString, asynParamOctet, &COAXLINK_Device_DeviceModelName);
+
+createParam(COAXLINK_Device_DeviceAccessStatusString, asynParamInt32, &COAXLINK_Device_DeviceAccessStatus);
+
+createParam(COAXLINK_Device_DeviceTypeString, asynParamInt32, &COAXLINK_Device_DeviceType);
+
+createParam(COAXLINK_Device_StreamSelectorString, asynParamInt32, &COAXLINK_Device_StreamSelector);
+
+createParam(COAXLINK_Device_StreamIDString, asynParamOctet, &COAXLINK_Device_StreamID);
+
+createParam(COAXLINK_Device_DeviceResetString, asynParamInt32, &COAXLINK_Device_DeviceReset);
+
+createParam(COAXLINK_Device_CameraControlMethodString, asynParamInt32, &COAXLINK_Device_CameraControlMethod);
+
+createParam(COAXLINK_Device_C2CLinkConfigurationString, asynParamInt32, &COAXLINK_Device_C2CLinkConfiguration);
+
+createParam(COAXLINK_Device_ExposureReadoutOverlapString, asynParamInt32, &COAXLINK_Device_ExposureReadoutOverlap);
+
+createParam(COAXLINK_Device_ExposureRecoveryTimeString, asynParamFloat64, &COAXLINK_Device_ExposureRecoveryTime);
+
+createParam(COAXLINK_Device_ExposureTimeString, asynParamFloat64, &COAXLINK_Device_ExposureTime);
+
+createParam(COAXLINK_Device_StrobeDelayString, asynParamFloat64, &COAXLINK_Device_StrobeDelay);
+
+createParam(COAXLINK_Device_StrobeDurationString, asynParamFloat64, &COAXLINK_Device_StrobeDuration);
+
+createParam(COAXLINK_Device_CycleTriggerSourceString, asynParamInt32, &COAXLINK_Device_CycleTriggerSource);
+
+createParam(COAXLINK_Device_CycleTargetPeriodString, asynParamFloat64, &COAXLINK_Device_CycleTargetPeriod);
+
+createParam(COAXLINK_Device_StartCycleString, asynParamInt32, &COAXLINK_Device_StartCycle);
+
+createParam(COAXLINK_Device_CycleLostTriggerCountString, asynParamInt32, &COAXLINK_Device_CycleLostTriggerCount);
+
+createParam(COAXLINK_Device_CycleLostTriggerCountResetString, asynParamInt32, &COAXLINK_Device_CycleLostTriggerCountReset);
+
+createParam(COAXLINK_Device_StartOfSequenceTriggerSourceString, asynParamInt32, &COAXLINK_Device_StartOfSequenceTriggerSource);
+
+createParam(COAXLINK_Device_StartSequenceString, asynParamInt32, &COAXLINK_Device_StartSequence);
+
+createParam(COAXLINK_Device_AbortSequenceString, asynParamInt32, &COAXLINK_Device_AbortSequence);
+
+createParam(COAXLINK_Device_CxpLinkConfigurationString, asynParamInt32, &COAXLINK_Device_CxpLinkConfiguration);
+
+createParam(COAXLINK_Device_CxpHostConnectionBaseString, asynParamInt32, &COAXLINK_Device_CxpHostConnectionBase);
+
+createParam(COAXLINK_Device_CxpHostConnectionCountString, asynParamInt32, &COAXLINK_Device_CxpHostConnectionCount);
+
+createParam(COAXLINK_Device_CxpTriggerMessageFormatString, asynParamInt32, &COAXLINK_Device_CxpTriggerMessageFormat);
+
+createParam(COAXLINK_Device_CxpTriggerAckTimeoutString, asynParamFloat64, &COAXLINK_Device_CxpTriggerAckTimeout);
+
+createParam(COAXLINK_Device_CxpTriggerMaxResendCountString, asynParamInt32, &COAXLINK_Device_CxpTriggerMaxResendCount);
+
+createParam(COAXLINK_Device_CxpPacketArbiterResetString, asynParamInt32, &COAXLINK_Device_CxpPacketArbiterReset);
+
+createParam(COAXLINK_Device_EventSelectorString, asynParamInt32, &COAXLINK_Device_EventSelector);
+
+createParam(COAXLINK_Device_EventNotificationString, asynParamInt32, &COAXLINK_Device_EventNotification);
+
+createParam(COAXLINK_Device_EventNotificationContext1String, asynParamInt32, &COAXLINK_Device_EventNotificationContext1);
+
+createParam(COAXLINK_Device_EventNotificationContext2String, asynParamInt32, &COAXLINK_Device_EventNotificationContext2);
+
+createParam(COAXLINK_Device_EventNotificationContext3String, asynParamInt32, &COAXLINK_Device_EventNotificationContext3);
+
+createParam(COAXLINK_Device_EventCountString, asynParamInt32, &COAXLINK_Device_EventCount);
+
+createParam(COAXLINK_Device_EventCountResetString, asynParamInt32, &COAXLINK_Device_EventCountReset);
+
+createParam(COAXLINK_Device_ErrorSelectorString, asynParamInt32, &COAXLINK_Device_ErrorSelector);
+
+createParam(COAXLINK_Device_ErrorCountString, asynParamInt32, &COAXLINK_Device_ErrorCount);
+
+createParam(COAXLINK_Device_ErrorCountResetString, asynParamInt32, &COAXLINK_Device_ErrorCountReset);
+
