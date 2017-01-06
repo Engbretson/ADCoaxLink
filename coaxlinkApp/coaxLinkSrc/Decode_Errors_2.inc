@@ -1,0 +1,23 @@
+//
+
+#define COAXLINK_D_AllString "All-D"
+#define COAXLINK_D_StreamPacketSizeErrorString "StreamPacketSizeError-D"
+#define COAXLINK_D_StreamPacketFifoOverflowString "StreamPacketFifoOverflow-D"
+#define COAXLINK_D_CameraTriggerOverrunString "CameraTriggerOverrun-D"
+#define COAXLINK_D_DidNotReceiveTriggerAckString "DidNotReceiveTriggerAck-D"
+#define COAXLINK_D_TriggerPacketRetryErrorString "TriggerPacketRetryError-D"
+#define COAXLINK_D_InputStreamFifiHalfFullString "InputStreamFifiHalfFull-D"
+#define COAXLINK_D_InputStreamFifoFullString "InputStreamFifoFull-D"
+#define COAXLINK_D_ImageHeaderErrorString "ImageHeaderError-D"
+#define COAXLINK_D_MigAxiWriteErrorString "MigAxiWriteError-D"
+#define COAXLINK_D_MigAxiReadErrorString "MigAxiReadError-D"
+#define COAXLINK_D_PacketWithUnexpectedTagString "PacketWithUnexpectedTag-D"
+#define COAXLINK_D_StreamPacketCrcError0String "StreamPacketCrcError0-D"
+#define COAXLINK_D_StreamPacketCrcError1String "StreamPacketCrcError1-D"
+#define COAXLINK_D_StreamPacketCrcError2String "StreamPacketCrcError2-D"
+#define COAXLINK_D_StreamPacketCrcError3String "StreamPacketCrcError3-D"
+#define COAXLINK_D_StartOfScanSkippedString "StartOfScanSkipped-D"
+#define COAXLINK_D_PrematureEndOfScanString "PrematureEndOfScan-D"
+#define COAXLINK_D_ExternalTriggerReqsTooCloseString "ExternalTriggerReqsTooClose-D"
+#define COAXLINK_D_UnknownString "Unknown-D"
+

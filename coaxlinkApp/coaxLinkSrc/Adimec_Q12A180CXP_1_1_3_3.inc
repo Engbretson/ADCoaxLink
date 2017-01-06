@@ -1,0 +1,322 @@
+/* /home/beams/MENGBRET/test/Adimec_Q12A180CXP_1_1_3 */ 
+
+createParam(COAXLINK_Remote_StandardString, asynParamInt32, &COAXLINK_Remote_Standard);
+
+createParam(COAXLINK_Remote_RevisionString, asynParamInt32, &COAXLINK_Remote_Revision);
+
+createParam(COAXLINK_Remote_XmlManifestSizeString, asynParamInt32, &COAXLINK_Remote_XmlManifestSize);
+
+createParam(COAXLINK_Remote_XmlManifestSelectorString, asynParamInt32, &COAXLINK_Remote_XmlManifestSelector);
+
+createParam(COAXLINK_Remote_XmlVersionString, asynParamInt32, &COAXLINK_Remote_XmlVersion);
+
+createParam(COAXLINK_Remote_XmlSchemeVersionString, asynParamInt32, &COAXLINK_Remote_XmlSchemeVersion);
+
+createParam(COAXLINK_Remote_XmlUrlAddressString, asynParamInt32, &COAXLINK_Remote_XmlUrlAddress);
+
+createParam(COAXLINK_Remote_Iidc2AddressString, asynParamInt32, &COAXLINK_Remote_Iidc2Address);
+
+createParam(COAXLINK_Remote_ConnectionResetString, asynParamInt32, &COAXLINK_Remote_ConnectionReset);
+
+createParam(COAXLINK_Remote_DeviceConnectionIDString, asynParamInt32, &COAXLINK_Remote_DeviceConnectionID);
+
+createParam(COAXLINK_Remote_MasterHostConnectionIDString, asynParamInt32, &COAXLINK_Remote_MasterHostConnectionID);
+
+createParam(COAXLINK_Remote_ControlPacketSizeMaxString, asynParamInt32, &COAXLINK_Remote_ControlPacketSizeMax);
+
+createParam(COAXLINK_Remote_StreamPacketSizeMaxString, asynParamInt32, &COAXLINK_Remote_StreamPacketSizeMax);
+
+createParam(COAXLINK_Remote_ConnectionConfigString, asynParamInt32, &COAXLINK_Remote_ConnectionConfig);
+
+createParam(COAXLINK_Remote_ConnectionConfigDefaultString, asynParamInt32, &COAXLINK_Remote_ConnectionConfigDefault);
+
+createParam(COAXLINK_Remote_TestModeString, asynParamInt32, &COAXLINK_Remote_TestMode);
+
+createParam(COAXLINK_Remote_TestErrorCountSelectorString, asynParamInt32, &COAXLINK_Remote_TestErrorCountSelector);
+
+createParam(COAXLINK_Remote_TestErrorCountString, asynParamInt32, &COAXLINK_Remote_TestErrorCount);
+
+createParam(COAXLINK_Remote_TestPacketCountTxString, asynParamInt32, &COAXLINK_Remote_TestPacketCountTx);
+
+createParam(COAXLINK_Remote_TestPacketCountRxString, asynParamInt32, &COAXLINK_Remote_TestPacketCountRx);
+
+createParam(COAXLINK_Remote_ElectricalCompliancyTestString, asynParamInt32, &COAXLINK_Remote_ElectricalCompliancyTest);
+
+createParam(COAXLINK_Remote_WidthAddressString, asynParamInt32, &COAXLINK_Remote_WidthAddress);
+
+createParam(COAXLINK_Remote_HeightAddressString, asynParamInt32, &COAXLINK_Remote_HeightAddress);
+
+createParam(COAXLINK_Remote_AcquisitionModeAddressString, asynParamInt32, &COAXLINK_Remote_AcquisitionModeAddress);
+
+createParam(COAXLINK_Remote_AcquisitionStartAddressString, asynParamInt32, &COAXLINK_Remote_AcquisitionStartAddress);
+
+createParam(COAXLINK_Remote_AcquisitionStopAddressString, asynParamInt32, &COAXLINK_Remote_AcquisitionStopAddress);
+
+createParam(COAXLINK_Remote_PixelFormatAddressString, asynParamInt32, &COAXLINK_Remote_PixelFormatAddress);
+
+createParam(COAXLINK_Remote_DeviceTapGeometryAddressString, asynParamInt32, &COAXLINK_Remote_DeviceTapGeometryAddress);
+
+createParam(COAXLINK_Remote_Image1StreamIDAddressString, asynParamInt32, &COAXLINK_Remote_Image1StreamIDAddress);
+
+createParam(COAXLINK_Remote_HsUpconnectionString, asynParamInt32, &COAXLINK_Remote_HsUpconnection);
+
+createParam(COAXLINK_Remote_DeviceVendorNameString, asynParamOctet, &COAXLINK_Remote_DeviceVendorName);
+
+createParam(COAXLINK_Remote_DeviceModelNameString, asynParamOctet, &COAXLINK_Remote_DeviceModelName);
+
+createParam(COAXLINK_Remote_DeviceManufacturerInfoString, asynParamOctet, &COAXLINK_Remote_DeviceManufacturerInfo);
+
+createParam(COAXLINK_Remote_DeviceVersionString, asynParamOctet, &COAXLINK_Remote_DeviceVersion);
+
+createParam(COAXLINK_Remote_DeviceFirmwareVersionString, asynParamOctet, &COAXLINK_Remote_DeviceFirmwareVersion);
+
+createParam(COAXLINK_Remote_DeviceSerialNumberString, asynParamOctet, &COAXLINK_Remote_DeviceSerialNumber);
+
+createParam(COAXLINK_Remote_DeviceUserIDString, asynParamOctet, &COAXLINK_Remote_DeviceUserID);
+
+createParam(COAXLINK_Remote_DeviceIndicatorModeString, asynParamInt32, &COAXLINK_Remote_DeviceIndicatorMode);
+
+createParam(COAXLINK_Remote_BuiltInTestString, asynParamInt32, &COAXLINK_Remote_BuiltInTest);
+
+createParam(COAXLINK_Remote_SensorTemperatureString, asynParamInt32, &COAXLINK_Remote_SensorTemperature);
+
+createParam(COAXLINK_Remote_WidthString, asynParamInt32, &COAXLINK_Remote_Width);
+
+createParam(COAXLINK_Remote_HeightString, asynParamInt32, &COAXLINK_Remote_Height);
+
+createParam(COAXLINK_Remote_SensorWidthString, asynParamInt32, &COAXLINK_Remote_SensorWidth);
+
+createParam(COAXLINK_Remote_SensorHeightString, asynParamInt32, &COAXLINK_Remote_SensorHeight);
+
+createParam(COAXLINK_Remote_WidthMaxString, asynParamInt32, &COAXLINK_Remote_WidthMax);
+
+createParam(COAXLINK_Remote_HeightMaxString, asynParamInt32, &COAXLINK_Remote_HeightMax);
+
+createParam(COAXLINK_Remote_OffsetXString, asynParamInt32, &COAXLINK_Remote_OffsetX);
+
+createParam(COAXLINK_Remote_OffsetYString, asynParamInt32, &COAXLINK_Remote_OffsetY);
+
+createParam(COAXLINK_Remote_ReverseXString, asynParamInt32, &COAXLINK_Remote_ReverseX);
+
+createParam(COAXLINK_Remote_ReverseYString, asynParamInt32, &COAXLINK_Remote_ReverseY);
+
+createParam(COAXLINK_Remote_PixelFormatString, asynParamInt32, &COAXLINK_Remote_PixelFormat);
+
+createParam(COAXLINK_Remote_TestImageSelectorString, asynParamInt32, &COAXLINK_Remote_TestImageSelector);
+
+createParam(COAXLINK_Remote_TestImageVideoLevelString, asynParamInt32, &COAXLINK_Remote_TestImageVideoLevel);
+
+createParam(COAXLINK_Remote_DeviceTapGeometryString, asynParamInt32, &COAXLINK_Remote_DeviceTapGeometry);
+
+createParam(COAXLINK_Remote_Image1StreamIDString, asynParamInt32, &COAXLINK_Remote_Image1StreamID);
+
+createParam(COAXLINK_Remote_CrosshairOverlayString, asynParamInt32, &COAXLINK_Remote_CrosshairOverlay);
+
+createParam(COAXLINK_Remote_AcquisitionModeString, asynParamInt32, &COAXLINK_Remote_AcquisitionMode);
+
+createParam(COAXLINK_Remote_AcquisitionStartString, asynParamInt32, &COAXLINK_Remote_AcquisitionStart);
+
+createParam(COAXLINK_Remote_AcquisitionStopString, asynParamInt32, &COAXLINK_Remote_AcquisitionStop);
+
+createParam(COAXLINK_Remote_AcquisitionFrameRateString, asynParamFloat64, &COAXLINK_Remote_AcquisitionFrameRate);
+
+createParam(COAXLINK_Remote_AcquisitionFramePeriodString, asynParamFloat64, &COAXLINK_Remote_AcquisitionFramePeriod);
+
+createParam(COAXLINK_Remote_AcquisitionFramePeriodRawString, asynParamInt32, &COAXLINK_Remote_AcquisitionFramePeriodRaw);
+
+createParam(COAXLINK_Remote_AcquisitionMaxFrameRateString, asynParamInt32, &COAXLINK_Remote_AcquisitionMaxFrameRate);
+
+createParam(COAXLINK_Remote_TriggerSourceString, asynParamInt32, &COAXLINK_Remote_TriggerSource);
+
+createParam(COAXLINK_Remote_TriggerActivationString, asynParamInt32, &COAXLINK_Remote_TriggerActivation);
+
+createParam(COAXLINK_Remote_ExposureModeString, asynParamInt32, &COAXLINK_Remote_ExposureMode);
+
+createParam(COAXLINK_Remote_ExposureTimeString, asynParamFloat64, &COAXLINK_Remote_ExposureTime);
+
+createParam(COAXLINK_Remote_ExposureTimeRawString, asynParamInt32, &COAXLINK_Remote_ExposureTimeRaw);
+
+createParam(COAXLINK_Remote_InterfaceUtilizationString, asynParamInt32, &COAXLINK_Remote_InterfaceUtilization);
+
+createParam(COAXLINK_Remote_FlashStrobeModeString, asynParamInt32, &COAXLINK_Remote_FlashStrobeMode);
+
+createParam(COAXLINK_Remote_FlashStrobeDurationString, asynParamFloat64, &COAXLINK_Remote_FlashStrobeDuration);
+
+createParam(COAXLINK_Remote_FlashStrobeDurationRawString, asynParamInt32, &COAXLINK_Remote_FlashStrobeDurationRaw);
+
+createParam(COAXLINK_Remote_FlashStrobeDelayString, asynParamFloat64, &COAXLINK_Remote_FlashStrobeDelay);
+
+createParam(COAXLINK_Remote_FlashStrobeDelayRawString, asynParamInt32, &COAXLINK_Remote_FlashStrobeDelayRaw);
+
+createParam(COAXLINK_Remote_FlashStrobeActiveStateString, asynParamInt32, &COAXLINK_Remote_FlashStrobeActiveState);
+
+createParam(COAXLINK_Remote_HDR_ModeString, asynParamInt32, &COAXLINK_Remote_HDR_Mode);
+
+createParam(COAXLINK_Remote_SecondExposureTimeRawString, asynParamInt32, &COAXLINK_Remote_SecondExposureTimeRaw);
+
+createParam(COAXLINK_Remote_SecondExposureTimeString, asynParamFloat64, &COAXLINK_Remote_SecondExposureTime);
+
+createParam(COAXLINK_Remote_MultiSlopeNodeSelectorString, asynParamInt32, &COAXLINK_Remote_MultiSlopeNodeSelector);
+
+createParam(COAXLINK_Remote_MultiSlopeLevelString, asynParamInt32, &COAXLINK_Remote_MultiSlopeLevel);
+
+createParam(COAXLINK_Remote_MultiSlopeTimeString, asynParamInt32, &COAXLINK_Remote_MultiSlopeTime);
+
+createParam(COAXLINK_Remote_GainSelectorString, asynParamInt32, &COAXLINK_Remote_GainSelector);
+
+createParam(COAXLINK_Remote_GainString, asynParamFloat64, &COAXLINK_Remote_Gain);
+
+createParam(COAXLINK_Remote_GainRawString, asynParamInt32, &COAXLINK_Remote_GainRaw);
+
+createParam(COAXLINK_Remote_BlackLevelString, asynParamFloat64, &COAXLINK_Remote_BlackLevel);
+
+createParam(COAXLINK_Remote_BlackLevelRawString, asynParamInt32, &COAXLINK_Remote_BlackLevelRaw);
+
+createParam(COAXLINK_Remote_WhiteBalanceWidthString, asynParamInt32, &COAXLINK_Remote_WhiteBalanceWidth);
+
+createParam(COAXLINK_Remote_WhiteBalanceHeightString, asynParamInt32, &COAXLINK_Remote_WhiteBalanceHeight);
+
+createParam(COAXLINK_Remote_WhiteBalanceOffsetXString, asynParamInt32, &COAXLINK_Remote_WhiteBalanceOffsetX);
+
+createParam(COAXLINK_Remote_WhiteBalanceOffsetYString, asynParamInt32, &COAXLINK_Remote_WhiteBalanceOffsetY);
+
+createParam(COAXLINK_Remote_WhiteBalanceCalibrateString, asynParamInt32, &COAXLINK_Remote_WhiteBalanceCalibrate);
+
+createParam(COAXLINK_Remote_WhiteBalanceStatusString, asynParamInt32, &COAXLINK_Remote_WhiteBalanceStatus);
+
+createParam(COAXLINK_Remote_SensorBitDepthString, asynParamInt32, &COAXLINK_Remote_SensorBitDepth);
+
+createParam(COAXLINK_Remote_ProgrammableGainAmplifierString, asynParamInt32, &COAXLINK_Remote_ProgrammableGainAmplifier);
+
+createParam(COAXLINK_Remote_UserModeString, asynParamOctet, &COAXLINK_Remote_UserMode);
+
+createParam(COAXLINK_Remote_UserModeUpdateString, asynParamInt32, &COAXLINK_Remote_UserModeUpdate);
+
+createParam(COAXLINK_Remote_AdvancedParameterSelectorString, asynParamInt32, &COAXLINK_Remote_AdvancedParameterSelector);
+
+createParam(COAXLINK_Remote_AdvancedParameterString, asynParamInt32, &COAXLINK_Remote_AdvancedParameter);
+
+createParam(COAXLINK_Remote_AdvancedParameterSaveString, asynParamInt32, &COAXLINK_Remote_AdvancedParameterSave);
+
+createParam(COAXLINK_Remote_ConfigurationInfoString, asynParamInt32, &COAXLINK_Remote_ConfigurationInfo);
+
+createParam(COAXLINK_Remote_ConfigurationFactoryInfoString, asynParamInt32, &COAXLINK_Remote_ConfigurationFactoryInfo);
+
+createParam(COAXLINK_Remote_SensorRegisterReadWriteModeString, asynParamInt32, &COAXLINK_Remote_SensorRegisterReadWriteMode);
+
+createParam(COAXLINK_Remote_SensorRegisterNonVolatileReadSelectorString, asynParamInt32, &COAXLINK_Remote_SensorRegisterNonVolatileReadSelector);
+
+createParam(COAXLINK_Remote_SensorRegisterNonVolatileListSizeString, asynParamInt32, &COAXLINK_Remote_SensorRegisterNonVolatileListSize);
+
+createParam(COAXLINK_Remote_SensorRegisterAddressString, asynParamInt32, &COAXLINK_Remote_SensorRegisterAddress);
+
+createParam(COAXLINK_Remote_SensorRegisterSizeString, asynParamInt32, &COAXLINK_Remote_SensorRegisterSize);
+
+createParam(COAXLINK_Remote_SensorRegisterDataString, asynParamInt32, &COAXLINK_Remote_SensorRegisterData);
+
+createParam(COAXLINK_Remote_SensorRegisterReadString, asynParamInt32, &COAXLINK_Remote_SensorRegisterRead);
+
+createParam(COAXLINK_Remote_SensorRegisterWriteString, asynParamInt32, &COAXLINK_Remote_SensorRegisterWrite);
+
+createParam(COAXLINK_Remote_SensorRegisterRemoveString, asynParamInt32, &COAXLINK_Remote_SensorRegisterRemove);
+
+createParam(COAXLINK_Remote_FPGA_RegisterAddressString, asynParamInt32, &COAXLINK_Remote_FPGA_RegisterAddress);
+
+createParam(COAXLINK_Remote_FPGA_RegisterSizeString, asynParamInt32, &COAXLINK_Remote_FPGA_RegisterSize);
+
+createParam(COAXLINK_Remote_FPGA_RegisterDataString, asynParamInt32, &COAXLINK_Remote_FPGA_RegisterData);
+
+createParam(COAXLINK_Remote_FPGA_RegisterReadString, asynParamInt32, &COAXLINK_Remote_FPGA_RegisterRead);
+
+createParam(COAXLINK_Remote_FPGA_RegisterWriteString, asynParamInt32, &COAXLINK_Remote_FPGA_RegisterWrite);
+
+createParam(COAXLINK_Remote_CustomerSpecialIDString, asynParamOctet, &COAXLINK_Remote_CustomerSpecialID);
+
+createParam(COAXLINK_Remote_LUTEnableString, asynParamInt32, &COAXLINK_Remote_LUTEnable);
+
+createParam(COAXLINK_Remote_LUTIndexString, asynParamInt32, &COAXLINK_Remote_LUTIndex);
+
+createParam(COAXLINK_Remote_LUTValueString, asynParamInt32, &COAXLINK_Remote_LUTValue);
+
+createParam(COAXLINK_Remote_LUTStartString, asynParamInt32, &COAXLINK_Remote_LUTStart);
+
+createParam(COAXLINK_Remote_LUTEndString, asynParamInt32, &COAXLINK_Remote_LUTEnd);
+
+createParam(COAXLINK_Remote_LUTStatusString, asynParamInt32, &COAXLINK_Remote_LUTStatus);
+
+createParam(COAXLINK_Remote_PayloadSizeString, asynParamInt32, &COAXLINK_Remote_PayloadSize);
+
+createParam(COAXLINK_Remote_DefectPixelCorrectionEnableString, asynParamInt32, &COAXLINK_Remote_DefectPixelCorrectionEnable);
+
+createParam(COAXLINK_Remote_DefectPixelTestModeString, asynParamInt32, &COAXLINK_Remote_DefectPixelTestMode);
+
+createParam(COAXLINK_Remote_DefectPixelTotalString, asynParamInt32, &COAXLINK_Remote_DefectPixelTotal);
+
+createParam(COAXLINK_Remote_DefectPixelSelectString, asynParamInt32, &COAXLINK_Remote_DefectPixelSelect);
+
+createParam(COAXLINK_Remote_DefectPixelReadXString, asynParamInt32, &COAXLINK_Remote_DefectPixelReadX);
+
+createParam(COAXLINK_Remote_DefectPixelReadYString, asynParamInt32, &COAXLINK_Remote_DefectPixelReadY);
+
+createParam(COAXLINK_Remote_DefectPixelWriteXString, asynParamInt32, &COAXLINK_Remote_DefectPixelWriteX);
+
+createParam(COAXLINK_Remote_DefectPixelWriteYString, asynParamInt32, &COAXLINK_Remote_DefectPixelWriteY);
+
+createParam(COAXLINK_Remote_DefectPixelAddString, asynParamInt32, &COAXLINK_Remote_DefectPixelAdd);
+
+createParam(COAXLINK_Remote_DefectPixelRemoveString, asynParamInt32, &COAXLINK_Remote_DefectPixelRemove);
+
+createParam(COAXLINK_Remote_DefectPixelClearAllString, asynParamInt32, &COAXLINK_Remote_DefectPixelClearAll);
+
+createParam(COAXLINK_Remote_DefectPixelSaveString, asynParamInt32, &COAXLINK_Remote_DefectPixelSave);
+
+createParam(COAXLINK_Remote_DefectPixelRestoreString, asynParamInt32, &COAXLINK_Remote_DefectPixelRestore);
+
+createParam(COAXLINK_Remote_DefectPixelRestoreFactoryString, asynParamInt32, &COAXLINK_Remote_DefectPixelRestoreFactory);
+
+createParam(COAXLINK_Remote_DefectPixelSaveAsFactoryDefaultString, asynParamInt32, &COAXLINK_Remote_DefectPixelSaveAsFactoryDefault);
+
+createParam(COAXLINK_Remote_DF_BlackClampString, asynParamInt32, &COAXLINK_Remote_DF_BlackClamp);
+
+createParam(COAXLINK_Remote_DF_ColumnOffsetCorrectionString, asynParamInt32, &COAXLINK_Remote_DF_ColumnOffsetCorrection);
+
+createParam(COAXLINK_Remote_DF_CalibrateString, asynParamInt32, &COAXLINK_Remote_DF_Calibrate);
+
+createParam(COAXLINK_Remote_DF_StatusString, asynParamInt32, &COAXLINK_Remote_DF_Status);
+
+createParam(COAXLINK_Remote_DF_RestoreFactoryString, asynParamInt32, &COAXLINK_Remote_DF_RestoreFactory);
+
+createParam(COAXLINK_Remote_DF_SaveAsFactoryDefaultString, asynParamInt32, &COAXLINK_Remote_DF_SaveAsFactoryDefault);
+
+createParam(COAXLINK_Remote_DF_IsUserCalibrationString, asynParamInt32, &COAXLINK_Remote_DF_IsUserCalibration);
+
+createParam(COAXLINK_Remote_BF_ColumnGainCorrectionString, asynParamInt32, &COAXLINK_Remote_BF_ColumnGainCorrection);
+
+createParam(COAXLINK_Remote_BF_AutoLevelAdjustString, asynParamInt32, &COAXLINK_Remote_BF_AutoLevelAdjust);
+
+createParam(COAXLINK_Remote_BF_CalibrationVideoLevelString, asynParamInt32, &COAXLINK_Remote_BF_CalibrationVideoLevel);
+
+createParam(COAXLINK_Remote_BF_OutputImagesDuringCalibrationString, asynParamInt32, &COAXLINK_Remote_BF_OutputImagesDuringCalibration);
+
+createParam(COAXLINK_Remote_BF_CalibrateString, asynParamInt32, &COAXLINK_Remote_BF_Calibrate);
+
+createParam(COAXLINK_Remote_BF_StatusString, asynParamInt32, &COAXLINK_Remote_BF_Status);
+
+createParam(COAXLINK_Remote_BF_RestoreFactoryString, asynParamInt32, &COAXLINK_Remote_BF_RestoreFactory);
+
+createParam(COAXLINK_Remote_BF_SaveAsFactoryDefaultString, asynParamInt32, &COAXLINK_Remote_BF_SaveAsFactoryDefault);
+
+createParam(COAXLINK_Remote_BF_IsUserCalibrationString, asynParamInt32, &COAXLINK_Remote_BF_IsUserCalibration);
+
+createParam(COAXLINK_Remote_CFG_FACTORYString, asynParamInt32, &COAXLINK_Remote_CFG_FACTORY);
+
+createParam(COAXLINK_Remote_CFG_COLORString, asynParamInt32, &COAXLINK_Remote_CFG_COLOR);
+
+createParam(COAXLINK_Remote_CFG_MONOString, asynParamInt32, &COAXLINK_Remote_CFG_MONO);
+
+createParam(COAXLINK_Remote_UserSetSelectorString, asynParamInt32, &COAXLINK_Remote_UserSetSelector);
+
+createParam(COAXLINK_Remote_UserSetLoadString, asynParamInt32, &COAXLINK_Remote_UserSetLoad);
+
+createParam(COAXLINK_Remote_UserSetSaveString, asynParamInt32, &COAXLINK_Remote_UserSetSave);
+

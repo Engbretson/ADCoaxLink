@@ -1,0 +1,2093 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+<class>MainWindow</class>
+<widget class="QMainWindow" name="MainWindow">
+    <property name="geometry">
+        <rect>
+            <x>50</x>
+            <y>50</y>
+            <width>265</width>
+            <height>395</height>
+        </rect>
+    </property>
+    <property name="styleSheet">
+        <string>
+
+QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
+
+</string>
+    </property>
+    <widget class="QWidget" name="centralWidget">
+        <widget class="caFrame" name="caFrame_0">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>265</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <widget class="caGraphics" name="caGraphics_1">
+                <property name="form">
+                    <enum>caGraphics::Rectangle</enum>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>265</width>
+                        <height>30</height>
+                    </rect>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>200</red>
+                        <green>200</green>
+                        <blue>200</blue>
+                    </color>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>200</red>
+                        <green>200</green>
+                        <blue>200</blue>
+                    </color>
+                </property>
+                <property name="linestyle">
+                    <string>Solid</string>
+                </property>
+                <property name="fillstyle">
+                    <string>Filled</string>
+                </property>
+                <property name="channel">
+                    <string>                                                                               </string>
+                </property>
+                <property name="channel">
+                    <string>                                                                               </string>
+                </property>
+                <property name="visibility">
+                    <string>Calc</string>
+                </property>
+                <property name="visibilityCalc">
+                    <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+                </property>
+            </widget>
+            <widget class="caPolyLine" name="caPolyLine_2">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>2</y>
+                        <width>265</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>90</red>
+                        <green>90</green>
+                        <blue>90</blue>
+                    </color>
+                </property>
+                <property name="xyPairs">
+                    <string>0,24;265,24;265,0;</string>
+                </property>
+                <property name="channel">
+                    <string>                                                                               </string>
+                </property>
+                <property name="channel">
+                    <string>                                                                               </string>
+                </property>
+                <property name="visibility">
+                    <string>Calc</string>
+                </property>
+                <property name="visibilityCalc">
+                    <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+                </property>
+            </widget>
+            <widget class="caLabel" name="caLabel_3">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>2</y>
+                        <width>265</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>/home/beams/MENGBRET/test/Euresys_Coaxlink_TLSystem_6_1_1 features - $(P)$(R)</string>
+                </property>
+                <property name="channel">
+                    <string></string>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="fontScaleMode">
+                    <enum>None</enum>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="background">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="channel">
+                    <string>                                                                               </string>
+                </property>
+                <property name="visibility">
+                    <string>Calc</string>
+                </property>
+                <property name="visibilityCalc">
+                    <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+                </property>
+            </widget>
+            <widget class="caPolyLine" name="caPolyLine_4">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>2</y>
+                        <width>265</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>236</red>
+                        <green>236</green>
+                        <blue>236</blue>
+                    </color>
+                </property>
+                <property name="xyPairs">
+                    <string>0,24;0,0;265,0;</string>
+                </property>
+                <property name="channel">
+                    <string>                                                                               </string>
+                </property>
+                <property name="channel">
+                    <string>                                                                               </string>
+                </property>
+                <property name="visibility">
+                    <string>Calc</string>
+                </property>
+                <property name="visibilityCalc">
+                    <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+                </property>
+            </widget>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_5">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>50</y>
+                    <width>255</width>
+                    <height>205</height>
+                </rect>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <string>Solid</string>
+            </property>
+            <property name="fillstyle">
+                <string>Filled</string>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_6">
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>40</y>
+                    <width>150</width>
+                    <height>14</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>  SystemInformation  </string>
+            </property>
+            <property name="channel">
+                <string></string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>133</red>
+                    <green>133</green>
+                    <blue>133</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_7">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>55</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=TLVendorName: Name of the GenTL Producer vendor. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_8">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>55</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>TLVendorName</string>
+            </property>
+            <property name="channel">
+                <string></string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_9">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>55</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLVendorName_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_10">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>80</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=TLModelName: Name of the GenTL Producer. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_11">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>80</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>TLModelName</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLVendorName_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_12">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>80</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLModelName_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_13">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>105</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=TLID: Unique identifier of the GenTL. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_14">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>105</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>TLID</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLModelName_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_15">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>105</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLID_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_16">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>130</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=TLVersion: Vendor specific version string. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_17">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>130</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>TLVersion</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLID_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_18">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>130</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLVersion_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_19">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>155</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=TLPath: Full path to the GenTL Producer driver including name and extension. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_20">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>155</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>TLPath</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLVersion_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_21">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>155</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLPath_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_22">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>180</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=TLType: Identifies the transport layer technology of the GenTL Producer ,desc1=implementation. ,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_23">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>180</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>TLType</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLPath_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caMenu" name="caMenu_24">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>180</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLType</string>
+            </property>
+            <property name="colorMode">
+                <string>Static</string>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_25">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>205</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=GenTLVersionMajor: Major version number of the GenTL specification the GenTL ,desc1=Producer implementation complies with. ,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_26">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>205</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>GenTLVersionMajor</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)TLPath_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry_27">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>205</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMajor</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_28">
+            <property name="geometry">
+                <rect>
+                    <x>195</x>
+                    <y>205</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMajor_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_29">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>230</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=GenTLVersionMinor: Minor version number of the GenTL specification the GenTL ,desc1=Producer implementation complies with. ,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_30">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>230</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>GenTLVersionMinor</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMajor_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry_31">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>230</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMinor</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_32">
+            <property name="geometry">
+                <rect>
+                    <x>195</x>
+                    <y>230</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMinor_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caGraphics_33">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>270</y>
+                    <width>255</width>
+                    <height>80</height>
+                </rect>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>174</red>
+                    <green>174</green>
+                    <blue>174</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <string>Solid</string>
+            </property>
+            <property name="fillstyle">
+                <string>Filled</string>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_34">
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>260</y>
+                    <width>150</width>
+                    <height>14</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>  InterfaceEnumeration  </string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMinor_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>133</red>
+                    <green>133</green>
+                    <blue>133</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_35">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>275</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=InterfaceUpdateList: Updates the internal interface list. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_36">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>275</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>InterfaceUpdateList</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMinor_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caMessageButton" name="caMessageButton_37">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>275</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)InterfaceUpdateList.PROC</string>
+            </property>
+            <property name="pressMessage">
+                <string>1</string>
+            </property>
+            <property name="releaseMessage">
+                <string>                                                                               </string>
+            </property>
+            <property name="label">
+                <string>InterfaceUpdateList / InterfaceUpdateList</string>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_38">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>300</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=InterfaceSelector: Selector for the different GenTL Producer interfaces. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_39">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>300</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>InterfaceSelector</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)GenTLVersionMinor_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caTextEntry" name="caTextEntry_40">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>300</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)InterfaceSelector</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_41">
+            <property name="geometry">
+                <rect>
+                    <x>195</x>
+                    <y>300</y>
+                    <width>60</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)InterfaceSelector_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_42">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>325</y>
+                    <width>10</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="files">
+                <string>aravisHelp</string>
+            </property>
+            <property name="labels">
+                <string>                                                                               </string>
+            </property>
+            <property name="args">
+                <string>desc0=InterfaceID: GenTL Producer wide unique identifier of the selected interface. ,desc1=&apos;&apos;,desc2=&apos;&apos;,desc3=&apos;&apos;,desc4=&apos;&apos;,desc5=&apos;&apos;</string>
+            </property>
+            <property name="removeParent">
+                <string>false</string>
+            </property>
+            <property name="label">
+                <string>?</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Row</enum>
+            </property>
+        </widget>
+        <widget class="caLabel" name="caLabel_43">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>325</y>
+                    <width>110</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>InterfaceID</string>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)InterfaceSelector_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>6</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>200</red>
+                    <green>200</green>
+                    <blue>200</blue>
+                </color>
+            </property>
+            <property name="channel">
+                <string>                                                                               </string>
+            </property>
+            <property name="visibility">
+                <string>Calc</string>
+            </property>
+            <property name="visibilityCalc">
+                <string>A&gt;                                       &amp;&amp;A&lt;=                                       </string>
+            </property>
+        </widget>
+        <widget class="caLineEdit" name="caLineEdit_44">
+            <property name="geometry">
+                <rect>
+                    <x>130</x>
+                    <y>325</y>
+                    <width>125</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(R)InterfaceID+S_RBV</string>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>8</pointsize>
+                </font>
+            </property>
+            <property name="fontScaleMode">
+                <enum>None</enum>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>224</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>105</red>
+                    <green>105</green>
+                    <blue>105</blue>
+                </color>
+            </property>
+        </widget>
+        <zorder>caGraphics_1</zorder>
+        <zorder>caPolyLine_2</zorder>
+        <zorder>caLabel_3</zorder>
+        <zorder>caPolyLine_4</zorder>
+        <zorder>caFrame_0</zorder>
+        <zorder>caGraphics_5</zorder>
+        <zorder>caLabel_6</zorder>
+        <zorder>caRelatedDisplay_7</zorder>
+        <zorder>caLabel_8</zorder>
+        <zorder>caLineEdit_9</zorder>
+        <zorder>caRelatedDisplay_10</zorder>
+        <zorder>caLabel_11</zorder>
+        <zorder>caLineEdit_12</zorder>
+        <zorder>caRelatedDisplay_13</zorder>
+        <zorder>caLabel_14</zorder>
+        <zorder>caLineEdit_15</zorder>
+        <zorder>caRelatedDisplay_16</zorder>
+        <zorder>caLabel_17</zorder>
+        <zorder>caLineEdit_18</zorder>
+        <zorder>caRelatedDisplay_19</zorder>
+        <zorder>caLabel_20</zorder>
+        <zorder>caLineEdit_21</zorder>
+        <zorder>caRelatedDisplay_22</zorder>
+        <zorder>caLabel_23</zorder>
+        <zorder>caMenu_24</zorder>
+        <zorder>caRelatedDisplay_25</zorder>
+        <zorder>caLabel_26</zorder>
+        <zorder>caTextEntry_27</zorder>
+        <zorder>caLineEdit_28</zorder>
+        <zorder>caRelatedDisplay_29</zorder>
+        <zorder>caLabel_30</zorder>
+        <zorder>caTextEntry_31</zorder>
+        <zorder>caLineEdit_32</zorder>
+        <zorder>caGraphics_33</zorder>
+        <zorder>caLabel_34</zorder>
+        <zorder>caRelatedDisplay_35</zorder>
+        <zorder>caLabel_36</zorder>
+        <zorder>caMessageButton_37</zorder>
+        <zorder>caRelatedDisplay_38</zorder>
+        <zorder>caLabel_39</zorder>
+        <zorder>caTextEntry_40</zorder>
+        <zorder>caLineEdit_41</zorder>
+        <zorder>caRelatedDisplay_42</zorder>
+        <zorder>caLabel_43</zorder>
+        <zorder>caLineEdit_44</zorder>
+    </widget>
+</widget>
+</ui>
