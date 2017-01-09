@@ -1,1 +1,0 @@
-caqtdm -x -macro "P=13SIM1:, R=cam1:" commonPlugins.ui
