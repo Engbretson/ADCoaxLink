@@ -5,6 +5,9 @@ errlogInit(20000)
 dbLoadDatabase("$(TOP)/dbd/coaxLinkApp.dbd")
 coaxLinkApp_registerRecordDeviceDriver(pdbbase) 
 
+#required for Linux to locate 'libs'
+epicsEnvSet("EURESYS_COAXLINK_GENTL64_CTI","/opt/euresys/coaxlink/lib/x86_64/coaxlink.cti")
+
 # Prefix for all records
 epicsEnvSet("PREFIX", "13SIM1:")
 # The port name for the detector
@@ -22,6 +25,7 @@ epicsEnvSet("CBUFFS", "20")
 # The search path for database files
 epicsEnvSet("EPICS_DB_INCLUDE_PATH", "$(ADCORE)/db")
 
+# only has meaning under Windows
 asynSetMinTimerPeriod(0.0001)
 
 # The EPICS environment variable EPICS_CA_MAX_ARRAY_BYTES needs to be set to a value at least as large
@@ -35,6 +39,7 @@ asynSetMinTimerPeriod(0.0001)
 # allocates arrays of this size every time it needs a buffer larger than 16K.
 # Uncomment the following line to set it in the IOC.
 
+# note: this values works for 8-bit , 10-bit requires 16-bits worth of space
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "25165824")
 
 # Create a simDetector driver
@@ -44,11 +49,10 @@ coaxLinkConfig("$(PORT)", $(XSIZE), $(YSIZE), 3, 0, 0)
 
 dbLoadRecords("$(ADCOAXLINK)/db/coaxLink.template","P=$(PREFIX),R=cam1:,PORT=$(PORT),ADDR=0,TIMEOUT=1")
 
-#kennan
+#kennan Raw binary file plugin, built in ADCore on my system, fastest way to dump data
 
 #NDFileRawConfigure("Raw1", 20, 0, "$(PORT)", 0, 0, 0)
 #dbLoadRecords("$(ADCORE)/ADApp/Db/NDFileRaw.template", "P=$(PREFIX), R=raw1:, PORT=$(PORT), ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT), NDARRAY_ADDR=0") 
-
 
 # Load an NDFile database.  This is not supported for the simDetector which does not write files.
 dbLoadRecords("NDFile.template","P=$(PREFIX),R=cam1:,PORT=SIM1,ADDR=0,TIMEOUT=1")
@@ -66,7 +70,6 @@ dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,
 # This waveform allows transporting 32-bit images
 #dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int32,FTVL=LONG,NELEMENTS=25165824")
 
-
 # Load all other plugins using commonPlugins.cmd
 < $(ADCORE)/iocBoot/commonPlugins.cmd
 
@@ -82,9 +85,9 @@ set_requestfile_path("$(ADCOAXLINK)/coaxLinkApp/Db")
 ### Load alive record
 dbLoadRecords("$(ALIVE)/aliveApp/Db/alive.db", "P=$(PREFIX),RHOST=164.54.100.11")
 
-
 iocInit()
 
+# generate list of all loaded PV's
 dbl > pvs.txt
 
 # save things every thirty seconds

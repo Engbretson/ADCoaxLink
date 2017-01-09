@@ -3,11 +3,7 @@
 #ifndef EVENTPROCESSORONDEMAND_IMPL_HEADER_FILE
 #define EVENTPROCESSORONDEMAND_IMPL_HEADER_FILE
 
-#ifdef EURESYS_GENERIC_SEQUENCER
 #include "EuresysGenericSequencer.h"
-#else
-#include "EuresysSequencer.h"
-#endif
 
 namespace EURESYS_NAMESPACE {
 namespace Internal {
@@ -24,10 +20,6 @@ template <> class EventProcessor<CallbackOnDemand> {
 
         void stop() {
             sequencer.stop();
-        }
-
-        void configureMode(bool enable) {
-            sequencer.configureMode(enable);
         }
 
         template <typename DATA> void enableEvent(gc::EVENTSRC_HANDLE eventSource, gc::EVENT_HANDLE handle) {
@@ -56,11 +48,7 @@ template <> class EventProcessor<CallbackOnDemand> {
         }
 
     private:
-#ifdef EURESYS_GENERIC_SEQUENCER
         GenericSequencer sequencer;
-#else
-        EuresysSequencer sequencer;
-#endif
 };
 
 } // namespace Internal

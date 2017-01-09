@@ -184,12 +184,12 @@ enum EVENT_DATA_NUMID_CUSTOM_LIST
     EVENT_DATA_NUMID_CIC_CXP_TRIGGER_RESEND             = EVENT_DATA_NUMID_CUSTOM_BASE | 0x49,   /**< Resent CXP trigger message (acknowledgement to previous CXP trigger message not received) */
     EVENT_DATA_NUMID_CIC_TRIGGER                        = EVENT_DATA_NUMID_CUSTOM_BASE | 0x4a,   /**< CIC trigger */
     // EVENT_CUSTOM_DATASTREAM
-    EVENT_DATA_NUMID_DATASTREAM_START_OF_CAMERA_READOUT = EVENT_DATA_NUMID_CUSTOM_BASE | 0x61,   /**< Starts acquiring data of a new image frame (area-scan only) */
-    EVENT_DATA_NUMID_DATASTREAM_END_OF_CAMERA_READOUT   = EVENT_DATA_NUMID_CUSTOM_BASE | 0x62,   /**< Stops acquiring data of an image frame (area-scan only) */
-    EVENT_DATA_NUMID_DATASTREAM_START_OF_SCAN           = EVENT_DATA_NUMID_CUSTOM_BASE | 0x63,   /**< Starts acquiring data of a new image scan (line-scan only ) */
-    EVENT_DATA_NUMID_DATASTREAM_END_OF_SCAN             = EVENT_DATA_NUMID_CUSTOM_BASE | 0x64,   /**< Stops acquiring data of an image scan (line-scan only) */
-    EVENT_DATA_NUMID_DATASTREAM_REJECTED_FRAME          = EVENT_DATA_NUMID_CUSTOM_BASE | 0x65,   /**< Dropped image frame data  (area-scan only) */
-    EVENT_DATA_NUMID_DATASTREAM_REJECTED_SCAN           = EVENT_DATA_NUMID_CUSTOM_BASE | 0x66,   /**< Dropped image scan data (line-scan only) */
+    EVENT_DATA_NUMID_DATASTREAM_START_OF_CAMERA_READOUT = EVENT_DATA_NUMID_CUSTOM_BASE | 0x61,   /**< Start of camera readout */
+    EVENT_DATA_NUMID_DATASTREAM_END_OF_CAMERA_READOUT   = EVENT_DATA_NUMID_CUSTOM_BASE | 0x62,   /**< End of camera readout */
+    EVENT_DATA_NUMID_DATASTREAM_START_OF_SCAN           = EVENT_DATA_NUMID_CUSTOM_BASE | 0x63,   /**< Start of scan */
+    EVENT_DATA_NUMID_DATASTREAM_END_OF_SCAN             = EVENT_DATA_NUMID_CUSTOM_BASE | 0x64,   /**< End of scan */
+    EVENT_DATA_NUMID_DATASTREAM_REJECTED_FRAME          = EVENT_DATA_NUMID_CUSTOM_BASE | 0x65,   /**< Dropped image data (area-scan firmware only) */
+    EVENT_DATA_NUMID_DATASTREAM_REJECTED_SCAN           = EVENT_DATA_NUMID_CUSTOM_BASE | 0x66,   /**< Dropped image data (line-scan firmware only) */
 };
 typedef unsigned long long EVENT_DATA_NUMID_CUSTOM;
 
@@ -259,34 +259,6 @@ enum EVENT_SPECIFIC_DATASTREAM_REJECTED_FRAME_LIST
 GC_API   EuresysDSAnnounceBusBuffer  (DS_HANDLE hDataStream, uint64_t busAddress, size_t iSize, void *reserved, void *pPrivate, BUFFER_HANDLE *phBuffer);
 /** @cond */
 GC_API_P(PEuresysDSAnnounceBusBuffer)(DS_HANDLE hDataStream, uint64_t busAddress, size_t iSize, void *reserved, void *pPrivate, BUFFER_HANDLE *phBuffer);
-/** @endcond */
-
-typedef struct S_EURESYS_EVENT_GET_DATA_ENTRY
-{
-    EVENT_HANDLE hEvent;    /**< event handle to wait for */
-    void        *pBuffer;   /**< buffer to receive event data */
-    size_t      *piSize;    /**< size of buffer pointed to by pBuffer */
-    int          bGotData;  /**< flag updated by EuresysEventsGetData indicating whether data was received */
-} EURESYS_EVENT_GET_DATA_ENTRY;
-
-/** Wait for multiple events
-    @param pEntries definition of events to wait for
-    @param iNumEntries number of entries in pEntries
-    @param piTimeout optional timeout to wait for events
-    @parblock
-    - if piTimeout is NULL, EuresysEventsGetData updates pEntries with currently available events data,
-      it returns GC_ERR_SUCCESS even if no data was available
-    - if *piTimeout == 0, EuresysEventsGetData updates pEntries with currently available events data,
-      it returns GC_ERR_TIMEOUT if no data was available
-    - if *piTimeout != 0, EuresysEventsGetData waits for one or more events to be notified and returns
-      available data for any event at that time, it returns GC_ERR_TIMEOUT if no data was available
-      before the timeout expires (returns same errors as GenICam::Client::Euresys::EventGetData)
-      @endparblock
-    @note pEntries[i].bGotData tells whether data was received for event pEntries[i].hEvent
- */
-GC_API   EuresysEventsGetData  (EURESYS_EVENT_GET_DATA_ENTRY *pEntries, size_t iNumEntries, uint64_t *piTimeout);
-/** @cond */
-GC_API_P(PEuresysEventsGetData)(EURESYS_EVENT_GET_DATA_ENTRY *pEntries, size_t iNumEntries, uint64_t *piTimeout);
 /** @endcond */
 #endif
 

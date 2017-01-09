@@ -41,7 +41,7 @@ template <typename DATA> class EventThreadFor: public EventThread {
         }
         virtual void run(volatile bool &isStopping) {
             std::string context("EventThread for " + EventNotifier<DATA>::friendlyName() + ":");
-            gentl->traceCtx.hTrace<'D',0x37d3494a6f3e40faULL,'s'>("%_ is listening for events", context);
+            gentl->memento(context + " is listening for events");
             try {
                 while (!isStopping) {
                     try {
@@ -59,21 +59,21 @@ template <typename DATA> class EventThreadFor: public EventThread {
                 }
             leave:
                 doneWithPops = true;
-                gentl->traceCtx.hTrace<'D',0x1bfe1e00f4eded28ULL,'s'>("%_ stopped", context);
+                gentl->memento(context + " stopped");
             }
             catch (const gentl_error& err) {
                 doneWithPops = true;
-                gentl->traceCtx.hTrace<'E',0xb7ef01779cae09d8ULL,'s','s'>("%_ uncaught GenTL error: %_", context, err.what());
+                gentl->memento(context + " uncaught GenTL error: " + err.what());
                 throw;
             }
             catch (const std::runtime_error& err) {
                 doneWithPops = true;
-                gentl->traceCtx.hTrace<'E',0x5367105aa8ccb0d4ULL,'s','s'>("%_ uncaught runtime error: %_", context, err.what());
+                gentl->memento(context + " uncaught runtime error: " + err.what());
                 throw;
             }
             catch (...) {
                 doneWithPops = true;
-                gentl->traceCtx.hTrace<'E',0x876a35135d65c30fULL,'s'>("%_ uncaught exception", context);
+                gentl->memento(context + " uncaught exception");
                 throw;
             }
         }
@@ -100,9 +100,6 @@ template <> class EventProcessor<CallbackMultiThread> {
             disableAll<Q_COUNT>();
         }
         
-        void configureMode(bool enable) {
-        }
-
         template <typename T>
         void enableEvent(gc::EVENTSRC_HANDLE eventSource, gc::EVENT_HANDLE handle) {
             checkEventQueueIndex<T>();

@@ -178,24 +178,23 @@ class EGrabber: public Internal::EGrabberBase, private Internal::EGrabberCallbac
         
         /** Get Integer (INT64) value of specified GenApi Port Module feature
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
-            @param feature name of feature to read (@ref GenTL::genapiGetInteger)
+            @param feature name of feature to read
          **/
         template <typename P> int64_t getInteger(const std::string &feature);
         /** Get Float (DOUBLE) value of specified GenApi Port Module feature
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
-            @param feature name of feature to read (@ref GenTL::genapiGetFloat)
+            @param feature name of feature to read
          **/
         template <typename P> double getFloat(const std::string &feature);
         /** Get String value of specified GenApi Port Module feature
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
-            @param feature name of feature to read (@ref GenTL::genapiGetString)
+            @param feature name of feature to read
          **/
         template <typename P> std::string getString(const std::string &feature);
         /** Get list of String values returned by some query on GenApi Port Module
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
             @param what Euresys specific query to perform, such queries are built using the following helpers:
             @parblock
-            - @ref GenTL::genapiGetStringList
             - @ref Features
             - @ref RegexFeatures
             - @ref GlobFeatures
@@ -208,31 +207,31 @@ class EGrabber: public Internal::EGrabberBase, private Internal::EGrabberCallbac
         /**
             Set Integer (INT64) value of specified GenApi Port Module feature
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
-            @param feature name of feature to modify (@ref GenTL::genapiSetInteger)
+            @param feature name of feature to modify
             @param value value to write
          **/
         template <typename P> void setInteger(const std::string &feature, int64_t value);
         /** Set Float (DOUBLE) value of specified GenApi Port Module feature
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
-            @param feature name of feature to modify (@ref GenTL::genapiSetFloat)
+            @param feature name of feature to modify
             @param value value to write
          **/
         template <typename P> void setFloat(const std::string &feature, double value);
         /** Set String value of specified GenApi Port Module feature
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
-            @param feature name of feature to modify (@ref GenTL::genapiSetString)
+            @param feature name of feature to modify
             @param value value to write
          **/
         template <typename P> void setString(const std::string &feature, const std::string &value);
         /** Execute specified GenApi Port Module command feature
             @tparam P GenApi Port Module to use (@ref GenTLModulesAndPorts)
-            @param command name of feature to execute (@ref GenTL::genapiExecuteCommand)
+            @param command name of feature to execute
          **/
         template <typename P> void execute(const std::string &command);
 
         /** Run a <a href=../coaxlink.html#euresys-genapi-scripts>Euresys GenApi script</a>.
             @param script Euresys GenApi script to run,
-            this can be either a location (path) or some actual script statements (@ref GenTL::genapiRunScript)
+            this can be either a location (path) or some actual script statements
          **/
         void runScript(const std::string &script);
 
@@ -241,36 +240,10 @@ class EGrabber: public Internal::EGrabberBase, private Internal::EGrabberCallbac
         ///@{ @name Memento
         
         /** Output text to Memento
-            @note text is inserted into the stream of Memento traces under the Kind "User0"
-            with the verbosity MEMENTO_VERBOSITY_INFO
+            @note text is inserted into the stream of Memento traces under the Kind "User".
+            By default the text will appear in green.
          **/
         void memento(const std::string &text);
-        /** Output text to Memento with specified verbosity and user kind
-            @param verbosity
-            @parblock
-            - MEMENTO_VERBOSITY_CRITICAL
-            - MEMENTO_VERBOSITY_ERROR
-            - MEMENTO_VERBOSITY_WARNING
-            - MEMENTO_VERBOSITY_NOTICE
-            - MEMENTO_VERBOSITY_INFO
-            - MEMENTO_VERBOSITY_DEBUG
-            - MEMENTO_VERBOSITY_VERBOSE
-            @endparblock
-            @param kind user kind identifier, from 0 to 15
-            @parblock
-            - 0 to output trace under the Kind "User0"
-            - 1 to output trace under the Kind "User1"
-            - ...
-            - 10 (0xA) to output trace under the Kind "UserA"
-            - 11 (0xB) to output trace under the Kind "UserB"
-            - 12 (0xC) to output trace under the Kind "UserC"
-            - 13 (0xD) to output trace under the Kind "UserD"
-            - 14 (0xE) to output trace under the Kind "UserE"
-            - 15 (0xF) to output trace under the Kind "UserF"
-            @endparblock
-            @param text string to output
-         **/
-        void memento(unsigned char verbosity, unsigned char kind, const std::string &text);
         ///@}
 
         ///@{ @name Events
@@ -293,18 +266,11 @@ class EGrabber: public Internal::EGrabberBase, private Internal::EGrabberCallbac
 
         /** Return a NewBufferData structure (to be given to ScopedBuffer or Buffer)
             @param timeout timeout in milliseconds
-            @pre only available on EGrabber configuration CallbackOnDemand
-            @pre NewBufferData event is enabled (this is the default)
-            @pre EGrabber is not already waiting for NewBufferData event in another thread
+            @note only available on EGrabber configuration CallbackOnDemand
             @note only the most important exceptions are listed below
             @throw gentl_error @ref GenICam::Client::GC_ERR_ABORT when @ref cancelPop
             @throw gentl_error @ref GenICam::Client::GC_ERR_INVALID_HANDLE when NewBufferData event is disabled
             @throw gentl_error @ref GenICam::Client::GC_ERR_TIMEOUT when pop times out before an event occurs
-            @throw client_error with message "EGrabber is busy in another thread"
-                   if EGrabber is already waiting for NewBufferData event in another thread
-                   with either pop or processEvent
-            @throw client_error with message "EGrabber has no registered event for this filter"
-                   if NewBufferData event is not enabled
          **/
         NewBufferData pop(uint64_t timeout = GENTL_INFINITE);
         /** Cancel a waiting pop
@@ -317,24 +283,18 @@ class EGrabber: public Internal::EGrabberBase, private Internal::EGrabberCallbac
             @pre events are available
             @tparam ANYDATA the set of events to process (@ref EGrabberEventAnyData)
             @return the number of pending events when the callback returned
-            @pre only available with EGrabber configuration CallbackOnDemand
-            @pre EGrabber is not already waiting for one of ANYDATA event in another thread
+            @note only available with EGrabber configuration CallbackOnDemand
             @note only the most important exceptions are listed below
             @throw gentl_error @ref GenICam::Client::GC_ERR_ABORT when @ref cancelEvent
             @throw gentl_error @ref GenICam::Client::GC_ERR_INVALID_HANDLE when corresponding event is disabled
             @throw gentl_error @ref GenICam::Client::GC_ERR_TIMEOUT when processEvent times out before an event occurs
-            @throw client_error with message "EGrabber is busy in another thread"
-                   if EGrabber is already waiting for one of ANYDATA event in another thread
-                   with pop or processEvent
-            @throw client_error with message "EGrabber has no registered event for this filter"
-                   if none of ANYDATA event is enabled
          **/
         template <typename ANYDATA> size_t processEvent(uint64_t timeout = GENTL_INFINITE);
         /** Cancel a waiting processEvent<ANYDATA>
             the current processEvent<ANYDATA> will abort by throwing a gentl_error
             (@ref GenICam::Client::GC_ERR_ABORT) exception
             @tparam ANYDATA the set of events to cancel (@ref EGrabberEventAnyData)
-            @pre only available with EGrabber configuration CallbackOnDemand
+            @note only available with EGrabber configuration CallbackOnDemand
          **/
         template <typename ANYDATA> void cancelEvent();
         

@@ -100,7 +100,7 @@ void coaxLink::simTask()
 	int arrayCallbacks = 1;
 	int imageCounter = 0;
 	size_t dims[2];
-	UINT32 size;
+	uint32_t size;
 
 	int astatus = asynSuccess;
 	int acquire;
@@ -154,7 +154,7 @@ void coaxLink::simTask()
 
 		else if (iMode == ADImageMultiple)
 			// Starts a multiple transfer
-			grabber.start((UINT32)numImages);
+			grabber.start((uint32_t)numImages);
 		else
 			// Starts a continuous transfer (live grab)
 			grabber.start();
@@ -195,11 +195,11 @@ void coaxLink::simTask()
 				switch (dataType) {
 				case 0:
 				case 1:
-					size = dims[0] * dims[1] * sizeof(UINT8);
+					size = dims[0] * dims[1] * sizeof(uint8_t);
 					break;
 				case 2:
 				case 3:
-					size = dims[0] * dims[1] * sizeof(UINT16); // although really it is only 10 bits 
+					size = dims[0] * dims[1] * sizeof(uint16_t); // although really it is only 10 bits 
 					break;
 				default:
 					printf("error setting image buffer size\n");

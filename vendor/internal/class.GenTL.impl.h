@@ -13,27 +13,25 @@ namespace EURESYS_NAMESPACE {
 inline GenTL::GenTL(const std::string &path, bool shared)
 : impl(path)
 , shared(shared)
-, traceCtx(impl.traceCtx)
 {
-    traceCtx.hTrace<'I',0x59bc4debee77706fULL,'s','s'>("GenTL::GenTL(%_, shared = %_)", path, (shared ? "true" : "false"));
+    memento(std::string("GenTL::GenTL(") + path + ", shared = " + (shared ? "true" : "false") + ")");
 }
 
 inline GenTL::GenTL(bool shared, const std::string &path)
 : impl(path)
 , shared(shared)
-, traceCtx(impl.traceCtx)
 {
-    traceCtx.hTrace<'I',0x6692632c3e4f926dULL,'s','s'>("GenTL::GenTL(shared = %_, %_)", (shared ? "true" : "false"), path);
+    memento(std::string("GenTL::GenTL(shared = ") + (shared ? "true" : "false") + ", " + path + ")");
 }
 
 inline GenTL::~GenTL() {
-    traceCtx.hTrace<'I',0x830831bda66f5e17ULL,'s'>("GenTL::~GenTL(shared = %_)", (shared ? "true" : "false"));
+    memento(std::string("GenTL::~GenTL(shared = ") + (shared ? "true" : "false") + ")");
 }
 
 inline gc::TL_HANDLE GenTL::tlOpen() {
     if (shared) {
         Internal::AutoLock lock(mutex);
-        traceCtx.hTrace<'I',0x9a55e77d3de0d00aULL,'S'>("GenTL::tlOpen() // TL_HANDLE use count = %_", tl.use_count());
+        memento("GenTL::tlOpen() // TL_HANDLE use count = %i", tl.use_count());
         if (tl.use_count() == 0) {
             tl.set(impl.tlOpen());
         }
@@ -45,7 +43,7 @@ inline gc::TL_HANDLE GenTL::tlOpen() {
 inline void GenTL::tlClose(gc::TL_HANDLE tlh) {
     if (shared) {
         Internal::AutoLock lock(mutex);
-        traceCtx.hTrace<'I',0x0fefa431c2a2b8ddULL,'p','S'>("GenTL::tlClose(TL_HANDLE tlh = %_) // TL_HANDLE use count = %_", tlh, tl.use_count());
+        memento("GenTL::tlClose(TL_HANDLE tlh = %p) // TL_HANDLE use count = %i", tlh, tl.use_count());
         tl.release(tlh);
         if (tl.use_count() == 0) {
             ifs = if_map_type();
@@ -58,7 +56,7 @@ inline void GenTL::tlClose(gc::TL_HANDLE tlh) {
 inline gc::IF_HANDLE GenTL::tlOpenInterface(gc::TL_HANDLE tlh, const std::string &ifID) {
     if (shared) {
         Internal::AutoLock lock(mutex);
-        traceCtx.hTrace<'I',0xbe79dcad3abf77ccULL,'p','s','S'>("GenTL::tlOpenInterface(TL_HANDLE tlh = %_, const std::string &ifID = %_) // IF_HANDLE use count = %_", tlh, ifID.c_str(), ifs[ifID].use_count());
+        memento("GenTL::tlOpenInterface(TL_HANDLE tlh = %p, const std::string &ifID = %s) // IF_HANDLE use count = %i", tlh, ifID.c_str(), ifs[ifID].use_count());
         if (ifs[ifID].use_count() == 0) {
             ifs[ifID].set(impl.tlOpenInterface(tlh, ifID));
         }
@@ -77,10 +75,10 @@ inline void GenTL::ifClose(gc::IF_HANDLE ifh) {
             }
         }
         if (elem == ifs.end()) {
-            traceCtx.hTrace<'E',0x0ff961799c9a79e3ULL,'p'>("GenTL::ifClose(IF_HANDLE ifh = %_) // IF_HANDLE is unknown", ifh);
+            memento("GenTL::ifClose(IF_HANDLE ifh = %p) // IF_HANDLE is unknown", ifh);
             throw gentl_error(gc::GC_ERR_INVALID_HANDLE, __FUNCTION__);
         }
-        traceCtx.hTrace<'I',0x2dbe6d4853410456ULL,'p','S'>("GenTL::ifClose(IF_HANDLE ifh = %_) // IF_HANDLE use count = %_", ifh, elem->second.use_count());
+        memento("GenTL::ifClose(IF_HANDLE ifh = %p) // IF_HANDLE use count = %i", ifh, elem->second.use_count());
         elem->second.release(ifh);
         if (elem->second.use_count() == 0) {
             ifs.erase(elem);

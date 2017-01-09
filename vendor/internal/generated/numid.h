@@ -41,12 +41,12 @@ inline std::string getEventDescription(ge::EVENT_DATA_NUMID_CUSTOM numid) {
         case ge::EVENT_DATA_NUMID_CIC_CXP_TRIGGER_ACK: return "Received acknowledgement for previous CXP trigger message";
         case ge::EVENT_DATA_NUMID_CIC_CXP_TRIGGER_RESEND: return "Resent CXP trigger message (acknowledgement to previous CXP trigger message not received)";
         case ge::EVENT_DATA_NUMID_CIC_TRIGGER: return "CIC trigger";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_CAMERA_READOUT: return "Starts acquiring data of a new image frame (area-scan only)";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_CAMERA_READOUT: return "Stops acquiring data of an image frame (area-scan only)";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_SCAN: return "Starts acquiring data of a new image scan (line-scan only )";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_SCAN: return "Stops acquiring data of an image scan (line-scan only)";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_FRAME: return "Dropped image frame data  (area-scan only)";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_SCAN: return "Dropped image scan data (line-scan only)";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_CAMERA_READOUT: return "Start of camera readout";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_CAMERA_READOUT: return "End of camera readout";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_SCAN: return "Start of scan";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_SCAN: return "End of scan";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_FRAME: return "Dropped image data (area-scan firmware only)";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_SCAN: return "Dropped image data (line-scan firmware only)";
         default: return "unknown event";
     }
 }

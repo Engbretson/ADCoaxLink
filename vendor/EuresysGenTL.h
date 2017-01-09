@@ -119,13 +119,6 @@ class GenTL {
         size_t eventGetData(gc::EVENT_HANDLE eh, void *buffer, size_t size, uint64_t timeout) {
             return impl.eventGetData(eh, buffer, size, timeout);
         }
-        /** Waits for multiple events to happen for at most \c timeout ms
-         *  @throw gentl_error on timeout (unless timeout is NULL) or termination through @ref eventKill.
-         *  @warning see documentation of underlying function GenICam::Client::Euresys::EuresysEventsGetData
-         */
-        void eventsGetData(std::vector<ge::EURESYS_EVENT_GET_DATA_ENTRY> &entries, uint64_t *timeout) {
-            impl.eventsGetData(entries, timeout);
-        }
 
         /** Retrieves numerical information for an event data given in buffer.
          *  See GenICam::Client::EVENT_DATA_INFO_CMD_LIST for allowed \c cmd values.
@@ -389,9 +382,6 @@ class GenTL {
         void memento(const std::string &text) {
             return impl.memento(text);
         }
-        void memento(unsigned char verbosity, unsigned char kind, const std::string &text) {
-            return impl.memento(verbosity, kind, text.c_str());
-        }
         ///@}
 
         ///@{ @name Euresys Genapi functions
@@ -404,9 +394,6 @@ class GenTL {
         }
         /** Reads a feature as string.
          *  @throw gentl_error if feature is missing.
-         *  @note when an integer or a float feature is accessed, optional
-         *  suffixes (as documented in @ref genapiGetInteger and @ref genapiGetFloat)
-         *  can be used
          */
         std::string genapiGetString(gc::PORT_HANDLE h, const std::string &feature) {
             return impl.genapiGetString(h, feature);
@@ -431,19 +418,7 @@ class GenTL {
             return impl.genapiSetInteger(h, feature, value);
         }
         /** Reads a feature as an integer.
-         *  @param h port handle
-         *  @param feature name of feature to read with or without one of the following suffixes:
-         *  @parblock
-         *  - .Min: to read the minimum of the feature
-         *  - .Max: to read the maximum of the feature
-         *  - .Inc: to read the increment of the feature
-         *  - .Value: to read the value of the feature (same as without .Value suffix)
-         *  @endparblock
          *  @throw gentl_error if feature is missing.
-         *
-         *  Examples:
-         *  - genapiGetInteger(cameraHandle, "Width");
-         *  - genapiGetInteger(deviceHandle, "CxpTriggerMaxResendCount.Max");
          */
         int64_t genapiGetInteger(gc::PORT_HANDLE h, const std::string &feature) {
             return impl.genapiGetInteger(h, feature);
@@ -464,19 +439,7 @@ class GenTL {
             return impl.genapiSetFloat(h, feature, value);
         }
         /** Reads a feature as a float.
-         *  @param h port handle
-         *  @param feature name of feature to read with or without one of the following suffixes:
-         *  @parblock
-         *  - .Min: to read the minimum of the feature
-         *  - .Max: to read the maximum of the feature
-         *  - .Inc: to read the increment of the feature (when defined)
-         *  - .Value: to read the value of the feature (same as without .Value suffix)
-         *  @endparblock
          *  @throw gentl_error if feature is missing.
-         *
-         *  Examples:
-         *  - genapiGetFloat(interfaceHandle, "Temperature");
-         *  - genapiGetFloat(deviceHandle, "CycleTargetPeriod.Min");
          */
         double genapiGetFloat(gc::PORT_HANDLE h, const std::string &feature) {
             return impl.genapiGetFloat(h, feature);

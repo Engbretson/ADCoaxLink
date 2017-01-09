@@ -156,10 +156,6 @@ template <typename CallbackModel> class EGrabberImpl {
     
         void shutdown() throw() {
             try {
-                eventProcessor.configureMode(true);
-            } catch (...) {
-            }
-            try {
                 eventProcessor.stop();
             } catch (...) {
             }
@@ -203,9 +199,6 @@ template <typename CallbackModel> class EGrabberImpl {
     public:
         void memento(const std::string &text) {
             gentl.memento(text);
-        }
-        void memento(unsigned char verbosity, unsigned char kind, const std::string &text) {
-            gentl.memento(verbosity, kind, text);
         }
 
         GenTL &getGenTL() {
@@ -429,27 +422,11 @@ template <typename CallbackModel> class EGrabberImpl {
         template <typename DATA> struct EventType {};
         template <typename DATA> void enableEvent() {
             AutoLock lock(mutex);
-            try {
-                eventProcessor.configureMode(true);
-                doEnableEvent(EventType<DATA>());
-                eventProcessor.configureMode(false);
-            }
-            catch (...) {
-                eventProcessor.configureMode(false);
-                throw;
-            }
+            doEnableEvent(EventType<DATA>());
         }
         template <typename DATA> void disableEvent() {
             AutoLock lock(mutex);
-            try {
-                eventProcessor.configureMode(true);
-                doDisableEvent(EventType<DATA>());
-                eventProcessor.configureMode(false);
-            }
-            catch (...) {
-                eventProcessor.configureMode(false);
-                throw;
-            }
+            doDisableEvent(EventType<DATA>());
         }
         template <typename DATA> void flushEvent() {
             AutoLock lock(mutex);

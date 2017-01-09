@@ -93,9 +93,6 @@ template <typename CallbackModel >  inline void EGrabber<CallbackModel>::runScri
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::memento(const std::string & text) {
     return impl.memento(text);
 }
-template <typename CallbackModel >  inline void EGrabber<CallbackModel>::memento(unsigned char verbosity, unsigned char kind, const std::string & text) {
-    return impl.memento(verbosity, kind, text);
-}
 template <typename CallbackModel > template <typename DATA> inline void EGrabber<CallbackModel>::enableEvent() {
     return impl.template enableEvent<DATA>();
 }
@@ -119,23 +116,18 @@ template <typename CallbackModel > template <typename ANYDATA> inline void EGrab
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onNewBufferEvent(const NewBufferData & data) {
     // default implementation
-    impl.getGenTL().traceCtx.template hTrace<'W',0xdcace9ba6fb63470ULL>("onNewBufferEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onIoToolboxEvent(const IoToolboxData & data) {
     // default implementation
-    impl.getGenTL().traceCtx.template hTrace<'W',0xa926edfe11254661ULL>("onIoToolboxEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onCicEvent(const CicData & data) {
     // default implementation
-    impl.getGenTL().traceCtx.template hTrace<'W',0x7023b051be982860ULL>("onCicEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onDataStreamEvent(const DataStreamData & data) {
     // default implementation
-    impl.getGenTL().traceCtx.template hTrace<'W',0xa44d9b3352a61703ULL>("onDataStreamEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onCxpInterfaceEvent(const CxpInterfaceData & data) {
     // default implementation
-    impl.getGenTL().traceCtx.template hTrace<'W',0xf0d95318b80b0fd9ULL>("onCxpInterfaceEvent default implementation");
 }
 template <typename CallbackModel >  inline GenTL & EGrabber<CallbackModel>::getGenTL() {
     return impl.getGenTL();

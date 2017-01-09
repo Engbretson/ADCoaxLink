@@ -3,11 +3,7 @@
 #ifndef EVENTPROCESSORSINGLETHREAD_IMPL_HEADER_FILE
 #define EVENTPROCESSORSINGLETHREAD_IMPL_HEADER_FILE
 
-#ifdef EURESYS_GENERIC_SEQUENCER
 #include "EuresysGenericSequencer.h"
-#else
-#include "EuresysSequencer.h"
-#endif
 
 namespace EURESYS_NAMESPACE {
 namespace Internal {
@@ -17,16 +13,13 @@ template <> class EventProcessor<CallbackSingleThread>: public Thread {
         EventProcessor(GenTL &gentl, EGrabberCallbacks &callbacks)
         : gentl(gentl)
         , sequencer(gentl, callbacks)
+        , context("EventProcessor<CallbackSingleThread>: ")
         , doneWithPops(false)
         {}
 
         void start() {
             Thread::start();
             sequencer.start();
-        }
-
-        void configureMode(bool enable) {
-            sequencer.configureMode(enable);
         }
 
         template <typename DATA> void enableEvent(gc::EVENTSRC_HANDLE eventSource, gc::EVENT_HANDLE handle) {
@@ -50,15 +43,11 @@ template <> class EventProcessor<CallbackSingleThread>: public Thread {
             sequencer.stop();
         }
         virtual void run(volatile bool &isStopping) {
-            std::string context("EventProcessor<CallbackSingleThread>:");
-            gentl.traceCtx.hTrace<'D',0xf86919c71a0dc09bULL,'s'>("%_ is ready", context);
+            memento("is ready");
             try {
                 while (!isStopping) {
                     try {
                         sequencer.popNotifyOneEvent((size_t)-1);
-                    }
-                    catch (const client_error&) {
-                        sleepMs(10); // the sequencer has no registered event ...
                     }
                     catch (const gentl_error& err) {
                         switch (err.gc_err) {
@@ -71,31 +60,33 @@ template <> class EventProcessor<CallbackSingleThread>: public Thread {
                     }
                 }
                 doneWithPops = true;
-                gentl.traceCtx.hTrace<'D',0x1bfe1e00f4eded28ULL,'s'>("%_ stopped", context);
+                memento(" stopped");
             }
             catch (const gentl_error& err) {
                 doneWithPops = true;
-                gentl.traceCtx.hTrace<'E',0xb7ef01779cae09d8ULL,'s','s'>("%_ uncaught GenTL error: %_", context, err.what());
+                memento(context + " uncaught GenTL error: " + err.what());
                 throw;
             }
             catch (const std::runtime_error& err) {
                 doneWithPops = true;
-                gentl.traceCtx.hTrace<'E',0x5367105aa8ccb0d4ULL,'s','s'>("%_ uncaught runtime error: %_", context, err.what());
+                memento(context + " uncaught runtime error: " + err.what());
                 throw;
             }
             catch (...) {
                 doneWithPops = true;
-                gentl.traceCtx.hTrace<'E',0x876a35135d65c30fULL,'s'>("%_ uncaught exception", context);
+                memento(context + " uncaught exception");
                 throw;
             }
         }
 
+        // Helpers
+        void memento(const std::string &msg) {
+            gentl.memento(context + msg);
+        }
+        
         GenTL &gentl;
-#ifdef EURESYS_GENERIC_SEQUENCER
         GenericSequencer sequencer;
-#else
-        EuresysSequencer sequencer;
-#endif
+        std::string context;
         volatile bool doneWithPops;
 };
 

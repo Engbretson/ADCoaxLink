@@ -156,7 +156,6 @@ class GenericSequencerWaiterOS {
             t->ms += (DWORD)ms;
         }
         void setInfinite(Time *t) {
-            t->tick = GetTickCount64();
             t->ms = INFINITE;
         }
     private:

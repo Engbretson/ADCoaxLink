@@ -13,7 +13,6 @@ namespace Internal {
 #endif
 #include <pthread.h>
 #include <unistd.h>
-#include <errno.h>
 
 class Thread
 {
@@ -63,18 +62,8 @@ class Thread
             return false;
         }
         static void sleepMs(unsigned int ms) {
-            useconds_t us = static_cast<useconds_t>(ms) * 1000;
-            if (static_cast<unsigned long long>(us) != 1000ULL * ms) {
-                throw thread_error("invalid number of ms passed to sleepMs");
-            }
-            if (usleep(us)) {
-                if (us) {
-                    switch (errno) {
-                        case EINTR:     throw thread_error("usleep error (EINTR)");
-                        case EINVAL:    throw thread_error("usleep error (EINVAL)");
-                        default:        throw thread_error("usleep error");
-                    }
-                }
+            if (usleep(1000 * ms)) {
+                throw thread_error("sleep error");
             }
         }
     private:
