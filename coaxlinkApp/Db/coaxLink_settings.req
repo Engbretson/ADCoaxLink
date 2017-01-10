@@ -1,0 +1,8 @@
+$(P)$(R)ArrayCallbacks
+$(P)$(R)DataType
+$(P)$(R)SensorBitDepth
+$(P)$(R)Width+R
+$(P)$(R)Height+R
+$(P)$(R)CameraControlMethod
+$(P)$(R)SizeX
+$(P)$(R)SizeY
