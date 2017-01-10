@@ -6,3 +6,4 @@ Other Genicam based cameras parse this all out at run time, but the Euresys soft
 
 The versions of the headers files between Linix and Windows do not seem to be in tortal sync. Please replace the files here with whatever versions match the ones that you have installed
 
+Note: GITHUB will not accept the linix coaxlink driver as being too large, will need to obtain these on your own.
