@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RegisterDescription
+    ModelName="Coaxlink"
+    VendorName="Euresys"
+    ToolTip="Coaxlink System Module Register Description"
+    StandardNameSpace="None"
+    SchemaMajorVersion="1"
+    SchemaMinorVersion="1"
+    SchemaSubMinorVersion="0"
+    MajorVersion="7"
+    MinorVersion="1"
+    SubMinorVersion="1"
+    ProductGuid="dde87444-6483-325c-82cc-ce96c14bc258"
+    VersionGuid="f7c421cf-37e9-3ce1-abe1-ab28e723afd4"
+    xmlns="http://www.genicam.org/GenApi/Version_1_1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<Category Name="Root" NameSpace="Standard">
+    <pFeature>SystemInformation</pFeature>
+    <pFeature>InterfaceEnumeration</pFeature>
+</Category>
+<Category Name="SystemInformation" NameSpace="Standard">
+    <pFeature>TLVendorName</pFeature>
+    <pFeature>TLModelName</pFeature>
+    <pFeature>TLID</pFeature>
+    <pFeature>TLVersion</pFeature>
+    <pFeature>TLPath</pFeature>
+    <pFeature>TLType</pFeature>
+    <pFeature>GenTLVersionMajor</pFeature>
+    <pFeature>GenTLVersionMinor</pFeature>
+</Category>
+<Category Name="InterfaceEnumeration" NameSpace="Standard">
+    <pFeature>InterfaceUpdateList</pFeature>
+    <pFeature>InterfaceSelector</pFeature>
+    <pFeature>InterfaceID</pFeature>
+</Category>
+<Port Name="TLPort" NameSpace="Standard">
+    <ToolTip>The port through which the System module is accessed</ToolTip>
+    <Description>The port through which the System module is accessed.</Description>
+    <DisplayName>TL System Port</DisplayName>
+</Port>
+<String Name="TLVendorName" NameSpace="Standard">
+    <ToolTip>Name of the GenTL Producer vendor</ToolTip>
+    <Description>Name of the GenTL Producer vendor.</Description>
+    <DisplayName>TL Vendor Name</DisplayName>
+    <ImposedAccessMode>RO</ImposedAccessMode>
+    <Value>Euresys</Value>
+</String>
+<String Name="TLModelName" NameSpace="Standard">
+    <ToolTip>Name of the GenTL Producer</ToolTip>
+    <Description>Name of the GenTL Producer.</Description>
+    <DisplayName>TL Model Name</DisplayName>
+    <ImposedAccessMode>RO</ImposedAccessMode>
+    <Value>Coaxlink</Value>
+</String>
+<String Name="TLID" NameSpace="Standard">
+    <ToolTip>Unique identifier of the GenTL</ToolTip>
+    <Description>Unique identifier of the GenTL.</Description>
+    <DisplayName>TL ID</DisplayName>
+    <ImposedAccessMode>RO</ImposedAccessMode>
+    <Value>EuresysCoaxlink-7.1.1.25</Value>
+</String>
+<String Name="TLVersion" NameSpace="Standard">
+    <ToolTip>Vendor specific version string</ToolTip>
+    <Description>Vendor specific version string.</Description>
+    <DisplayName>TL Version</DisplayName>
+    <ImposedAccessMode>RO</ImposedAccessMode>
+    <Value>7.1.1.25</Value>
+</String>
+<String Name="TLPath" NameSpace="Standard">
+    <ToolTip>Path to the GenTL Producer driver</ToolTip>
+    <Description>Full path to the GenTL Producer driver including name and extension.</Description>
+    <DisplayName>TL Path</DisplayName>
+    <ImposedAccessMode>RO</ImposedAccessMode>
+    <pValue>n0dE_0</pValue>
+</String>
+<Enumeration Name="TLType" NameSpace="Standard">
+    <ToolTip>Identifies the transport layer technology of the GenTL Producer implementation</ToolTip>
+    <Description>Identifies the transport layer technology of the GenTL Producer implementation.</Description>
+    <DisplayName>TL Type</DisplayName>
+    <ImposedAccessMode>RO</ImposedAccessMode>
+    <EnumEntry Name="CXP" NameSpace="Standard">
+        <ToolTip>CoaXPress</ToolTip>
+        <Description>This enumeration value indicates CoaXPress transport layer technology.</Description>
+        <DisplayName>CoaXPress</DisplayName>
+        <Value>0</Value>
+    </EnumEntry>
+    <Value>0</Value>
+</Enumeration>
+<IntReg Name="GenTLVersionMajor" NameSpace="Standard">
+    <ToolTip>Major version number of the GenTL specification the GenTL Producer implementation complies with</ToolTip>
+    <Description>Major version number of the GenTL specification the GenTL Producer implementation complies with.</Description>
+    <DisplayName>GenTL Version Major</DisplayName>
+    <Address>0x3ee100000000000</Address>
+    <Length>2</Length>
+    <AccessMode>RO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+    <Sign>Signed</Sign>
+    <Endianess>LittleEndian</Endianess>
+</IntReg>
+<IntReg Name="GenTLVersionMinor" NameSpace="Standard">
+    <ToolTip>Minor version number of the GenTL specification the GenTL Producer implementation complies with</ToolTip>
+    <Description>Minor version number of the GenTL specification the GenTL Producer implementation complies with.</Description>
+    <DisplayName>GenTL Version Minor</DisplayName>
+    <Address>0x3ef100000000000</Address>
+    <Length>2</Length>
+    <AccessMode>RO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+    <Sign>Signed</Sign>
+    <Endianess>LittleEndian</Endianess>
+</IntReg>
+<Command Name="InterfaceUpdateList" NameSpace="Standard">
+    <ToolTip>Updates the internal interface list</ToolTip>
+    <Description>Updates the internal interface list.</Description>
+    <DisplayName>Interface Update List</DisplayName>
+    <pValue>n0dE_2</pValue>
+    <CommandValue>1</CommandValue>
+</Command>
+<Integer Name="InterfaceSelector" NameSpace="Standard">
+    <ToolTip>Selector for the different GenTL Producer interfaces</ToolTip>
+    <Description>Selector for the different GenTL Producer interfaces.</Description>
+    <DisplayName>Interface Selector</DisplayName>
+    <pIsAvailable>n0dE_3</pIsAvailable>
+    <Value>0</Value>
+    <Min>0</Min>
+    <pMax>n0dE_4</pMax>
+    <pSelected>InterfaceID</pSelected>
+</Integer>
+<String Name="InterfaceID" NameSpace="Standard">
+    <ToolTip>GenTL Producer wide unique identifier of the selected interface</ToolTip>
+    <Description>GenTL Producer wide unique identifier of the selected interface.</Description>
+    <DisplayName>Interface ID</DisplayName>
+    <pIsAvailable>n0dE_3</pIsAvailable>
+    <ImposedAccessMode>RO</ImposedAccessMode>
+    <pValue>n0dE_6</pValue>
+</String>
+<StringReg Name="n0dE_0">
+    <Address>0x6100000000000</Address>
+    <pLength>n0dE_1</pLength>
+    <AccessMode>RO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+</StringReg>
+<IntReg Name="n0dE_1">
+    <Address>0x6100000000000</Address>
+    <Address>0x400</Address>
+    <Length>4</Length>
+    <AccessMode>RO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+    <Sign>Unsigned</Sign>
+    <Endianess>LittleEndian</Endianess>
+</IntReg>
+<IntReg Name="n0dE_2">
+    <Address>0x3ea100000000000</Address>
+    <Length>1</Length>
+    <AccessMode>WO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+    <Sign>Unsigned</Sign>
+    <Endianess>LittleEndian</Endianess>
+</IntReg>
+<IntReg Name="n0dE_3">
+    <Address>0x3ec100000000000</Address>
+    <Length>2</Length>
+    <AccessMode>RO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+    <Sign>Signed</Sign>
+    <Endianess>LittleEndian</Endianess>
+</IntReg>
+<IntSwissKnife Name="n0dE_4">
+    <pVariable Name="C">n0dE_3</pVariable>
+    <Formula><![CDATA[ C-1 ]]></Formula>
+</IntSwissKnife>
+<IntSwissKnife Name="n0dE_5">
+    <pVariable Name="S">InterfaceSelector</pVariable>
+    <Formula><![CDATA[ (4<<40)|(S<<24) ]]></Formula>
+</IntSwissKnife>
+<StringReg Name="n0dE_6">
+    <Address>0x3ed100000000000</Address>
+    <pAddress>n0dE_5</pAddress>
+    <pLength>n0dE_7</pLength>
+    <AccessMode>RO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+</StringReg>
+<IntReg Name="n0dE_7">
+    <Address>0x3ed100000000000</Address>
+    <pAddress>n0dE_5</pAddress>
+    <Address>0x80</Address>
+    <Length>4</Length>
+    <AccessMode>RO</AccessMode>
+    <pPort>TLPort</pPort>
+    <Cachable>NoCache</Cachable>
+    <Sign>Unsigned</Sign>
+    <Endianess>LittleEndian</Endianess>
+</IntReg>
+</RegisterDescription>
