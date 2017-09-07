@@ -102,10 +102,19 @@ struct BufferIndexRange {
     : begin(begin)
     , end(end)
     {}
+    BufferIndexRange(const BufferIndexRange &range)
+    : begin(range.begin)
+    , end(range.end)
+    {}
+    BufferIndexRange& operator=(BufferIndexRange range) {
+        begin = range.begin;
+        end = range.end;
+        return *this;
+    }
     /** Convert a 0-based index in the range to an absolute buffer index
         @param offset 0-based index of a buffer in the range
      **/
-    size_t indexAt(size_t offset) {
+    size_t indexAt(size_t offset) const {
         size_t ix = begin + offset;
         if (begin <= ix && ix < end) { return ix; }
         throw client_error("out of range");
@@ -183,59 +192,59 @@ struct RemoteModule {
 // Available Event DATA types (see enableEvent<DATA>)
 // --------------------------------------------------------------------------
 
-/** Event DATA type corresponding to @ref GenICam::Client::EVENT_NEW_BUFFER
+/** Event DATA type corresponding to @ref GenTL::EVENT_NEW_BUFFER
     @ingroup EGrabberEventDataOrAll
     @ingroup EGrabberEventAnyData
  **/
 struct NewBufferData {
-    gc::DS_HANDLE dsh;      /**< GenICam::Client::DS_HANDLE handle associated to buffer */
-    gc::BUFFER_HANDLE bh;   /**< GenICam::Client::BUFFER_HANDLE handle */
+    gc::DS_HANDLE dsh;      /**< GenTL::DS_HANDLE handle associated to buffer */
+    gc::BUFFER_HANDLE bh;   /**< GenTL::BUFFER_HANDLE handle */
     void *userPointer;      /**< Optional user pointer (if provided when announced) */
     uint64_t timestamp;     /**< Timestamp associated to new buffer event */
 };
 
-/** Event DATA type corresponding to @ref GenICam::Client::Euresys::EVENT_CUSTOM_IO_TOOLBOX
+/** Event DATA type corresponding to @ref GenTL::EuresysCustomGenTL::EVENT_CUSTOM_IO_TOOLBOX
     @ingroup EGrabberEventDataOrAll
     @ingroup EGrabberEventAnyData
  **/
 struct IoToolboxData {
-    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenICam::Client::Euresys::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
+    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenTL::EuresysCustomGenTL::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
     uint64_t timestamp;                 /**< Event timestamp */
     uint32_t context1;                  /**< Value of EventNotificationContext1 for this event (latched at the time the event occurred) */
     uint32_t context2;                  /**< Value of EventNotificationContext2 for this event (latched at the time the event occurred) */
     uint32_t context3;                  /**< Value of EventNotificationContext3 for this event (latched at the time the event occurred) */
 };
 
-/** Event DATA type corresponding to @ref GenICam::Client::Euresys::EVENT_CUSTOM_CIC
+/** Event DATA type corresponding to @ref GenTL::EuresysCustomGenTL::EVENT_CUSTOM_CIC
     @ingroup EGrabberEventDataOrAll
     @ingroup EGrabberEventAnyData
  **/
 struct CicData {
-    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenICam::Client::Euresys::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
+    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenTL::EuresysCustomGenTL::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
     uint64_t timestamp;                 /**< Event timestamp */
     uint32_t context1;                  /**< Value of EventNotificationContext1 for this event (latched at the time the event occurred) */
     uint32_t context2;                  /**< Value of EventNotificationContext2 for this event (latched at the time the event occurred) */
     uint32_t context3;                  /**< Value of EventNotificationContext3 for this event (latched at the time the event occurred) */
 };
 
-/** Event DATA type corresponding to @ref GenICam::Client::Euresys::EVENT_CUSTOM_DATASTREAM
+/** Event DATA type corresponding to @ref GenTL::EuresysCustomGenTL::EVENT_CUSTOM_DATASTREAM
     @ingroup EGrabberEventDataOrAll
     @ingroup EGrabberEventAnyData
  **/
 struct DataStreamData {
-    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenICam::Client::Euresys::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
+    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenTL::EuresysCustomGenTL::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
     uint64_t timestamp;                 /**< Event timestamp */
     uint32_t context1;                  /**< Value of EventNotificationContext1 for this event (latched at the time the event occurred) */
     uint32_t context2;                  /**< Value of EventNotificationContext2 for this event (latched at the time the event occurred) */
     uint32_t context3;                  /**< Value of EventNotificationContext3 for this event (latched at the time the event occurred) */
 };
 
-/** Event DATA type corresponding to @ref GenICam::Client::Euresys::EVENT_CUSTOM_CXP_INTERFACE
+/** Event DATA type corresponding to @ref GenTL::EuresysCustomGenTL::EVENT_CUSTOM_CXP_INTERFACE
     @ingroup EGrabberEventDataOrAll
     @ingroup EGrabberEventAnyData
  **/
 struct CxpInterfaceData {
-    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenICam::Client::Euresys::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
+    ge::EVENT_DATA_NUMID_CUSTOM numid;  /**< GenTL::EuresysCustomGenTL::EVENT_DATA_NUMID_CUSTOM custom Event data identifier */
     uint64_t timestamp;                 /**< Event timestamp */
     uint32_t context1;                  /**< Value of EventNotificationContext1 for this event (latched at the time the event occurred) */
     uint32_t context2;                  /**< Value of EventNotificationContext2 for this event (latched at the time the event occurred) */

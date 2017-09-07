@@ -3,12 +3,11 @@
 #ifndef EURESYS_SHARED_GENTL_HEADER_FILE
 #define EURESYS_SHARED_GENTL_HEADER_FILE
 
-#include "EuresysGenTL.h"
+#include "EGenTL.h"
 
 namespace EURESYS_NAMESPACE {
 
-// For backward compatibility
-typedef GenTL SharedGenTL;
+#include "deprecated/class.SharedGenTL.h"
 
 } // namespace EURESYS_NAMESPACE
 

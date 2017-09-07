@@ -21,7 +21,16 @@
 
 extern "C" {
 
+#define MEMENTO_VERBOSITY_CRITICAL (1)
+#define MEMENTO_VERBOSITY_ERROR    (2)
+#define MEMENTO_VERBOSITY_WARNING  (3)
+#define MEMENTO_VERBOSITY_NOTICE   (4)
+#define MEMENTO_VERBOSITY_INFO     (5)
+#define MEMENTO_VERBOSITY_DEBUG    (6)
+#define MEMENTO_VERBOSITY_VERBOSE  (7)
+
 MEMENTO_API MementoOutputString(const char *text);
+MEMENTO_API MementoOutputStringEx(const char *text, unsigned char verbosity, unsigned char kind);
 
 /** @cond */
 
@@ -29,6 +38,7 @@ MEMENTO_API MementoOutputString(const char *text);
 #define MEMENTO_API_P(function) typedef void( GC_CALLTYPE *function )
 
 MEMENTO_API_P(PMementoOutputString)(const char *text);
+MEMENTO_API_P(PMementoOutputStringEx)(const char *text, unsigned char verbosity, unsigned char kind);
 
 /** @endcond */
 
