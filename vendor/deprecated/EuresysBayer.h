@@ -13,9 +13,8 @@
 
 #ifdef __cplusplus
 extern "C" {
-namespace GenICam {
-    namespace Client {
-        namespace Euresys {
+namespace GenTL {
+namespace EuresysCustomGenTL {
 #endif
 
 /* Pixel formats of input/output buffers */
@@ -74,8 +73,7 @@ BAYER_API_P(PBayerConvert)(BAYER_METHOD method,
                            const ROI_DETAILS *roiDetails, void *reserved);
 
 #ifdef __cplusplus
-        }
-    }
+}
 }
 }
 #endif
