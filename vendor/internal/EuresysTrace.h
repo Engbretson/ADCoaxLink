@@ -15,10 +15,10 @@ template <typename T> struct ETraceIntArg {
     typedef T arg_t;
     enum { weight = WeightOf<arg_t>::value };
     static void toArg(PEGrabberTrace EGrabberTrace, char LEVEL, const arg_t &a, int *i, char *f) {
-        i[0] = a & 0xFFFFFFFF;
+        i[0] = static_cast<int>(a & 0xFFFFFFFF);
         f[0] = 'i';
         if (2 <= weight) {
-            i[1] = (((long long int )a) >> 32) & 0xFFFFFFFF;
+            i[1] = static_cast<int>((static_cast<long long int>(a) >> 32) & 0xFFFFFFFF);
             f[1] = '+';
         }
     }
@@ -29,7 +29,7 @@ struct ETraceStrArg {
     enum { weight = 1 };
     static void toArg(PEGrabberTrace EGrabberTrace, char LEVEL, const arg_t &_a, int *i, char *f) {
         int a = EGrabberTrace(LEVEL, 0, _a.c_str(), 0);
-        i[0] = a & 0xFFFFFFFF;
+        i[0] = static_cast<int>(a & 0xFFFFFFFF);
         f[0] = 's';
     }
 };
@@ -39,10 +39,10 @@ struct ETracePtrArg {
     enum { weight = WeightOf<uintptr_t>::value };
     static void toArg(PEGrabberTrace EGrabberTrace, char LEVEL, const arg_t &_a, int *i, char *f) {
         uintptr_t a = reinterpret_cast<uintptr_t>(_a);
-        i[0] = a & 0xFFFFFFFF;
+        i[0] = static_cast<int>(a & 0xFFFFFFFF);
         f[0] = 'i';
         if (2 <= weight) {
-            i[1] = (((long long int )a) >> 32) & 0xFFFFFFFF;
+            i[1] = static_cast<int>((static_cast<long long int>(a) >> 32) & 0xFFFFFFFF);
             f[1] = '+';
         }
     }

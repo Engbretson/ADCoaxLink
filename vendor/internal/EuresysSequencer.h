@@ -8,7 +8,7 @@ namespace Internal {
 
 class EuresysSequencer: public EGrabberCallbacks {
     public:
-        EuresysSequencer(GenTL &gentl, EGrabberCallbacks &callbacks)
+        EuresysSequencer(EGenTL &gentl, EGrabberCallbacks &callbacks)
         : gentl(gentl)
         , callbacks(callbacks)
         , configuring(0)
@@ -296,7 +296,7 @@ class EuresysSequencer: public EGrabberCallbacks {
 
         static const int Q_COUNT = EventQueueCount::VALUE;
         
-        GenTL &gentl;
+        EGenTL &gentl;
         EGrabberCallbacks &callbacks;
         ConcurrencyLock mutex;
         size_t configuring;

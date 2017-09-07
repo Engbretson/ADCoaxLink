@@ -10,97 +10,13 @@
 namespace EURESYS_NAMESPACE {
 namespace Internal {
 
-class EventBase {
-    public:
-        EventBase(uint64_t timestamp)
-        : timestamp(timestamp)
-        {}
-        virtual ~EventBase() {}
-        virtual void notify() = 0;
-        bool before(const EventBase &other) const {
-            return timestamp < other.timestamp;
-        }
-    private:
-        uint64_t timestamp;
-};
-
-template <typename T>
-class Event: public EventBase {
-    public:
-        Event(EGrabberCallbacks &callbacks, const T &data)
-        : EventBase(data.timestamp)
-        , callbacks(callbacks)
-        , data(data)
-        {}
-        virtual void notify();
-        const T& get() {
-            return data;
-        }
-    private:
-        EGrabberCallbacks &callbacks;
-        T data;
-};
-
-class EventPtr {
-    public:
-        EventPtr(EventBase *event)
-        : event(event)
-        {}
-        ~EventPtr() {
-            if (event) {
-                delete event;
-            }
-        }
-        EventBase *getEvent() {
-            return event;
-        }
-        void notify() {
-            if (event) {
-                event->notify();
-            }
-        }
-        void detach() {
-            event = 0;
-        }
-        template <typename DATA> const DATA &get() {
-            Event<DATA> *eventDATA(dynamic_cast<Event<DATA> *>(event));
-            if (!eventDATA) {
-                throw client_error("EventPtr bad cast");
-            }
-            return eventDATA->get();
-        }
-    private:
-        EventBase *event;
-};
-
-
-// ----------------------------------------------------------------------------
-// GenericSequencer static configuration: add new data types here
-// ----------------------------------------------------------------------------
-template <> inline void Event<NewBufferData>::notify() {
-    callbacks.onNewBufferEvent(data);
-}
-template <> inline void Event<IoToolboxData>::notify() {
-    callbacks.onIoToolboxEvent(data);
-}
-template <> inline void Event<CicData>::notify() {
-    callbacks.onCicEvent(data);
-}
-template <> inline void Event<DataStreamData>::notify() {
-    callbacks.onDataStreamEvent(data);
-}
-template <> inline void Event<CxpInterfaceData>::notify() {
-    callbacks.onCxpInterfaceEvent(data);
-}
-// ----------------------------------------------------------------------------
-
 #ifdef _MSC_VER
 #pragma warning( push )
 #pragma warning( disable : 4355 ) // 'this' : used in base member initializer list
 #endif
 class GenericSequencer: public EGrabberCallbacks {
     public:
-        GenericSequencer(GenTL &gentl, EGrabberCallbacks &callbacks)
+        GenericSequencer(EGenTL &gentl, EGrabberCallbacks &callbacks)
         : gentl(gentl)
         , callbacks(callbacks)
         , multi(gentl, *this)
@@ -119,6 +35,9 @@ class GenericSequencer: public EGrabberCallbacks {
         void stop() {
             cancel((size_t)-1);
             multi.stop();
+        }
+
+        void configureMode(bool enable) {
         }
 
         template <typename DATA> void enableEvent(gc::EVENTSRC_HANDLE eventSource, gc::EVENT_HANDLE handle) {
@@ -145,11 +64,11 @@ class GenericSequencer: public EGrabberCallbacks {
             if ((e = tryPopOne(filter))) {
                 releaseWaiter(waiter);
                 EventPtr event(e);
-                event.notify();
+                event.notify(gentl);
                 return;
             }
             EventPtr event(wait(filter, waiter));
-            event.notify();
+            event.notify(gentl);
         }
 
         template <typename DATA> DATA getEvent(uint64_t timeout) {
@@ -199,13 +118,7 @@ class GenericSequencer: public EGrabberCallbacks {
         int allocWaiter(size_t filter, uint64_t timeout) {
             AutoLock lock(mutexWaiters);
             if (filter & (~enabled)) {
-                std::stringstream ss;
-                ss << "Sequencer prepare wait on filter 0x"
-                   << std::hex << filter
-                   << " including disabled events (enabled=0x"
-                   << std::hex << enabled
-                   << ")";
-                gentl.memento(ss.str());
+                gentl.traceCtx.hTrace<'D',0x7a223163effc8185ULL,'x','x'>("Sequencer prepare wait on filter 0x%_ including disabled events (enabled=0x%_)", (uint32_t)filter, (uint32_t)enabled);
             }
             for (int i = 0; i < WAITER_COUNT; ++i) {
                 if (waiters[i].alloc(filter, timeout)) {
@@ -418,7 +331,7 @@ class GenericSequencer: public EGrabberCallbacks {
         ConcurrencyLock mutexWaiters;
         ConcurrencyLock mutexPop;
         ConcurrencyLock mutexEnable;
-        GenTL &gentl;
+        EGenTL &gentl;
         EGrabberCallbacks &callbacks;
         EventProcessor<CallbackMultiThread> multi;
         ConcurrencyLock qMutex[Q_COUNT];

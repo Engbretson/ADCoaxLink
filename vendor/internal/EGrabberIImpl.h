@@ -25,11 +25,12 @@ inline void *Buffer::getUserPointer() {
 inline void Buffer::saveToDisk(Internal::EGrabberBase &grabber, const std::string &filepath, int64_t index, const ge::ImageSaveToDiskParams *params) {
     std::string format(grabber.getGenTL().imageGetPixelFormat(getInfo<uint64_t>(grabber, gc::BUFFER_INFO_PIXELFORMAT)));
     size_t bufferSize = getInfo<size_t>(grabber, gc::BUFFER_INFO_SIZE);
+    size_t linePitch = getInfo<size_t>(grabber, ge::BUFFER_INFO_CUSTOM_LINE_PITCH);
     ge::ImageConvertInput input = { static_cast<int>(getInfo<size_t>(grabber, gc::BUFFER_INFO_WIDTH)),
                                     static_cast<int>(getInfo<size_t>(grabber, gc::BUFFER_INFO_DELIVERED_IMAGEHEIGHT)),
                                     getInfo<uint8_t *>(grabber, gc::BUFFER_INFO_BASE),
                                     format.c_str(),
-                                    {&bufferSize, 0, 0, 0},
+                                    {&bufferSize, &linePitch, 0, 0},
                                     {0, 0, 0, 0} };
     return grabber.getGenTL().imageSaveToDisk(input, filepath, index, params);
 }
