@@ -1,4 +1,4 @@
-/* /home/beams/MENGBRET/test/Adimec_Q12A180CXP_1_1_3 */ 
+/* /home/oxygen/MENGBRET/test/Adimec_Q12A180CXP_1_1_3 */ 
 
 #define COAXLINK_Remote_StandardString "Standard" 
 #define COAXLINK_Remote_RevisionString "Revision" 
