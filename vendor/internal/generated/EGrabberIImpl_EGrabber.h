@@ -4,11 +4,11 @@ namespace EURESYS_NAMESPACE {
 #pragma warning( push )
 #pragma warning( disable : 4355 ) // 'this' : used in base member initializer list
 #endif
-template <typename CallbackModel> inline EGrabber<CallbackModel>::EGrabber(GenTL &gentl, int interfaceIndex, int deviceIndex, int dataStreamIndex)
-: impl(gentl, *this, interfaceIndex, deviceIndex, dataStreamIndex)
+template <typename CallbackModel> inline EGrabber<CallbackModel>::EGrabber(EGenTL &gentl, int interfaceIndex, int deviceIndex, int dataStreamIndex, gc::DEVICE_ACCESS_FLAGS deviceOpenFlags)
+: impl(gentl, *this, interfaceIndex, deviceIndex, dataStreamIndex, deviceOpenFlags)
 {
 }
-template <typename CallbackModel> inline EGrabber<CallbackModel>::EGrabber(GenTL &gentl, gc::TL_HANDLE tlh, gc::IF_HANDLE ifh, gc::DEV_HANDLE devh, gc::DS_HANDLE dsh)
+template <typename CallbackModel> inline EGrabber<CallbackModel>::EGrabber(EGenTL &gentl, gc::TL_HANDLE tlh, gc::IF_HANDLE ifh, gc::DEV_HANDLE devh, gc::DS_HANDLE dsh)
 : impl(gentl, *this, tlh, ifh, devh, dsh)
 {
 }
@@ -18,8 +18,8 @@ template <typename CallbackModel> inline EGrabber<CallbackModel>::EGrabber(GenTL
 template <typename CallbackModel >  inline BufferIndexRange EGrabber<CallbackModel>::reallocBuffers(size_t bufferCount, size_t bufferSize) {
     return impl.reallocBuffers(bufferCount, bufferSize);
 }
-template <typename CallbackModel >  inline BufferIndexRange EGrabber<CallbackModel>::announceAndQueue(const GenTLMemory & memory) {
-    return impl.announceAndQueue(memory);
+template <typename CallbackModel >  inline BufferIndexRange EGrabber<CallbackModel>::announceAndQueue(const GenTLMemory & memory, size_t bufferCount) {
+    return impl.announceAndQueue(memory, bufferCount);
 }
 template <typename CallbackModel >  inline BufferIndexRange EGrabber<CallbackModel>::announceAndQueue(const UserMemory & memory) {
     return impl.announceAndQueue(memory);
@@ -35,6 +35,12 @@ template <typename CallbackModel >  inline void EGrabber<CallbackModel>::flushBu
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::resetBufferQueue() {
     return impl.resetBufferQueue();
+}
+template <typename CallbackModel >  inline void EGrabber<CallbackModel>::resetBufferQueue(const BufferIndexRange & range) {
+    return impl.resetBufferQueue(range);
+}
+template <typename CallbackModel >  inline void EGrabber<CallbackModel>::queue(const BufferIndexRange & range) {
+    return impl.queue(range);
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::revoke(const BufferIndexRange & range) {
     return impl.revoke(range);
@@ -62,6 +68,30 @@ template <typename CallbackModel > template <typename M, typename T> inline T EG
 }
 template <typename CallbackModel > template <typename T> inline T EGrabber<CallbackModel>::getBufferInfo(size_t bufferIndex, gc::BUFFER_INFO_CMD cmd) {
     return impl.template getBufferInfo<T>(bufferIndex, cmd);
+}
+template <typename CallbackModel >  inline NewBufferData EGrabber<CallbackModel>::getBufferData(size_t bufferIndex) {
+    return impl.getBufferData(bufferIndex);
+}
+template <typename CallbackModel > template <typename P> inline void EGrabber<CallbackModel>::gcReadPortData(uint64_t address, void * data, size_t size) {
+    return impl.template gcReadPortData<P>(address, data, size);
+}
+template <typename CallbackModel > template <typename P> inline void EGrabber<CallbackModel>::gcWritePortData(uint64_t address, const void * data, size_t size) {
+    return impl.template gcWritePortData<P>(address, data, size);
+}
+template <typename CallbackModel > template <typename P> inline std::vector<char> EGrabber<CallbackModel>::gcReadPort(uint64_t address, size_t size) {
+    return impl.template gcReadPort<P>(address, size);
+}
+template <typename CallbackModel > template <typename P> inline void EGrabber<CallbackModel>::gcWritePort(uint64_t address, const std::vector<char> & data) {
+    return impl.template gcWritePort<P>(address, data);
+}
+template <typename CallbackModel > template <typename P, typename V> inline V EGrabber<CallbackModel>::gcReadPortValue(uint64_t address) {
+    return impl.template gcReadPortValue<P, V>(address);
+}
+template <typename CallbackModel > template <typename P, typename V> inline void EGrabber<CallbackModel>::gcWritePortValue(uint64_t address, V value) {
+    return impl.template gcWritePortValue<P, V>(address, value);
+}
+template <typename CallbackModel > template <typename P> inline std::string EGrabber<CallbackModel>::gcReadPortString(int64_t address, size_t size) {
+    return impl.template gcReadPortString<P>(address, size);
 }
 template <typename CallbackModel > template <typename P> inline int64_t EGrabber<CallbackModel>::getInteger(const std::string & feature) {
     return impl.template getInteger<P>(feature);
@@ -93,6 +123,9 @@ template <typename CallbackModel >  inline void EGrabber<CallbackModel>::runScri
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::memento(const std::string & text) {
     return impl.memento(text);
 }
+template <typename CallbackModel >  inline void EGrabber<CallbackModel>::memento(unsigned char verbosity, unsigned char kind, const std::string & text) {
+    return impl.memento(verbosity, kind, text);
+}
 template <typename CallbackModel > template <typename DATA> inline void EGrabber<CallbackModel>::enableEvent() {
     return impl.template enableEvent<DATA>();
 }
@@ -116,20 +149,25 @@ template <typename CallbackModel > template <typename ANYDATA> inline void EGrab
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onNewBufferEvent(const NewBufferData & data) {
     // default implementation
+    impl.getGenTL().traceCtx.template hTrace<'W',0xdcace9ba6fb63470ULL>("onNewBufferEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onIoToolboxEvent(const IoToolboxData & data) {
     // default implementation
+    impl.getGenTL().traceCtx.template hTrace<'W',0xa926edfe11254661ULL>("onIoToolboxEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onCicEvent(const CicData & data) {
     // default implementation
+    impl.getGenTL().traceCtx.template hTrace<'W',0x7023b051be982860ULL>("onCicEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onDataStreamEvent(const DataStreamData & data) {
     // default implementation
+    impl.getGenTL().traceCtx.template hTrace<'W',0xa44d9b3352a61703ULL>("onDataStreamEvent default implementation");
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::onCxpInterfaceEvent(const CxpInterfaceData & data) {
     // default implementation
+    impl.getGenTL().traceCtx.template hTrace<'W',0xf0d95318b80b0fd9ULL>("onCxpInterfaceEvent default implementation");
 }
-template <typename CallbackModel >  inline GenTL & EGrabber<CallbackModel>::getGenTL() {
+template <typename CallbackModel >  inline EGenTL & EGrabber<CallbackModel>::getGenTL() {
     return impl.getGenTL();
 }
 template <typename CallbackModel >  inline void EGrabber<CallbackModel>::push(const NewBufferData & buffer) {

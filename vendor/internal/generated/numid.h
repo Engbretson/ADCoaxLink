@@ -13,14 +13,26 @@ inline std::string getEventDescription(ge::EVENT_DATA_NUMID_CUSTOM numid) {
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_QDC1_DIR: return "Quadrature Decoder Tool 1 Changed Direction";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_QDC2: return "Quadrature Decoder Tool 2";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_QDC2_DIR: return "Quadrature Decoder Tool 2 Changed Direction";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_QDC3: return "Quadrature Decoder Tool 3";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_QDC3_DIR: return "Quadrature Decoder Tool 3 Changed Direction";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_QDC4: return "Quadrature Decoder Tool 4";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_QDC4_DIR: return "Quadrature Decoder Tool 4 Changed Direction";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DIV1: return "Divider Tool 1";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DIV2: return "Divider Tool 2";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DIV3: return "Divider Tool 3";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DIV4: return "Divider Tool 4";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_MDV1: return "Multiplier/Divider Tool 1";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_MDV2: return "Multiplier/Divider Tool 2";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_MDV3: return "Multiplier/Divider Tool 3";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_MDV4: return "Multiplier/Divider Tool 4";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL1_1: return "Delay Tool 1 Output 1";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL1_2: return "Delay Tool 1 Output 2";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL2_1: return "Delay Tool 2 Output 1";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL2_2: return "Delay Tool 2 Output 2";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL3_1: return "Delay Tool 3 Output 1";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL3_2: return "Delay Tool 3 Output 2";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL4_1: return "Delay Tool 4 Output 1";
+        case ge::EVENT_DATA_NUMID_IO_TOOLBOX_DEL4_2: return "Delay Tool 4 Output 2";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_USER_EVENT_1: return "User Event 1";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_USER_EVENT_2: return "User Event 2";
         case ge::EVENT_DATA_NUMID_IO_TOOLBOX_USER_EVENT_3: return "User Event 3";
@@ -41,12 +53,12 @@ inline std::string getEventDescription(ge::EVENT_DATA_NUMID_CUSTOM numid) {
         case ge::EVENT_DATA_NUMID_CIC_CXP_TRIGGER_ACK: return "Received acknowledgement for previous CXP trigger message";
         case ge::EVENT_DATA_NUMID_CIC_CXP_TRIGGER_RESEND: return "Resent CXP trigger message (acknowledgement to previous CXP trigger message not received)";
         case ge::EVENT_DATA_NUMID_CIC_TRIGGER: return "CIC trigger";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_CAMERA_READOUT: return "Start of camera readout";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_CAMERA_READOUT: return "End of camera readout";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_SCAN: return "Start of scan";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_SCAN: return "End of scan";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_FRAME: return "Dropped image data (area-scan firmware only)";
-        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_SCAN: return "Dropped image data (line-scan firmware only)";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_CAMERA_READOUT: return "Starts acquiring data of a new image frame (area-scan only)";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_CAMERA_READOUT: return "Stops acquiring data of an image frame (area-scan only)";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_START_OF_SCAN: return "Starts acquiring data of a new image scan (line-scan only )";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_END_OF_SCAN: return "Stops acquiring data of an image scan (line-scan only)";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_FRAME: return "Dropped image frame data  (area-scan only)";
+        case ge::EVENT_DATA_NUMID_DATASTREAM_REJECTED_SCAN: return "Dropped image scan data (line-scan only)";
         default: return "unknown event";
     }
 }
