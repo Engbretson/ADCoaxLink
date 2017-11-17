@@ -14,7 +14,7 @@ namespace Internal {
 
 template <> class EventProcessor<CallbackOnDemand> {
     public:
-        EventProcessor(EGenTL &gentl, EGrabberCallbacks &callbacks)
+        EventProcessor(GenTL &gentl, EGrabberCallbacks &callbacks)
         : sequencer(gentl, callbacks)
         {}
 

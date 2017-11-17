@@ -1,5 +1,5 @@
     protected:
-        EGrabber(EGenTL &gentl, gc::TL_HANDLE tlh, gc::IF_HANDLE ifh, gc::DEV_HANDLE devh, gc::DS_HANDLE dsh);
+        EGrabber(GenTL &gentl, gc::TL_HANDLE tlh, gc::IF_HANDLE ifh, gc::DEV_HANDLE devh, gc::DS_HANDLE dsh);
     public:
         // push a buffer back to the input queue manually
         // Note: prefer using ScopedBuffer or Buffer object

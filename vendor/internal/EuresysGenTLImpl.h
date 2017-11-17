@@ -102,15 +102,17 @@ class GenTLImpl: private GenTLRaw {
         bool initialized;
 #endif
     public:
+        ETraceContext traceCtx;
         GenTLImpl(const std::string &path)
         : GenTLRaw(path)
 #ifdef EURESYS_GENTL_IMPL_ALLOW_GCINITLIB_FAILURE
         , initialized(false)
 #endif
+        , traceCtx(EGrabberTrace)
         {
 #ifdef EURESYS_GENTL_IMPL_ALLOW_GCINITLIB_FAILURE
             if (chkCatch<gc::GC_ERR_RESOURCE_IN_USE>(GCInitLib())) {
-                memento(cti.getPath() + ": GCInitLib failed (GC_ERR_RESOURCE_IN_USE), continue anyway");
+                traceCtx.hTrace<'W',0x3924e3ba0ae7dd4eULL,'s'>("%_: GCInitLib failed (GC_ERR_RESOURCE_IN_USE), continue anyway", cti.getPath());
             } else {
                 initialized = true;
             }
@@ -118,23 +120,23 @@ class GenTLImpl: private GenTLRaw {
             chk(GCInitLib());
 #endif
             try {
-                memento(cti.getPath() + " loaded");
+                traceCtx.hTrace<'D',0xb65e49d49aa2e475ULL,'s'>("initialized %_", cti.getPath());
             }
             catch (...) {
             }
         }
         virtual ~GenTLImpl() {
             try {
+                traceCtx.hTrace<'D',0x7cdfb054062362e5ULL,'s'>("closing %_", cti.getPath());
 #ifdef EURESYS_GENTL_IMPL_ALLOW_GCINITLIB_FAILURE
                 if (initialized) {
                     GCCloseLib();
                 } else {
-                    memento(cti.getPath() + ": skip GCCloseLib");
+                    traceCtx.hTrace<'D',0x93377cb5f786ccc6ULL,'s'>("%_: skip GCCloseLib", cti.getPath());
                 }
 #else
                 GCCloseLib();
 #endif
-                memento(cti.getPath() + " unloaded");
             }
             catch (...) {
             }
@@ -197,6 +199,9 @@ class GenTLImpl: private GenTLRaw {
             size_t s = size;
             chk(EventGetData(eh, buffer, &s, timeout));
             return s;
+        }
+        void eventsGetData(std::vector<ge::EURESYS_EVENT_GET_DATA_ENTRY> &entries, uint64_t *timeout) {
+            chk(EuresysEventsGetData(&entries[0], entries.size(), timeout));
         }
         std::string eventGetDataInfoString(gc::EVENT_HANDLE eh,
                                            const void *buffer, size_t size,
@@ -456,6 +461,9 @@ class GenTLImpl: private GenTLRaw {
         // Euresys Memento functions
         void memento(const std::string &text) {
             MementoOutputString(text.c_str());
+        }
+        void memento(unsigned char verbosity, unsigned char kind, const std::string &text) {
+            MementoOutputStringEx(text.c_str(), verbosity, kind);
         }
         // Euresys Genapi functions
         void genapiSetString(gc::PORT_HANDLE h, const std::string &feature, const std::string &value) {

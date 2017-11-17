@@ -31,6 +31,8 @@
 #include "EuresysImage.h"
 #include "MementoGenTL.h"
 #include "EuresysGenTLErrors.h"
+#include "internal/EuresysTraceGenTL.h"
+#include "internal/EuresysTrace.h"
 
 namespace EURESYS_NAMESPACE {
 namespace Internal {
@@ -112,6 +114,7 @@ class CtiLibrary {
 #define INIT_MEMENTO_PROC(cti, proc) proc(reinterpret_cast<P##proc>(cti.getSymbol(#proc)))
 #define INIT_BAYER_PROC(cti, proc) proc(reinterpret_cast<ge::P##proc>(cti.getSymbol(#proc)))
 #define INIT_IMAGE_PROC(cti, proc) proc(reinterpret_cast<ge::P##proc>(cti.getSymbol(#proc)))
+#define INIT_ETRACE_PROC(cti, proc) proc(reinterpret_cast<P##proc>(cti.getSymbol(#proc)))
 
 /** GenICam Transport Layer library support */
 class GenTLRaw {
@@ -131,6 +134,7 @@ class GenTLRaw {
         , INIT_GENTL_PROC(cti, GCRegisterEvent)
         , INIT_GENTL_PROC(cti, GCUnregisterEvent)
         , INIT_GENTL_PROC(cti, EventGetData)
+        , INIT_EURESYS_PROC(cti, EuresysEventsGetData)
         , INIT_GENTL_PROC(cti, EventGetDataInfo)
         , INIT_GENTL_PROC(cti, EventGetInfo)
         , INIT_GENTL_PROC(cti, EventFlush)
@@ -178,6 +182,9 @@ class GenTLRaw {
         , INIT_GENTL_PROC(cti, DSGetParentDev)
         // Euresys Memento functions
         , INIT_MEMENTO_PROC(cti, MementoOutputString)
+        , INIT_MEMENTO_PROC(cti, MementoOutputStringEx)
+        // Euresys Internal Memento
+        , INIT_ETRACE_PROC(cti, EGrabberTrace)
         // Euresys Genapi functions
         , INIT_EURESYS_PROC(cti, GenapiSetString)
         , INIT_EURESYS_PROC(cti, GenapiGetString)
@@ -214,6 +221,7 @@ class GenTLRaw {
         gc::PGCRegisterEvent GCRegisterEvent;
         gc::PGCUnregisterEvent GCUnregisterEvent;
         gc::PEventGetData EventGetData;
+        ge::PEuresysEventsGetData EuresysEventsGetData;
         gc::PEventGetDataInfo EventGetDataInfo;
         gc::PEventGetInfo EventGetInfo;
         gc::PEventFlush EventFlush;
@@ -261,6 +269,9 @@ class GenTLRaw {
         gc::PDSGetParentDev DSGetParentDev;
         // Euresys Memento functions
         PMementoOutputString MementoOutputString;
+        PMementoOutputStringEx MementoOutputStringEx;
+        // Euresys Internal Memento
+        PEGrabberTrace EGrabberTrace;
         // Euresys Genapi functions
         ge::PGenapiSetString GenapiSetString;
         ge::PGenapiGetString GenapiGetString;

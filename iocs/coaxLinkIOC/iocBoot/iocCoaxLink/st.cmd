@@ -1,5 +1,10 @@
 # Must have loaded envPaths via st.cmd.linux or st.cmd.win32
 
+epicsEnvSet("IOC","ioc2BM_Adimec")
+epicsEnvSet("ENGINEER","Engbretson")
+epicsEnvSet("LOCATION","2BM")
+
+
 errlogInit(20000)
 
 dbLoadDatabase("$(TOP)/dbd/coaxLinkApp.dbd")
@@ -9,9 +14,9 @@ coaxLinkApp_registerRecordDeviceDriver(pdbbase)
 epicsEnvSet("EURESYS_COAXLINK_GENTL64_CTI","/opt/euresys/coaxlink/lib/x86_64/coaxlink.cti")
 
 # Prefix for all records
-epicsEnvSet("PREFIX", "13SIM1:")
+epicsEnvSet("PREFIX", "2BM_ADIMEC:")
 # The port name for the detector
-epicsEnvSet("PORT",   "SIM1")
+epicsEnvSet("PORT",   "COAX1")
 # The queue size for all plugins
 epicsEnvSet("QSIZE",  "50")
 # The maximim image width; used for row profiles in the NDPluginStats plugin
@@ -39,7 +44,7 @@ asynSetMinTimerPeriod(0.0001)
 # allocates arrays of this size every time it needs a buffer larger than 16K.
 # Uncomment the following line to set it in the IOC.
 
-# note: this values works for 8-bit , 10-bit requires 16-bits worth of space
+# note: this values works for 8-bit , 10-bit requires 16-bits worth of space, so 12582912 * 2 = 25165824
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "25165824")
 
 # Create a simDetector driver
@@ -55,18 +60,19 @@ dbLoadRecords("$(ADCOAXLINK)/db/coaxLink.template","P=$(PREFIX),R=cam1:,PORT=$(P
 #dbLoadRecords("$(ADCORE)/ADApp/Db/NDFileRaw.template", "P=$(PREFIX), R=raw1:, PORT=$(PORT), ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT), NDARRAY_ADDR=0") 
 
 # Load an NDFile database.  This is not supported for the simDetector which does not write files.
-dbLoadRecords("NDFile.template","P=$(PREFIX),R=cam1:,PORT=SIM1,ADDR=0,TIMEOUT=1")
+dbLoadRecords("NDFile.template","P=$(PREFIX),R=cam1:,PORT=$(PORT),ADDR=0,TIMEOUT=1")
 
 # Create a standard arrays plugin, set it to get data from first simDetector driver.
-NDStdArraysConfigure("Image1", 10, 0, "$(PORT)", 0)
+NDStdArraysConfigure("Image1", 10, 0, "$(PORT)", 0, 0, 0, 0, 0, $(MAX_THREADS=5)
+
 
 # This creates a waveform large enough for 4096 by 3072 by 2 (e.g. BW) arrays.
 # This waveform only allows transporting 8-bit images
 
-dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int8,FTVL=UCHAR,NELEMENTS=25165824")
+#dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int8,FTVL=UCHAR,NELEMENTS=25165824")
 
 # This waveform only allows transporting 16-bit images
-#dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int16,FTVL=USHORT,NELEMENTS=25165824")
+dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int16,FTVL=USHORT,NELEMENTS=25165824")
 # This waveform allows transporting 32-bit images
 #dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int32,FTVL=LONG,NELEMENTS=25165824")
 

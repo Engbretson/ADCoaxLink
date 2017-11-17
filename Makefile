@@ -7,7 +7,7 @@ DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *App))
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *app))
 
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocs))
-iocs_DEPEND_DIRS += coaxlinkApp
+iocs_DEPEND_DIRS += coaxLinkApp
 
 include $(TOP)/configure/RULES_TOP
 

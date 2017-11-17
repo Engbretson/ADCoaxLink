@@ -17,8 +17,9 @@
 
 #ifdef __cplusplus
 extern "C" {
-namespace GenTL {
-namespace EuresysCustomGenTL {
+namespace GenICam {
+    namespace Client {
+        namespace Euresys {
 #endif
 
 /** @defgroup CImage Image (C API)
@@ -30,8 +31,7 @@ namespace EuresysCustomGenTL {
 enum IMAGE_CONVERT_OUTPUT_CONFIG
 {
     IMAGE_CONVERT_OUTPUT_CONFIG_DEFAULT        = 0, /**< use default bayer decoding when applicable */
-    IMAGE_CONVERT_OUTPUT_CONFIG_BAYER_ADVANCED = 1, /**< enable advanced bayer decoding when applicable */
-    IMAGE_CONVERT_OUTPUT_CONFIG_IMAGE_ID       = 2  /**< output pixels points to a IMAGE_ID */
+    IMAGE_CONVERT_OUTPUT_CONFIG_BAYER_ADVANCED = 1  /**< enable advanced bayer decoding when applicable */
 };
 
 enum IMAGE_CONVERT_OUTPUT_OPERATION
@@ -47,12 +47,10 @@ enum IMAGE_CONVERT_OUTPUT_OPERATION
 enum IMAGE_CONVERT_INPUT_EXTRA
 {
     IMAGE_CONVERT_INPUT_EXTRA_IX_BUFFER_SIZE    = 0, /**< extra[0] optional pointer to input buffer size (size_t) */
-    IMAGE_CONVERT_INPUT_EXTRA_IX_LINE_PITCH     = 1, /**< extra[1] optional pointer to input line pitch, mandatory for packed formats (size_t) */
+    IMAGE_CONVERT_INPUT_EXTRA_IX_RESERVED_1     = 1, /**< extra[1] reserved for future use, @pre must be 0 */
     IMAGE_CONVERT_INPUT_EXTRA_IX_RESERVED_2     = 2, /**< extra[2] reserved for future use, @pre must be 0 */
     IMAGE_CONVERT_INPUT_EXTRA_IX_RESERVED_3     = 3, /**< extra[3] reserved for future use, @pre must be 0 */
 };
-
-typedef size_t IMAGE_ID;
 
 /** Image Conversion - Input Details
     @sa ImageConvert
@@ -72,7 +70,7 @@ typedef struct ImageConvertInput {
 typedef struct ImageConvertOutput {
     int width;            /**< output buffer width in pixels */
     int height;           /**< output buffer height in pixels */
-    void *pixels;         /**< output buffer (or address of new image id if IMAGE_CONVERT_OUTPUT_CONFIG_IMAGE_ID) */
+    void *pixels;         /**< output buffer */
     const char *format;   /**< output format */
     int config;           /**< convert configuration, see @ref IMAGE_CONVERT_OUTPUT_CONFIG */
     int operation;        /**< convert operation, see @ref IMAGE_CONVERT_OUTPUT_OPERATION */
@@ -121,9 +119,9 @@ typedef struct ImageSaveToDiskParams {
     |           +-------+-------+-------+-------+-------+-------+
     |           | MONO  | BAYER | RGB   | RGBA  | BGR   | BGRA  |
     +---+-------+-------+-------+-------+-------+-------+-------+
-    |   | MONO  | A,C,E |       | B,C,F |       | B,C,F |       |
+    |   | MONO  | A,C   |       | B,C   |       | B,C   |       |
     | I +-------+-------+-------+-------+-------+-------+-------+
-    |   | BAYER |       | A,C,E | B,F   |       | B,F   |       |
+    |   | BAYER |       | A,C   | B     |       | B     |       |
     | n +-------+-------+-------+-------+-------+-------+-------+
     |   | RGB   |       |       | A,C,D |       | C     |       |
     | p +-------+-------+-------+-------+-------+-------+-------+
@@ -133,13 +131,11 @@ typedef struct ImageSaveToDiskParams {
     | t +-------+-------+-------+-------+-------+-------+-------+
     |   | BGRA  |       |       | C     |       | C     | A     |
     +---+-------+-------+-------+-------+-------+-------+-------+
-    
+  
     A: Operation: copy, 1x2ye, etc.
     B: RGB Output: N-bit to N-bit components with N in {8, 10, 12, 14, 16}
     C: Depth Reduction: N-bit to 8-bit component(s) with N in {10, 12, 14, 16}
     D: Align to 8-bit: Convert RGB8a32 to RGB8
-    E: Unpacking: N-bit 'pmsb' to 8-bit/16-bit component(s) with N in {10, 12, 14}
-    F: RGB8/BGR8 Output: Handle conversion paths from packed and/or Bayer formats internally
     @endverbatim
  **/
 IMAGE_API ImageConvert(const ImageConvertInput *input, const ImageConvertOutput *output, const ImageConvertROI *roi);
@@ -148,9 +144,9 @@ IMAGE_API ImageConvert(const ImageConvertInput *input, const ImageConvertOutput 
     @param[in] sFormat name to convert
     @param[in] iNs pixel format namespace value, available values:
     @parblock
-     - @ref GenTL::PIXELFORMAT_NAMESPACE_UNKNOWN
-     - @ref GenTL::PIXELFORMAT_NAMESPACE_PFNC_16BIT
-     - @ref GenTL::PIXELFORMAT_NAMESPACE_PFNC_32BIT
+     - @ref PIXELFORMAT_NAMESPACE_UNKNOWN
+     - @ref PIXELFORMAT_NAMESPACE_PFNC_16BIT
+     - @ref PIXELFORMAT_NAMESPACE_PFNC_32BIT
     @endparblock
     @param[out] piValue numerical value of pixel format
  **/
@@ -168,12 +164,6 @@ IMAGE_API ImageGetPixelFormat(uint64_t iValue, char *sFormat, size_t *piSize);
     @param[out] piValue number of bytes per pixel
  **/
 IMAGE_API ImageGetBytesPerPixel(const char* sFormat, unsigned int *piValue);
-
-/** Get number of bits per pixel in a specific pixel format
-    @param[in] sFormat format to query
-    @param[out] piValue number of bits per pixel
- **/
-IMAGE_API ImageGetBitsPerPixel(const char* sFormat, unsigned int *piValue);
 
 /** Save image buffer to disk
     @param input details of the image buffer to convert
@@ -200,9 +190,9 @@ IMAGE_API ImageGetBitsPerPixel(const char* sFormat, unsigned int *piValue);
     Supported image conversions:
     @verbatim
     [X] Mono8
-    [X] Mono10(pmsb)
-    [X] Mono12(pmsb)
-    [X] Mono14(pmsb)
+    [X] Mono10
+    [X] Mono12
+    [X] Mono14
     [X] Mono16
     [X] RGB8
     [X] RGBa8
@@ -222,18 +212,18 @@ IMAGE_API ImageGetBitsPerPixel(const char* sFormat, unsigned int *piValue);
     [X] BayerGR8
     [X] BayerBG8
     [X] BayerGB8
-    [X] BayerRG10(pmsb)
-    [X] BayerGR10(pmsb)
-    [X] BayerBG10(pmsb)
-    [X] BayerGB10(pmsb)
-    [X] BayerRG12(pmsb)
-    [X] BayerGR12(pmsb)
-    [X] BayerBG12(pmsb)
-    [X] BayerGB12(pmsb)
-    [X] BayerRG14(pmsb)
-    [X] BayerGR14(pmsb)
-    [X] BayerBG14(pmsb)
-    [X] BayerGB14(pmsb)
+    [X] BayerRG10
+    [X] BayerGR10
+    [X] BayerBG10
+    [X] BayerGB10
+    [X] BayerRG12
+    [X] BayerGR12
+    [X] BayerBG12
+    [X] BayerGB12
+    [X] BayerRG14
+    [X] BayerGR14
+    [X] BayerBG14
+    [X] BayerGB14
     [X] BayerRG16
     [X] BayerGR16
     [X] BayerBG16
@@ -241,19 +231,6 @@ IMAGE_API ImageGetBitsPerPixel(const char* sFormat, unsigned int *piValue);
     @endverbatim
  **/
 IMAGE_API ImageSaveToDisk(const ImageConvertInput *input, const char *sFilepath, int64_t iIndex, const ImageSaveToDiskParams *params);
-
-/** Get image information associated to an image identifier
-    @param[in] idImage identifier of an image created by ImageConvert
-    @param[out] outPixels image pixels
-    @param[out] outSize image size
- **/
-IMAGE_API ImageGet(IMAGE_ID idImage, void **outPixels, size_t *outSize);
-
-/** Release image associated to an image identifier
-    @param[in] idImage identifier of the image to release
- **/
-IMAGE_API ImageRelease(IMAGE_ID idImage);
-
 
 /** @cond */
 
@@ -264,10 +241,7 @@ IMAGE_API_P(PImageConvert)(const ImageConvertInput *input, const ImageConvertOut
 IMAGE_API_P(PImageGetPixelFormatValue)(const char *sFormat, unsigned int iNs, unsigned int *piValue);
 IMAGE_API_P(PImageGetPixelFormat)(uint64_t iValue, char *sFormat, size_t *piSize);
 IMAGE_API_P(PImageGetBytesPerPixel)(const char* sFormat, unsigned int *piValue);
-IMAGE_API_P(PImageGetBitsPerPixel)(const char* sFormat, unsigned int *piValue);
 IMAGE_API_P(PImageSaveToDisk)(const ImageConvertInput *input, const char *sFilepath, int64_t iIndex, const ImageSaveToDiskParams *params);
-IMAGE_API_P(PImageGet)(IMAGE_ID idImage, void **outPixels, size_t *outSize);
-IMAGE_API_P(PImageRelease)(IMAGE_ID idImage);
 
 /** @endcond */
 
@@ -276,7 +250,8 @@ IMAGE_API_P(PImageRelease)(IMAGE_ID idImage);
 /** @} */
 
 #ifdef __cplusplus
-}
+        }
+    }
 }
 }
 #endif
