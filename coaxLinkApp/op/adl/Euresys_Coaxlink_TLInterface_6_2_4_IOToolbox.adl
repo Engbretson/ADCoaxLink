@@ -329,7 +329,7 @@ text {
 	    height=15
 	    }
 	control {
-	chan="$(P)$(R)MultiplierDividerToolMultiplicationFactor"   
+	chan="$(P)$(R)MultiplierDividerToolMultiplicationFacto"   
 	clr=14
 	bclr=51
 	}
@@ -345,7 +345,7 @@ text {
 	    height=15
 	    }
 	monitor {
-		chan="$(P)$(R)MultiplierDividerToolMultiplicationFactor_RBV"   
+		chan="$(P)$(R)MultiplierDividerToolMultiplicationFacto_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -421,7 +421,7 @@ text {
 	    height=15
 	    }
 	control {
-	chan="$(P)$(R)MultiplierDividerToolEffectiveMultiplicationFactor"   
+	chan="$(P)$(R)MultiplierDividerToolEffectiveMultiplica"   
 	clr=14
 	bclr=51
 	}
@@ -437,7 +437,7 @@ text {
 	    height=15
 	    }
 	monitor {
-		chan="$(P)$(R)MultiplierDividerToolEffectiveMultiplicationFactor_RBV"   
+		chan="$(P)$(R)MultiplierDividerToolEffectiveMultiplica_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -467,7 +467,7 @@ text {
 	    height=15
 	    }
 	control {
-	chan="$(P)$(R)MultiplierDividerToolEffectiveDivisionFactor"   
+	chan="$(P)$(R)MultiplierDividerToolEffectiveDivisionFa"   
 	clr=14
 	bclr=51
 	}
@@ -483,7 +483,7 @@ text {
 	    height=15
 	    }
 	monitor {
-		chan="$(P)$(R)MultiplierDividerToolEffectiveDivisionFactor_RBV"   
+		chan="$(P)$(R)MultiplierDividerToolEffectiveDivisionFa_RBV"   
 		clr=54
 		bclr=4
 		}

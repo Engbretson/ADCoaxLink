@@ -3,7 +3,7 @@
 epicsEnvSet("IOC","ioc2BM_Adimec")
 epicsEnvSet("ENGINEER","Engbretson")
 epicsEnvSet("LOCATION","2BM")
-
+epicsEnvSet("ADCOAXLINK","/local/epics/synApps_5_8/support/areaDetector-R3-1/ADCoaxLink")
 
 errlogInit(20000)
 
@@ -31,7 +31,7 @@ epicsEnvSet("CBUFFS", "20")
 epicsEnvSet("EPICS_DB_INCLUDE_PATH", "$(ADCORE)/db")
 
 # only has meaning under Windows
-asynSetMinTimerPeriod(0.0001)
+#asynSetMinTimerPeriod(0.0001)
 
 # The EPICS environment variable EPICS_CA_MAX_ARRAY_BYTES needs to be set to a value at least as large
 # as the largest image that the standard arrays plugin will send.

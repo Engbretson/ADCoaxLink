@@ -127,7 +127,7 @@ void coaxLink::simTask()
 			this->lock();
 		}
 
-		printf("Starting Acquire \n");
+//		printf("Starting Acquire \n");
 
 		// start acq
 		getIntegerParam(ADImageMode, &iMode);
@@ -202,17 +202,17 @@ void coaxLink::simTask()
 					size = dims[0] * dims[1] * sizeof(uint16_t); // although really it is only 10 bits 
 					break;
 				default:
-					printf("error setting image buffer size\n");
+//					printf("error setting image buffer size\n");
 					asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR,
 						"%s:%s: error setting image buffer size\n",
 						driverName, functionName);
 				}
 
-							printf("arrayCallbacks %d \n", arrayCallbacks);
-							printf("dataType %d \n", dataType);
-							printf("dims 0 X %d \n", dims[0]);
-							printf("dims 1 y %d \n", dims[1]);
-							printf("size %d \n", size);
+//							printf("arrayCallbacks %d \n", arrayCallbacks);
+//							printf("dataType %d \n", dataType);
+//							printf("dims 0 X %d \n", dims[0]);
+//							printf("dims 1 y %d \n", dims[1]);
+//							printf("size %d \n", size);
 
 				//			dataType = NDUInt16;
 				//			dims[0] = 4096;
@@ -234,7 +234,7 @@ void coaxLink::simTask()
 				
 					// data and ts
 					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
-					printf("Image Buffer size %d \n", size1);
+//					printf("Image Buffer size %d \n", size1);
 					uint64_t ts1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_TIMESTAMP);
 					void *ptr1 = buf1.getInfo<void *>(GenICam::Client::BUFFER_INFO_BASE);
 
@@ -248,7 +248,7 @@ void coaxLink::simTask()
 					pImage->uniqueId = imageCounter;
 					pImage->timeStamp = ts1;
 
-					printf("Before Copy1 \n");
+//					printf("Before Copy1 \n");
 					memcpy(pImage->pData, ptr1, size);
 
 
@@ -257,7 +257,7 @@ void coaxLink::simTask()
 					//				memcpy(&pImage->pData+size, ptr2, size);
 					//				memcpy((void *)pImage->pData + size, ptr2, size);
 
-					printf("After Copy \n");
+//					printf("After Copy \n");
 
 					// Get any attributes that have been defined for this driver        
 					this->getAttributes(pImage->pAttributeList);

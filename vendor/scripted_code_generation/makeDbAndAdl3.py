@@ -80,6 +80,8 @@ def handle_node(node):
 	fullrecordName = name
 #        if len(recordName) > 16:
 #            recordName = recordName[:16]
+        if len(recordName) > 40:
+            recordName = recordName[:40]
         i = 0
         while recordName in records.values():
             recordName = recordName[:-len(str(i))] + str(i)

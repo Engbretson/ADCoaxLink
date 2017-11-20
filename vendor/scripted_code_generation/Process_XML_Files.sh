@@ -3,6 +3,8 @@ mkdir inc
 mkdir Db
 mkdir opi
 mkdir opi/adl
+mkdir opi/ui
+
 
 rm *.edl
 rm *.template
@@ -19,3 +21,9 @@ makeDbAndAdl3.py ./Euresys_Coaxlink_TLDevice_6_2_4.xml ./Euresys_Coaxlink_TLDevi
 makeDbAndAdl3.py ./Euresys_Coaxlink_TLInterface_6_2_4.xml ./Euresys_Coaxlink_TLInterface_6_2_4 Interface
 makeDbAndAdl3.py ./Euresys_Coaxlink_TLSystem_6_2_4.xml ./Euresys_Coaxlink_TLSystem_6_2_4 System
 
+for f in ./opi/adl/*.adl
+do
+	/APSshare/caqtdm/caqtdmGIT/caQtDM_Binaries/adl2ui $f 
+done
+
+mv -f *.ui ./opi/ui/
