@@ -61,6 +61,7 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 	int64_t systemInteger;
 	double systemDouble;
 	int status;
+ 	int acquire;
 
 	while (true) {
 		epicsThreadSleep(delayTimeout);
@@ -72,20 +73,28 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 							*/
 			return;
 		}
+// printf("starting background task\n");
+
+		getIntegerParam(ADAcquire, &acquire);
+
+		// If we are not acquiring then do the background actions
+		if (!acquire)  {
 
 #include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
 		callParamCallbacks();
-//#include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
 		callParamCallbacks();
 #include "Euresys_Coaxlink_TLDevice_6_2_4_4.inc"
 		callParamCallbacks();
 #include "Adimec_Q12A180CXP_1_1_3_4.inc"
 		callParamCallbacks();
-		//#include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
-	//callParamCallbacks();
+#include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
+	        callParamCallbacks();
 
 #include "Decode_Errors_4.inc"
 		callParamCallbacks();
+		}
+// printf("ending background tast \n");		
 	}
 }
 
@@ -100,7 +109,7 @@ void coaxLink::simTask()
 	int arrayCallbacks = 1;
 	int imageCounter = 0;
 	size_t dims[2];
-	uint32_t size;
+	uint32_t size = 0;
 
 	int astatus = asynSuccess;
 	int acquire;
@@ -133,12 +142,11 @@ void coaxLink::simTask()
 		getIntegerParam(ADImageMode, &iMode);
 		getIntegerParam(ADNumImages, &numImages);
 		getIntegerParam(ADNumImagesCounter, &numImagesCounter);
-		callParamCallbacks();
 
 		// I need some frame memory buffers, which are both size and speed dependent
 
 
-		printf("right before buffers \n");
+//		printf("right before buffers \n");
 		try {
 			grabber.reallocBuffers(4);
 		}
@@ -233,7 +241,7 @@ void coaxLink::simTask()
 
 				
 					// data and ts
-					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
+//					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
 //					printf("Image Buffer size %d \n", size1);
 					uint64_t ts1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_TIMESTAMP);
 					void *ptr1 = buf1.getInfo<void *>(GenICam::Client::BUFFER_INFO_BASE);
@@ -311,7 +319,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	getParamName(function, (const char **)&whoami);
 
-	asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, "%s:%s: Debug %d (%s) %d\n", driverName,
+	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %d\n", driverName,
 		functionName, function, whoami, value);
 
 	if ((function >= FIRST_SYSTEM_PARAM)    & (function <= LAST_SYSTEM_PARAM))    { 
@@ -386,7 +394,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	}
 	catch (const std::exception &e) { asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, "Error setting %s %d (%s) to %d \n", functionName, function, whoami, value); }
 
-	// commands that have to be sent down into Area Detector via a different name/meaning
+	// commands that also have to be sent down into Area Detector via a different name/meaning
 
 	if (function == COAXLINK_Remote_Width) {
 		setIntegerParam(ADSizeX, value); 
@@ -405,15 +413,17 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	if (function == COAXLINK_Remote_OffsetX) setIntegerParam(ADMinX, value); // ???
 	if (function == COAXLINK_Remote_OffsetY) setIntegerParam(ADMinY, value); // ???
 
-	if (function == COAXLINK_Remote_SensorBitDepth)
+	if (function == COAXLINK_Remote_SensorBitDepth) {
 		if (value == 0) {
 			setIntegerParam(NDDataType, 1);
-			printf("corrected to 1\n");
+//			printf("corrected to 1\n");
 		}
 		else {
 			setIntegerParam(NDDataType, 3);
-			printf("corrected to 3\n");
+//			printf("corrected to 3\n");
 		}
+	}
+
 	status = setIntegerParam(function, value);
 	callParamCallbacks();
 
@@ -438,7 +448,7 @@ asynStatus coaxLink::writeFloat64(asynUser *pasynUser, epicsFloat64 value)
 
 	getParamName(function, (const char **)&whoami);
 
-	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %d\n", driverName,
+	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %f\n", driverName,
 		functionName, function, whoami, value);
 
 	if ((function >= FIRST_SYSTEM_PARAM)    & (function <= LAST_SYSTEM_PARAM))    { 
@@ -559,14 +569,14 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 
 	// all the create Param code
 
+//printf("before 3 includes \n");
 #include "Euresys_Coaxlink_TLSystem_6_2_4_3.inc"
-//#include "Euresys_Coaxlink_TLInterface_6_2_4_3.inc"
+#include "Euresys_Coaxlink_TLInterface_6_2_4_3.inc"
 #include "Euresys_Coaxlink_TLDevice_6_2_4_3.inc"
 #include "Adimec_Q12A180CXP_1_1_3_3.inc"
+#include "Euresys_Coaxlink_TLDataStream_6_2_4_3.inc"
 
-	//#include "Euresys_Coaxlink_TLDataStream_6_2_4_3.inc"
-
- #include "Decode_Errors_3.inc"
+#include "Decode_Errors_3.inc"
 
 
 	std::string systemString;
@@ -579,18 +589,20 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	cased them by adding a "_X" string that needs to be popped off at runtime.
 	*/
 
-
+//printf("before 4 includes \n");
 #include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
 	callParamCallbacks();
-//#include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
 	callParamCallbacks();
 #include "Euresys_Coaxlink_TLDevice_6_2_4_4.inc"
 	callParamCallbacks();
 #include "Adimec_Q12A180CXP_1_1_3_4.inc"
 	callParamCallbacks();
-	//#include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
 
 	callParamCallbacks();
+	
+	
 
 	try {
 		grabber.execute<Euresys::DeviceModule>("DeviceReset");

@@ -166,21 +166,21 @@ status = setIntegerParam(COAXLINK_Interface_CxpHostConnectionTestMode, systemInt
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionTestErrorCount"); 
-status = setIntegerParam(COAXLINK_Interface_CxpHostConnectionTestErrorCount, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("tErrorCount"); 
+status = setIntegerParam(COAXLINK_Interface_tErrorCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionTestPacketCount"); 
-status = setIntegerParam(COAXLINK_Interface_CxpHostConnectionTestPacketCount, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("tPacketCount"); 
+status = setIntegerParam(COAXLINK_Interface_tPacketCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
 
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionTestInjectError"); 
-status = setIntegerParam(COAXLINK_Interface_CxpHostConnectionTestInjectError, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("tInjectError"); 
+status = setIntegerParam(COAXLINK_Interface_tInjectError, systemInteger); 
 
 } catch (const std::exception &e) { }  
 */ 
@@ -326,28 +326,28 @@ status = setIntegerParam(COAXLINK_Interface_MultiplierDividerToolSource, systemI
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("MultiplierDividerToolOutputControl"); 
-status = setIntegerParam(COAXLINK_Interface_MultiplierDividerToolOutputControl, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lOutputControl"); 
+status = setIntegerParam(COAXLINK_Interface_lOutputControl, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::InterfaceModule>("MultiplierDividerToolMultiplicationFactor"); 
-status = setDoubleParam(COAXLINK_Interface_MultiplierDividerToolMultiplicationFactor, systemDouble); 
+systemDouble = grabber.getFloat<Euresys::InterfaceModule>("lMultiplicationFactor"); 
+status = setDoubleParam(COAXLINK_Interface_lMultiplicationFactor, systemDouble); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::InterfaceModule>("MultiplierDividerToolDivisionFactor"); 
-status = setDoubleParam(COAXLINK_Interface_MultiplierDividerToolDivisionFactor, systemDouble); 
+systemDouble = grabber.getFloat<Euresys::InterfaceModule>("lDivisionFactor"); 
+status = setDoubleParam(COAXLINK_Interface_lDivisionFactor, systemDouble); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("MultiplierDividerToolEffectiveMultiplicationFactor"); 
-status = setIntegerParam(COAXLINK_Interface_MultiplierDividerToolEffectiveMultiplicationFactor, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lEffectiveMultiplicationFactor"); 
+status = setIntegerParam(COAXLINK_Interface_lEffectiveMultiplicationFactor, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("MultiplierDividerToolEffectiveDivisionFactor"); 
-status = setIntegerParam(COAXLINK_Interface_MultiplierDividerToolEffectiveDivisionFactor, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lEffectiveDivisionFactor"); 
+status = setIntegerParam(COAXLINK_Interface_lEffectiveDivisionFactor, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
@@ -361,18 +361,18 @@ status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolSources, system
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolActivation"); 
-status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolActivation, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lActivation"); 
+status = setIntegerParam(COAXLINK_Interface_lActivation, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolForwardDirection"); 
-status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolForwardDirection, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lForwardDirection"); 
+status = setIntegerParam(COAXLINK_Interface_lForwardDirection, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolOutputMode"); 
-status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolOutputMode, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lOutputMode"); 
+status = setIntegerParam(COAXLINK_Interface_lOutputMode, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
@@ -389,8 +389,8 @@ status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolDirection, syst
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolPositionReset"); 
-status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolPositionReset, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lPositionReset"); 
+status = setIntegerParam(COAXLINK_Interface_lPositionReset, systemInteger); 
 
 } catch (const std::exception &e) { }  
 */ 

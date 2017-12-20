@@ -458,8 +458,8 @@ text {
    object {
 	x=%(x)d
 	y=%(laby)d
-	width=160 
-	height=20
+	width=150 
+	height=15
 	}
 	"basic attribute" {
 		clr=14
@@ -476,7 +476,7 @@ def make_description():
 #	x=%(nx)d
 #	y=%(y)d
 #	width=10
-#	height=20
+#	height=15
 #	}
 #	"basic attribute" {
 #		clr=14
@@ -493,7 +493,7 @@ text {
 	    x=%(nx)d
 	    y=%(y)d
 	    width=100
-	    height=20
+	    height=15
 	    }
 	"basic attribute" {
 		clr=14
@@ -510,7 +510,7 @@ def make_ro():
 	    x=%(nx)d
 	    y=%(y)d
 	    width=125
-	    height=20
+	    height=15
 	    }
 	monitor {
 	chan="$(P)$(R)%(recordName)s_RBV"   
@@ -530,7 +530,7 @@ def make_demand():
 	    x=%(nx)d
 	    y=%(y)d
 	    width=60
-	    height=20
+	    height=15
 	    }
 	control {
 	chan="$(P)$(R)%(recordName)s"   
@@ -549,7 +549,7 @@ def make_rbv():
 	    x=%(nx)d
 	    y=%(y)d
 	    width=70
-	    height=20
+	    height=15
 	    }
 	monitor {
 		chan="$(P)$(R)%(recordName)s_RBV"   
@@ -567,8 +567,8 @@ menu {
 	object {
 	    x=%(nx)d
 	    y=%(y)d
-	    width=155
-	    height=20
+	    width=125
+	    height=15
 	    }
 	control {
 		chan="$(P)$(R)%(recordName)s"
@@ -584,8 +584,8 @@ def make_cmd():
      object {
 	    x=%(nx)d
 	    y=%(y)d
-	    width=155
-	    height=20
+	    width=125
+	    height=15
 	    }
 	control {
 		chan="$(P)$(R)%(recordName)s.PROC"   
@@ -611,7 +611,7 @@ for name, nodes in structure:
     w = 400
     h = 40
     xx = 5
-    x = 180
+    x = 160
     y = 50
     
     text = ""
@@ -687,7 +687,7 @@ for name, nodes in structure:
         h = max(y, h)    
 
 # tidy up
-        w += 35
+        w += 5
 
         exitX = w - 100
         exitY = h - min(30, h - y)

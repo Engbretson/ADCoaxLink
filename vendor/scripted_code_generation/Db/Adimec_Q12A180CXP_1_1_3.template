@@ -1550,29 +1550,29 @@ record(mbbo, "$(P)$(R)SensorRegisterReadWriteMode") {
   field(DISA, "0")
 }
 
-record(longin, "$(P)$(R)SensorRegisterNonVolatileReadSelector_RBV") {
+record(longin, "$(P)$(R)atileReadSelector_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileReadSelector")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileReadSelector")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)SensorRegisterNonVolatileReadSelector") {
+record(longout, "$(P)$(R)atileReadSelector") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileReadSelector")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileReadSelector")
   field(DISA, "0")
 }
 
-record(longin, "$(P)$(R)SensorRegisterNonVolatileListSize_RBV") {
+record(longin, "$(P)$(R)atileListSize_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileListSize")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileListSize")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)SensorRegisterNonVolatileListSize") {
+record(longout, "$(P)$(R)atileListSize") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileListSize")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileListSize")
   field(DISA, "0")
 }
 
@@ -1691,46 +1691,46 @@ record(stringin, "$(P)$(R)CustomerSpecialID_RBV") {
   field(DISA, "0")
 }
 
-record(bi, "$(P)$(R)LUTEnable_RBV") {
+record(bi, "$(P)$(R)LUTEnable+R_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable+R")
   field(SCAN, "I/O Intr")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(bo, "$(P)$(R)LUTEnable") {
+record(bo, "$(P)$(R)LUTEnable+R") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable+R")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(longin, "$(P)$(R)LUTIndex_RBV") {
+record(longin, "$(P)$(R)LUTIndex+R_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex+R")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)LUTIndex") {
+record(longout, "$(P)$(R)LUTIndex+R") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex+R")
   field(DISA, "0")
 }
 
-record(longin, "$(P)$(R)LUTValue_RBV") {
+record(longin, "$(P)$(R)LUTValue+R_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTValue")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTValue+R")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)LUTValue") {
+record(longout, "$(P)$(R)LUTValue+R") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTValue")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTValue+R")
   field(DISA, "0")
 }
 
@@ -1960,9 +1960,9 @@ record(longout, "$(P)$(R)DefectPixelRestoreFactory") {
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)DefectPixelSaveAsFactoryDefault") {
+record(longout, "$(P)$(R)toryDefault") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))DefectPixelSaveAsFactoryDefault")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))toryDefault")
   field(DISA, "0")
 }
 
@@ -2107,18 +2107,18 @@ record(longout, "$(P)$(R)BF_CalibrationVideoLevel") {
   field(DISA, "0")
 }
 
-record(bi, "$(P)$(R)BF_OutputImagesDuringCalibration_RBV") {
+record(bi, "$(P)$(R)gCalibration_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))BF_OutputImagesDuringCalibration")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))gCalibration")
   field(SCAN, "I/O Intr")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(bo, "$(P)$(R)BF_OutputImagesDuringCalibration") {
+record(bo, "$(P)$(R)gCalibration") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))BF_OutputImagesDuringCalibration")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))gCalibration")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")

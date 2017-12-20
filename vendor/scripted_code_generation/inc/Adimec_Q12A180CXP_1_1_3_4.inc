@@ -541,13 +541,13 @@ status = setIntegerParam(COAXLINK_Remote_SensorRegisterReadWriteMode, systemInte
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterNonVolatileReadSelector"); 
-status = setIntegerParam(COAXLINK_Remote_SensorRegisterNonVolatileReadSelector, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("atileReadSelector"); 
+status = setIntegerParam(COAXLINK_Remote_atileReadSelector, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterNonVolatileListSize"); 
-status = setIntegerParam(COAXLINK_Remote_SensorRegisterNonVolatileListSize, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("atileListSize"); 
+status = setIntegerParam(COAXLINK_Remote_atileListSize, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
@@ -784,8 +784,8 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelRestoreFactory, systemIntege
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelSaveAsFactoryDefault"); 
-status = setIntegerParam(COAXLINK_Remote_DefectPixelSaveAsFactoryDefault, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("toryDefault"); 
+status = setIntegerParam(COAXLINK_Remote_toryDefault, systemInteger); 
 
 } catch (const std::exception &e) { }  
 */ 
@@ -856,8 +856,8 @@ status = setIntegerParam(COAXLINK_Remote_BF_CalibrationVideoLevel, systemInteger
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_OutputImagesDuringCalibration"); 
-status = setIntegerParam(COAXLINK_Remote_BF_OutputImagesDuringCalibration, systemInteger); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("gCalibration"); 
+status = setIntegerParam(COAXLINK_Remote_gCalibration, systemInteger); 
 
 } catch (const std::exception &e) { }  
 

@@ -204,9 +204,9 @@ createParam(COAXLINK_Remote_ConfigurationFactoryInfoString, asynParamInt32, &COA
 
 createParam(COAXLINK_Remote_SensorRegisterReadWriteModeString, asynParamInt32, &COAXLINK_Remote_SensorRegisterReadWriteMode);
 
-createParam(COAXLINK_Remote_SensorRegisterNonVolatileReadSelectorString, asynParamInt32, &COAXLINK_Remote_SensorRegisterNonVolatileReadSelector);
+createParam(COAXLINK_Remote_atileReadSelectorString, asynParamInt32, &COAXLINK_Remote_atileReadSelector);
 
-createParam(COAXLINK_Remote_SensorRegisterNonVolatileListSizeString, asynParamInt32, &COAXLINK_Remote_SensorRegisterNonVolatileListSize);
+createParam(COAXLINK_Remote_atileListSizeString, asynParamInt32, &COAXLINK_Remote_atileListSize);
 
 createParam(COAXLINK_Remote_SensorRegisterAddressString, asynParamInt32, &COAXLINK_Remote_SensorRegisterAddress);
 
@@ -274,7 +274,7 @@ createParam(COAXLINK_Remote_DefectPixelRestoreString, asynParamInt32, &COAXLINK_
 
 createParam(COAXLINK_Remote_DefectPixelRestoreFactoryString, asynParamInt32, &COAXLINK_Remote_DefectPixelRestoreFactory);
 
-createParam(COAXLINK_Remote_DefectPixelSaveAsFactoryDefaultString, asynParamInt32, &COAXLINK_Remote_DefectPixelSaveAsFactoryDefault);
+createParam(COAXLINK_Remote_toryDefaultString, asynParamInt32, &COAXLINK_Remote_toryDefault);
 
 createParam(COAXLINK_Remote_DF_BlackClampString, asynParamInt32, &COAXLINK_Remote_DF_BlackClamp);
 
@@ -296,7 +296,7 @@ createParam(COAXLINK_Remote_BF_AutoLevelAdjustString, asynParamInt32, &COAXLINK_
 
 createParam(COAXLINK_Remote_BF_CalibrationVideoLevelString, asynParamInt32, &COAXLINK_Remote_BF_CalibrationVideoLevel);
 
-createParam(COAXLINK_Remote_BF_OutputImagesDuringCalibrationString, asynParamInt32, &COAXLINK_Remote_BF_OutputImagesDuringCalibration);
+createParam(COAXLINK_Remote_gCalibrationString, asynParamInt32, &COAXLINK_Remote_gCalibration);
 
 createParam(COAXLINK_Remote_BF_CalibrateString, asynParamInt32, &COAXLINK_Remote_BF_Calibrate);
 

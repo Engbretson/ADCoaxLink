@@ -1362,22 +1362,22 @@ record(mbbo, "$(P)$(R)LUTSet") {
   field(DISA, "0")
 }
 
-record(longin, "$(P)$(R)LUTIndex_RBV") {
+record(longin, "$(P)$(R)LUTIndex+S_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex+S")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)LUTIndex") {
+record(longout, "$(P)$(R)LUTIndex+S") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTIndex+S")
   field(DISA, "0")
 }
 
-record(stringin, "$(P)$(R)LUTValue_RBV") {
+record(stringin, "$(P)$(R)LUTValue+S_RBV") {
   field(DTYP, "asynOctetRead")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTValue")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTValue+S")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
@@ -1395,9 +1395,9 @@ record(longout, "$(P)$(R)LUTReadBlockLength") {
   field(DISA, "0")
 }
 
-#record(mbbi, "$(P)$(R)LUTEnable_RBV") {
+#record(mbbi, "$(P)$(R)LUTEnable+S_RBV") {
 #  field(DTYP, "asynInt32")
-#  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable")
+#  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable+S")
 #  field(ZRST, "Off")
 #  field(ZRVL, "0")
 #  field(ONST, "Set1")
@@ -1436,16 +1436,16 @@ record(longout, "$(P)$(R)LUTReadBlockLength") {
 #  field(DISA, "0")
 #}
 
-record(stringin, "$(P)$(R)LUTEnable_RBV") {
+record(stringin, "$(P)$(R)LUTEnable+S_RBV") {
   field(DTYP, "asynOctetRead")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable+S")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
-#record(mbbo, "$(P)$(R)LUTEnable") {
+#record(mbbo, "$(P)$(R)LUTEnable+S") {
 #  field(DTYP, "asynInt32")
-#  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable")
+#  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))LUTEnable+S")
 #  field(ZRST, "Off")
 #  field(ZRVL, "0")
 #  field(ONST, "Set1")
