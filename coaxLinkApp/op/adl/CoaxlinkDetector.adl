@@ -145,16 +145,6 @@ composite {
 composite {
 	object {
 		x=360
-		y=570
-		width=350
-		height=110
-	}
-	"composite name"=""
-	"composite file"="ADAttrFile.adl"
-}
-composite {
-	object {
-		x=360
 		y=35
 		width=350
 		height=165

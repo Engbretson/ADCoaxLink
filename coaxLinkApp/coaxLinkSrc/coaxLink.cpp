@@ -59,6 +59,7 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 	double delayTimeout = 5.0;
 	std::string systemString;
 	int64_t systemInteger;
+	int32_t shortInteger;
 	double systemDouble;
 	int status;
  	int acquire;
@@ -88,11 +89,35 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 		callParamCallbacks();
 #include "Adimec_Q12A180CXP_1_1_3_4.inc"
 		callParamCallbacks();
+
+// certain actual values from the Adimec need to update its Area Detector equivalents 
+
+	getIntegerParam(COAXLINK_Remote_Width, &shortInteger); 
+        setIntegerParam(ADSizeX, shortInteger); 
+
+	getIntegerParam(COAXLINK_Remote_Height, &shortInteger); 
+        setIntegerParam(ADSizeY, shortInteger); 
+
+	getIntegerParam(COAXLINK_Remote_Width, &shortInteger); 
+        setIntegerParam(NDArraySizeX, shortInteger); 
+
+	getIntegerParam(COAXLINK_Remote_Height, &shortInteger); 
+        setIntegerParam(NDArraySizeY, shortInteger); 
+
+	getIntegerParam(COAXLINK_Remote_OffsetX, &shortInteger); 
+        setIntegerParam(ADMinX, shortInteger); 
+
+	getIntegerParam(COAXLINK_Remote_OffsetY, &shortInteger); 
+        setIntegerParam(ADMinY, shortInteger); 
+
+	callParamCallbacks();
+
 #include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
 	        callParamCallbacks();
 
 #include "Decode_Errors_4.inc"
 		callParamCallbacks();
+
 		}
 // printf("ending background tast \n");		
 	}
@@ -142,6 +167,9 @@ void coaxLink::simTask()
 		getIntegerParam(ADImageMode, &iMode);
 		getIntegerParam(ADNumImages, &numImages);
 		getIntegerParam(ADNumImagesCounter, &numImagesCounter);
+		getIntegerParam(NDArrayCounter, &imageCounter);
+		setIntegerParam(ADStatus, ADStatusInitializing);
+		callParamCallbacks();
 
 		// I need some frame memory buffers, which are both size and speed dependent
 
@@ -181,12 +209,17 @@ void coaxLink::simTask()
 
 			while (1) {
 
+			setIntegerParam(ADStatus, ADStatusAcquire);
+			callParamCallbacks();
+
 				this->unlock();
 				
 ////				Euresys::ScopedBuffer buf1(grabber, 5000); // 5 second timeout to recover from a jammed camera
 				Euresys::ScopedBuffer buf1(grabber);
 
 				this->lock();
+				setIntegerParam(ADStatus, ADStatusReadout);
+				callParamCallbacks();
 
 				getIntegerParam(NDDataType, (int *)&dataType);
 				getIntegerParam(NDArrayCallbacks, &arrayCallbacks);
@@ -278,13 +311,16 @@ void coaxLink::simTask()
 					doCallbacksGenericPointer(pImage, NDArrayData, 0);
 					this->lock();
 
+				getIntegerParam(ADNumImagesCounter, &numImagesCounter);
+				getIntegerParam(NDArrayCounter, &imageCounter);
 
-			
-					getIntegerParam(ADNumImagesCounter, &numImagesCounter);
-					numImagesCounter++;
-					////				numImagesCounter++;
-					setIntegerParam(ADNumImagesCounter, numImagesCounter);
-					callParamCallbacks();
+				imageCounter++;
+				numImagesCounter++;
+
+				setIntegerParam(NDArrayCounter, imageCounter);
+				setIntegerParam(ADNumImagesCounter, numImagesCounter);
+
+				callParamCallbacks();
 
 				pImage->release();
 
@@ -321,6 +357,18 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %d\n", driverName,
 		functionName, function, whoami, value);
+
+	// AD Special Cases, AD functions that should first be mapped to its Coaxlink function
+	// but may not actually work if the camera rejects the parameters, so need to correct actual values elsewhere
+
+//	printf("^^^ %d -> %d %d -> %d %d -> %d %d -> %d \n",
+	//ADSizeX,COAXLINK_Remote_Width,ADSizeY,COAXLINK_Remote_Height,ADMinX,COAXLINK_Remote_OffsetX,ADMinY,COAXLINK_Remote_OffsetY);
+
+	if (function == ADSizeX) {function = COAXLINK_Remote_Width; getParamName(function, (const char **)&whoami); }
+	if (function == ADSizeY) {function = COAXLINK_Remote_Height; getParamName(function, (const char **)&whoami); }
+	if (function == ADMinX)  {function = COAXLINK_Remote_OffsetX; getParamName(function, (const char **)&whoami); }
+	if (function == ADMinY)  {function = COAXLINK_Remote_OffsetY; getParamName(function, (const char **)&whoami); }
+
 
 	if ((function >= FIRST_SYSTEM_PARAM)    & (function <= LAST_SYSTEM_PARAM))    { 
 		//printf("System Level Command \n"); 
@@ -398,14 +446,14 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	if (function == COAXLINK_Remote_Width) {
 		setIntegerParam(ADSizeX, value); 
-		setIntegerParam(ADMaxSizeX, value);
+//		setIntegerParam(ADMaxSizeX, value);
 		setIntegerParam(NDArraySizeX, value);
 
 		}
 
 	if (function == COAXLINK_Remote_Height) {
 		setIntegerParam(ADSizeY, value);
-		setIntegerParam(ADMaxSizeY, value);
+//		setIntegerParam(ADMaxSizeY, value);
 		setIntegerParam(NDArraySizeY, value);
 
 	}
