@@ -45,7 +45,7 @@ epicsEnvSet("EPICS_DB_INCLUDE_PATH", "$(ADCORE)/db")
 # Uncomment the following line to set it in the IOC.
 
 # note: this values works for 8-bit , 10-bit requires 16-bits worth of space, so 12582912 * 2 = 25165824
-epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "25165824")
+#epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "25165824")
 
 # Create a simDetector driver
 # simDetectorConfig(const char *portName, int maxSizeX, int maxSizeY, int dataType,
@@ -63,7 +63,7 @@ dbLoadRecords("$(ADCOAXLINK)/db/coaxLink.template","P=$(PREFIX),R=cam1:,PORT=$(P
 dbLoadRecords("NDFile.template","P=$(PREFIX),R=cam1:,PORT=$(PORT),ADDR=0,TIMEOUT=1")
 
 # Create a standard arrays plugin, set it to get data from first simDetector driver.
-NDStdArraysConfigure("Image1", 10, 0, "$(PORT)", 0, 0, 0, 0, 0, $(MAX_THREADS=5)
+NDStdArraysConfigure("Image1", 20, 0, "$(PORT)", 0, 0, 0, 0, 0, $(MAX_THREADS=5)
 
 
 # This creates a waveform large enough for 4096 by 3072 by 2 (e.g. BW) arrays.
@@ -72,7 +72,11 @@ NDStdArraysConfigure("Image1", 10, 0, "$(PORT)", 0, 0, 0, 0, 0, $(MAX_THREADS=5)
 #dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int8,FTVL=UCHAR,NELEMENTS=25165824")
 
 # This waveform only allows transporting 16-bit images
-dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int16,FTVL=USHORT,NELEMENTS=25165824")
+dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int16,FTVL=SHORT,NELEMENTS=12582912")
+
+# This waveform only allows transporting 16-bit images
+#dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int16,FTVL=SHORT,NELEMENTS=13000000")
+
 # This waveform allows transporting 32-bit images
 #dbLoadRecords("NDStdArrays.template", "P=$(PREFIX),R=image1:,PORT=Image1,ADDR=0,TIMEOUT=1,NDARRAY_PORT=$(PORT),TYPE=Int32,FTVL=LONG,NELEMENTS=25165824")
 

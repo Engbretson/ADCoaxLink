@@ -42,14 +42,14 @@ static const char *driverName = "coaxLink";
 
 static void simTaskC(void *drvPvt)
 {
-	//	printf("simTaskC hit \n");
+	//	//printf("simTaskC hit \n");
 	coaxLink *pPvt = (coaxLink *)drvPvt;
 	pPvt->simTask();
 }
 
 static void coaxlinkHandleReadOnlyParamsTaskC(void *drvPvt)
 {
-	//	printf("handle readonly values hit \n");
+	//	//printf("handle readonly values hit \n");
 	coaxLink *pPvt = (coaxLink *)drvPvt;
 	pPvt->coaxlinkHandleReadOnlyParamsTask();
 }
@@ -74,7 +74,7 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 							*/
 			return;
 		}
-// printf("starting background task\n");
+// //printf("starting background task\n");
 
 		getIntegerParam(ADAcquire, &acquire);
 
@@ -119,7 +119,7 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 		callParamCallbacks();
 
 		}
-// printf("ending background tast \n");		
+// //printf("ending background tast \n");		
 	}
 }
 
@@ -139,6 +139,9 @@ void coaxLink::simTask()
 	int astatus = asynSuccess;
 	int acquire;
 	int iMode, numImages, numImagesCounter;
+	
+	int cameraformat, camerapixelformat, width, height;
+	
 	const char *functionName = "CoaXLinkTask";
 	dims[0] = 0;
 	dims[1] = 0;
@@ -161,7 +164,7 @@ void coaxLink::simTask()
 			this->lock();
 		}
 
-//		printf("Starting Acquire \n");
+//		//printf("Starting Acquire \n");
 
 		// start acq
 		getIntegerParam(ADImageMode, &iMode);
@@ -174,7 +177,7 @@ void coaxLink::simTask()
 		// I need some frame memory buffers, which are both size and speed dependent
 
 
-//		printf("right before buffers \n");
+//		//printf("right before buffers \n");
 		try {
 			grabber.reallocBuffers(4);
 		}
@@ -222,38 +225,59 @@ void coaxLink::simTask()
 				callParamCallbacks();
 
 				getIntegerParam(NDDataType, (int *)&dataType);
+				getIntegerParam(COAXLINK_Remote_PixelFormat, &camerapixelformat);
+				getIntegerParam(COAXLINK_Remote_SensorBitDepth, &cameraformat);
+				getIntegerParam(COAXLINK_Remote_Width,&width);
+			    getIntegerParam(COAXLINK_Remote_Height,&height);
+				
+//				printf(" pixel format %d other format %d \n ", camerapixelformat, cameraformat);
 				getIntegerParam(NDArrayCallbacks, &arrayCallbacks);
 
 				// playing with empty databuffers seem to have little real life use
-						if (arrayCallbacks) {
-				getIntegerParam(ADMaxSizeX, (int *)&dims[0]);
-				getIntegerParam(ADMaxSizeY, (int *)&dims[1]);
+//						if (arrayCallbacks) {
+				getIntegerParam(ADSizeX, (int *)&dims[0]);
+				getIntegerParam(ADSizeY, (int *)&dims[1]);
 
-				}
+//				}
 
 ////				dataType = NDUInt8;
+////                if (camerapixelformat == 0)
+                if (camerapixelformat == 17301505)
+                dataType = NDUInt8;
+                else
+                dataType = NDUInt16;
+
+// The camera actually has *2* locations where pixels are referenced so the actual data
+// can end up being either half or twice the size, so lets correct for that because
+// asking for 8-bit data but in a 10-bit pixel forma sends to 16-bit data
 
 				switch (dataType) {
 				case 0:
 				case 1:
+//				    if ((camerapixelformat == 17301505) && (cameraformat == 0)) {
+//				    if (cameraformat == 0) {
 					size = dims[0] * dims[1] * sizeof(uint8_t);
+						//printf("8-bit\n");
+//					}
+//					else {
+//					size = dims[0] * dims[1] * sizeof(uint16_t); // although eally it is only 10 bits 
+//					dataType = NDUInt16;
+					//printf("16-bit\n");
+//					}
+					
 					break;
 				case 2:
 				case 3:
 					size = dims[0] * dims[1] * sizeof(uint16_t); // although really it is only 10 bits 
+					//printf("16-bit\n");
 					break;
 				default:
-//					printf("error setting image buffer size\n");
+//					//printf("error setting image buffer size\n");
 					asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR,
 						"%s:%s: error setting image buffer size\n",
 						driverName, functionName);
 				}
 
-//							printf("arrayCallbacks %d \n", arrayCallbacks);
-//							printf("dataType %d \n", dataType);
-//							printf("dims 0 X %d \n", dims[0]);
-//							printf("dims 1 y %d \n", dims[1]);
-//							printf("size %d \n", size);
 
 				//			dataType = NDUInt16;
 				//			dims[0] = 4096;
@@ -262,6 +286,12 @@ void coaxLink::simTask()
 
 							this->pImage = this->pNDArrayPool->alloc(2, dims, dataType, 0, NULL);				
 //							this->pImage = this->pNDArrayPool->alloc(2, dims, dataType, 2, NULL);
+							//printf("arrayCallbacks %d \n", arrayCallbacks);
+							//printf("dataType %d \n", dataType);
+							//printf("dims 0 X %d \n", dims[0]);
+							//printf("dims 1 y %d \n", dims[1]);
+							//printf("size %d \n", size);
+
 
 
 				if (!this->pImage) {
@@ -271,14 +301,19 @@ void coaxLink::simTask()
 					break;
 
 				}
-
+				setIntegerParam(NDDataType,   (int)dataType);
+                setIntegerParam(NDArraySize,  (int)size);
+                setIntegerParam(NDArraySizeX, (int)pImage->dims[0].size);
+                setIntegerParam(NDArraySizeY, (int)pImage->dims[1].size);
+                callParamCallbacks();
 				
 					// data and ts
-//					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
-//					printf("Image Buffer size %d \n", size1);
+					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
+					//printf("Image Buffer size %d \n", size1);
 					uint64_t ts1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_TIMESTAMP);
 					void *ptr1 = buf1.getInfo<void *>(GenICam::Client::BUFFER_INFO_BASE);
 
+//printf(" pixel format %d other format %d Camera buffer size %d other size %d \n ", camerapixelformat, cameraformat, size1,size);
 
 					////				uint64_t ts2 = buf2.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_TIMESTAMP);
 					////				void *ptr2 = buf2.getInfo<void *>(GenICam::Client::BUFFER_INFO_BASE);
@@ -289,16 +324,18 @@ void coaxLink::simTask()
 					pImage->uniqueId = imageCounter;
 					pImage->timeStamp = ts1;
 
-//					printf("Before Copy1 \n");
-					memcpy(pImage->pData, ptr1, size);
+					//printf("Before Copy1 \n");
+					memcpy(pImage->pData, ptr1, size1);
+                    setIntegerParam(NDArraySize,  (int)size1);
+                    callParamCallbacks();
 
 
 					//				pImage->dataType
-					////				printf("Before Copy2 \n");
+					////				//printf("Before Copy2 \n");
 					//				memcpy(&pImage->pData+size, ptr2, size);
 					//				memcpy((void *)pImage->pData + size, ptr2, size);
 
-//					printf("After Copy \n");
+					//printf("After Copy \n");
 
 					// Get any attributes that have been defined for this driver        
 					this->getAttributes(pImage->pAttributeList);
@@ -336,6 +373,9 @@ void coaxLink::simTask()
 		// finish acq
 		setIntegerParam(ADAcquire, 0);
 		callParamCallbacks();
+		setIntegerParam(ADStatus, ADStatusIdle);
+		callParamCallbacks();
+
 		grabber.stop();
 
 	}
@@ -355,13 +395,13 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	getParamName(function, (const char **)&whoami);
 
-	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %d\n", driverName,
+	asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, "%s:%s: Debug %d (%s) %d\n", driverName,
 		functionName, function, whoami, value);
 
 	// AD Special Cases, AD functions that should first be mapped to its Coaxlink function
 	// but may not actually work if the camera rejects the parameters, so need to correct actual values elsewhere
 
-//	printf("^^^ %d -> %d %d -> %d %d -> %d %d -> %d \n",
+//	//printf("^^^ %d -> %d %d -> %d %d -> %d %d -> %d \n",
 	//ADSizeX,COAXLINK_Remote_Width,ADSizeY,COAXLINK_Remote_Height,ADMinX,COAXLINK_Remote_OffsetX,ADMinY,COAXLINK_Remote_OffsetY);
 
 	if (function == ADSizeX) {function = COAXLINK_Remote_Width; getParamName(function, (const char **)&whoami); }
@@ -371,19 +411,19 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 
 	if ((function >= FIRST_SYSTEM_PARAM)    & (function <= LAST_SYSTEM_PARAM))    { 
-		//printf("System Level Command \n"); 
+		////printf("System Level Command \n"); 
 		CoaxInterface = 1; }
 	if ((function >= FIRST_INTERFACE_PARAM) & (function <= LAST_INTERFACE_PARAM)) { 
-		//printf("Interface Level Command \n");
+		////printf("Interface Level Command \n");
 		CoaxInterface = 2; }
 	if ((function >= FIRST_DEVICE_PARAM)    & (function <= LAST_DEVICE_PARAM))    { 
-		//printf("Device Level Command \n");
+		////printf("Device Level Command \n");
 		CoaxInterface = 3; }
 	if ((function >= FIRST_CAMERA_PARAM)    & (function <= LAST_CAMERA_PARAM))    { 
-		//printf("Camera Level Command \n");
+		////printf("Camera Level Command \n");
 		CoaxInterface = 4; }
 	if ((function >= FIRST_STREAM_PARAM)    & (function <= LAST_STREAM_PARAM))    { 
-		//printf("Stream Level Command \n");
+		////printf("Stream Level Command \n");
 		CoaxInterface = 5; }
 
 	// Trims duplicate interface string commands back down to the actual string as required
@@ -463,12 +503,23 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	if (function == COAXLINK_Remote_SensorBitDepth) {
 		if (value == 0) {
+		    //printf("Correcting pixelformat down\n");
+		    grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17301505); 
+//		 systemInteger = grabber.getInteger<Euresys::RemoteModule>("PixelFormat"); 
+             setIntegerParam(COAXLINK_Remote_PixelFormat, 17301505); 
+
 			setIntegerParam(NDDataType, 1);
-//			printf("corrected to 1\n");
+//			//printf("corrected to 1\n");
+	callParamCallbacks();
 		}
 		else {
+		  //printf("Correcting pixelformat up\n");
+			grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17825795); 
+			setIntegerParam(COAXLINK_Remote_PixelFormat, 17825795); 
+
 			setIntegerParam(NDDataType, 3);
-//			printf("corrected to 3\n");
+//			//printf("corrected to 3\n");
+	callParamCallbacks();
 		}
 	}
 
@@ -500,19 +551,19 @@ asynStatus coaxLink::writeFloat64(asynUser *pasynUser, epicsFloat64 value)
 		functionName, function, whoami, value);
 
 	if ((function >= FIRST_SYSTEM_PARAM)    & (function <= LAST_SYSTEM_PARAM))    { 
-		//printf("System Level Command \n");    
+		////printf("System Level Command \n");    
 		CoaxInterface = 1; }
 	if ((function >= FIRST_INTERFACE_PARAM) & (function <= LAST_INTERFACE_PARAM)) { 
-		//printf("Interface Level Command \n"); 
+		////printf("Interface Level Command \n"); 
 		CoaxInterface = 2; }
 	if ((function >= FIRST_DEVICE_PARAM)    & (function <= LAST_DEVICE_PARAM))    { 
-		//printf("Device Level Command \n");    
+		////printf("Device Level Command \n");    
 		CoaxInterface = 3; }
 	if ((function >= FIRST_CAMERA_PARAM)    & (function <= LAST_CAMERA_PARAM))    { 
-		//printf("Camera Level Command \n");    
+		////printf("Camera Level Command \n");    
 		CoaxInterface = 4; }
 	if ((function >= FIRST_STREAM_PARAM)    & (function <= LAST_STREAM_PARAM))    { 
-		//printf("Stream Level Command \n");    
+		////printf("Stream Level Command \n");    
 		CoaxInterface = 5; }
 
 	// Trims duplicate interface string commands back down to the actual string
@@ -617,7 +668,7 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 
 	// all the create Param code
 
-//printf("before 3 includes \n");
+////printf("before 3 includes \n");
 #include "Euresys_Coaxlink_TLSystem_6_2_4_3.inc"
 #include "Euresys_Coaxlink_TLInterface_6_2_4_3.inc"
 #include "Euresys_Coaxlink_TLDevice_6_2_4_3.inc"
@@ -637,7 +688,7 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	cased them by adding a "_X" string that needs to be popped off at runtime.
 	*/
 
-//printf("before 4 includes \n");
+////printf("before 4 includes \n");
 #include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
 	callParamCallbacks();
 #include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
@@ -656,10 +707,15 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 		grabber.execute<Euresys::DeviceModule>("DeviceReset");
 		grabber.stop();
 	}
-	catch (const std::exception &e) { printf("The Frame Grabber is in use by another application\n"); exit(0); }
-
+	catch (const std::exception &e) { 
+	printf("The Frame Grabber is in use by another application\n"); 
+	exit(0); 
+	}
 	
-	status =  setStringParam (ADManufacturer, "Adimec");
+    grabber.setInteger<Euresys::RemoteModule>("StreamPacketSizeMax",2048); 
+    status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, 2048); 
+	
+	status |=setStringParam (ADManufacturer, "Adimec");
 	status |= setStringParam (ADModel, "Q-12A180-Fm/CXP-6");
 	status |= setIntegerParam(ADMaxSizeX, 4096);
 	status |= setIntegerParam(ADMaxSizeY, 3072);
