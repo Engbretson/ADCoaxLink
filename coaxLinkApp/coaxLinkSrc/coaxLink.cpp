@@ -395,7 +395,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	getParamName(function, (const char **)&whoami);
 
-	asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, "%s:%s: Debug %d (%s) %d\n", driverName,
+	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %d\n", driverName,
 		functionName, function, whoami, value);
 
 	// AD Special Cases, AD functions that should first be mapped to its Coaxlink function
