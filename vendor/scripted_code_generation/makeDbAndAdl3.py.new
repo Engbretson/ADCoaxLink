@@ -14,6 +14,7 @@ a more sensible summary. The Db file will be generated in:
 and the edm files will be called:
   ../opi/edl/<camera_name>.edl
   ../opi/edl/<camera_name>-features.edl""")
+  
 options, args = parser.parse_args()
 if len(args) != 3:
     parser.error("Incorrect number of arguments")
@@ -149,9 +150,10 @@ include_3_filename.write('/* %s */ \n\n' % camera_name)
 
 include_4_filename = open(include_4_filename, "w")
 include_4_filename.write('/* %s */ \n\n' % camera_name)  
- 
+
 include_5_filename = open(include_5_filename, "w")
 include_5_filename.write('/* %s */ \n\n' % camera_name)  
+
 
 # print a header
 print '# Macros:'
@@ -167,13 +169,13 @@ print
 # for each node
 for node in doneNodes:
     nodeName = str(node.getAttribute("Name"))
-    fullnodeName = nodeName
+    fullnodeName = nodeName       
     if len(nodeName) > 30:
             nodeName = nodeName[20:]
 
     nodeName0 = nodeName
     nodeName1 = mask_name + '_' + nodeName
-    fullnodeName1 = mask_name + '_' +fullnodeName
+    fullnodeName1 = mask_name + '_' + fullnodeName
     
     ro = False
     execute = False
@@ -211,8 +213,6 @@ for node in doneNodes:
 	include_4_filename.write('try { \n')
 	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
-#	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " << e.what() << std::endl; }  \n' % {"one":nodeName1)}  
-#	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
         if ro:
             continue        
@@ -240,7 +240,6 @@ for node in doneNodes:
 	include_4_filename.write('try { \n')
 	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
-#	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
 
         if ro:
@@ -270,7 +269,6 @@ for node in doneNodes:
 	include_4_filename.write('try { \n')
 	include_4_filename.write('systemDouble = grabber.getFloat<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
 	include_4_filename.write('status = setDoubleParam(COAXLINK_%(one)s, systemDouble); \n\n'  % {"one":nodeName1}) 
-#	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
 
         if ro:
@@ -299,7 +297,6 @@ for node in doneNodes:
 #	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>(COAXLINK_%(three)sString); \n'  % {"three":nodeName1,"one":mask_name}) 
 	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
 	include_4_filename.write('status = setStringParam(COAXLINK_%(one)s, systemString.c_str()); \n\n'  % {"one":nodeName1}) 
-#	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
     elif node.nodeName in ["Command"]:
 #        print 'record(longout, "$(P)$(R)%s") {' % records[nodeName]
@@ -316,13 +313,13 @@ for node in doneNodes:
 	    include_4_filename.write('\n// start of an execute (write Only) command \n')
 	    include_4_filename.write('/* \n')
 	    include_5_filename.write('(function == COAXLINK_%(one)s) | \n' % {"one":nodeName1})
+
 	include_4_filename.write('try { \n')
 	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
-	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
-#	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
-	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
-        if execute:
-	    include_4_filename.write('*/ \n\n')
+	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 	
+    include_4_filename.write('} catch (const std::exception &e) { }  \n')  
+    if execute:
+        include_4_filename.write('*/ \n\n')
 
     elif node.nodeName in ["Enumeration"]:
         enumerations = ""
@@ -359,8 +356,8 @@ for node in doneNodes:
                 enumerations += '  field(%sST, "%s")\n' %(epicsId[i], name[:16])
                 value = [x for x in elements(n) if str(x.nodeName) == "Value"]
                 assert value, "EnumEntry %s in node %s doesn't have a value" %(name, nodeName)                
-		bigenumerations += '#  field(%sVL, "%s")\n' %(epicsId[i], getText(value[0]))                
-		enumerations += '  field(%sVL, "%s")\n' %(epicsId[i], getText(value[0]))                
+                bigenumerations += '#  field(%sVL, "%s")\n' %(epicsId[i], getText(value[0]))                
+                enumerations += '  field(%sVL, "%s")\n' %(epicsId[i], getText(value[0]))                
                 i += 1                
 #        print 'record(mbbi, "$(P)$(R)%s_RBV") {' % records[nodeName]
 	if longenum:
@@ -396,7 +393,6 @@ for node in doneNodes:
 	include_4_filename.write('try { \n')
 	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
-#	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
         if ro:
             continue        
@@ -428,6 +424,7 @@ include_2_filename.close()
 include_3_filename.close()
 include_4_filename.close()
 include_5_filename.close()
+
 
 db_file.close()     
 sys.stdout = stdout

@@ -257,7 +257,7 @@ void coaxLink::simTask()
 //				    if ((camerapixelformat == 17301505) && (cameraformat == 0)) {
 //				    if (cameraformat == 0) {
 					size = dims[0] * dims[1] * sizeof(uint8_t);
-						//printf("8-bit\n");
+//						printf("8-bit\n");
 //					}
 //					else {
 //					size = dims[0] * dims[1] * sizeof(uint16_t); // although eally it is only 10 bits 
@@ -269,7 +269,7 @@ void coaxLink::simTask()
 				case 2:
 				case 3:
 					size = dims[0] * dims[1] * sizeof(uint16_t); // although really it is only 10 bits 
-					//printf("16-bit\n");
+//					printf("16-bit\n");
 					break;
 				default:
 //					//printf("error setting image buffer size\n");
@@ -305,6 +305,7 @@ void coaxLink::simTask()
                 setIntegerParam(NDArraySize,  (int)size);
                 setIntegerParam(NDArraySizeX, (int)pImage->dims[0].size);
                 setIntegerParam(NDArraySizeY, (int)pImage->dims[1].size);
+                
                 callParamCallbacks();
 				
 					// data and ts
@@ -323,9 +324,10 @@ void coaxLink::simTask()
 
 					pImage->uniqueId = imageCounter;
 					pImage->timeStamp = ts1;
-
+                    pImage->dataSize = size1;
 					//printf("Before Copy1 \n");
 					memcpy(pImage->pData, ptr1, size1);
+					
                     setIntegerParam(NDArraySize,  (int)size1);
                     callParamCallbacks();
 
@@ -395,7 +397,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 	getParamName(function, (const char **)&whoami);
 
-	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %d\n", driverName,
+	asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, "%s:%s: Debug %d (%s) %d\n", driverName,
 		functionName, function, whoami, value);
 
 	// AD Special Cases, AD functions that should first be mapped to its Coaxlink function
@@ -403,6 +405,10 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 //	//printf("^^^ %d -> %d %d -> %d %d -> %d %d -> %d \n",
 	//ADSizeX,COAXLINK_Remote_Width,ADSizeY,COAXLINK_Remote_Height,ADMinX,COAXLINK_Remote_OffsetX,ADMinY,COAXLINK_Remote_OffsetY);
+
+    if ((function == ADBinX) || (function == ADBinY))
+     return (asynStatus)asynSuccess;
+    
 
 	if (function == ADSizeX) {function = COAXLINK_Remote_Width; getParamName(function, (const char **)&whoami); }
 	if (function == ADSizeY) {function = COAXLINK_Remote_Height; getParamName(function, (const char **)&whoami); }
@@ -432,25 +438,91 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	if (whoami[length - 2] == '+') whoami[length - 2] = 0;
 
 	// Coaxlink Special Cases, Commands that are known to execute and not actually setInteger
+	// You find these  in the various "5" files
 
+// done 6
 	if (
-		(function == COAXLINK_Device_DeviceReset) |
-		(function == COAXLINK_Device_StartCycle) |
-		(function == COAXLINK_Device_CycleLostTriggerCountReset) |
-		(function == COAXLINK_Device_StartSequence) |
-		(function == COAXLINK_Device_AbortSequence) |
-		(function == COAXLINK_Device_CxpPacketArbiterReset) |
-		(function == COAXLINK_Device_EventCountReset) |
-		(function == COAXLINK_Device_ErrorCountReset)
+/* ./Euresys_Coaxlink_TLDevice_6_2_4 */ 
+
+        (function == COAXLINK_Device_DeviceReset) | 
+        (function == COAXLINK_Device_StartCycle) | 
+        (function == COAXLINK_Device_CycleLostTriggerCountReset) | 
+        (function == COAXLINK_Device_CxpPacketArbiterReset) | 
+        (function == COAXLINK_Device_EventCountReset) | 
+        (function == COAXLINK_Device_ErrorCountReset) 
+
 		) CoaxInterface = 13;
 
+
 	if (
-		(function == COAXLINK_Remote_AcquisitionStart) |
-		(function == COAXLINK_Remote_AcquisitionStop) |
-		(function == COAXLINK_Remote_AcquisitionMaxFrameRate) |
-		(function == COAXLINK_Remote_WhiteBalanceCalibrate)
+/* ./Adimec_Q12A180CXP_1_1_3 */ 
+
+(function == COAXLINK_Remote_AcquisitionStart) | 
+(function == COAXLINK_Remote_AcquisitionStop) | 
+(function == COAXLINK_Remote_AcquisitionMaxFrameRate) | 
+(function == COAXLINK_Remote_WhiteBalanceCalibrate) | 
+(function == COAXLINK_Remote_UserModeUpdate) | 
+(function == COAXLINK_Remote_AdvancedParameterSave) | 
+(function == COAXLINK_Remote_SensorRegisterRead) | 
+(function == COAXLINK_Remote_SensorRegisterWrite) | 
+(function == COAXLINK_Remote_SensorRegisterRemove) | 
+(function == COAXLINK_Remote_FPGA_RegisterRead) | 
+(function == COAXLINK_Remote_FPGA_RegisterWrite) | 
+(function == COAXLINK_Remote_LUTStart) | 
+(function == COAXLINK_Remote_LUTEnd) | 
+(function == COAXLINK_Remote_DefectPixelAdd) | 
+(function == COAXLINK_Remote_DefectPixelRemove) | 
+(function == COAXLINK_Remote_DefectPixelClearAll) | 
+(function == COAXLINK_Remote_DefectPixelSave) | 
+(function == COAXLINK_Remote_DefectPixelRestore) | 
+(function == COAXLINK_Remote_DefectPixelRestoreFactory) | 
+(function == COAXLINK_Remote_toryDefault) | 
+(function == COAXLINK_Remote_DF_Calibrate) | 
+(function == COAXLINK_Remote_DF_RestoreFactory) | 
+(function == COAXLINK_Remote_DF_SaveAsFactoryDefault) | 
+(function == COAXLINK_Remote_BF_Calibrate) | 
+(function == COAXLINK_Remote_BF_RestoreFactory) | 
+(function == COAXLINK_Remote_BF_SaveAsFactoryDefault) | 
+(function == COAXLINK_Remote_UserSetLoad) | 
+(function == COAXLINK_Remote_UserSetSave)  		
 		) CoaxInterface = 14;
 
+// 10
+	if (
+/* ./Euresys_Coaxlink_TLInterface_6_2_4 */ 
+
+(function == COAXLINK_Interface_DeviceUpdateList) | 
+(function == COAXLINK_Interface_CxpPoCxpAuto) | 
+(function == COAXLINK_Interface_CxpPoCxpTurnOff) | 
+(function == COAXLINK_Interface_CxpPoCxpTripReset) | 
+(function == COAXLINK_Interface_tInjectError) | 
+(function == COAXLINK_Interface_ClearUserActions) | 
+(function == COAXLINK_Interface_ExecuteUserActions) | 
+(function == COAXLINK_Interface_DiscardScheduledUserActions) | 
+(function == COAXLINK_Interface_lPositionReset) | 
+(function == COAXLINK_Interface_EventCountReset)  
+		) CoaxInterface = 15;
+		
+// system 1
+	if (
+/* ./Euresys_Coaxlink_TLSystem_6_2_4 */ 
+
+(function == COAXLINK_System_InterfaceUpdateList) 
+		) CoaxInterface = 16;
+
+
+// stream 6
+    if (
+
+/* ./Euresys_Coaxlink_TLDataStream_6_2_4 */ 
+
+(function == COAXLINK_Stream_StartScan) | 
+(function == COAXLINK_Stream_StopScan) | 
+(function == COAXLINK_Stream_StreamReset) | 
+(function == COAXLINK_Stream_ErrorCountReset) | 
+(function == COAXLINK_Stream_StatisticsStartSampling) | 
+(function == COAXLINK_Stream_EventCountReset) 
+		) CoaxInterface = 17;
 
 	try {
 		switch (CoaxInterface)
@@ -475,6 +547,15 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 			break;
 		case 14:
 			grabber.execute<Euresys::RemoteModule>(whoami);
+			break;
+		case 15:
+			grabber.execute<Euresys::InterfaceModule>(whoami);
+			break;
+		case 16:
+			grabber.execute<Euresys::SystemModule>(whoami);
+			break;
+		case 17:
+			grabber.execute<Euresys::StreamModule>(whoami);
 			break;
 		}
 
@@ -547,8 +628,12 @@ asynStatus coaxLink::writeFloat64(asynUser *pasynUser, epicsFloat64 value)
 
 	getParamName(function, (const char **)&whoami);
 
-	asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, "%s:%s: Debug %d (%s) %f\n", driverName,
+	asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, "%s:%s: Debug %d (%s) %f\n", driverName,
 		functionName, function, whoami, value);
+		
+		   if (function == ADGain)
+		   return (asynStatus)asynSuccess;;
+ 
 
 	if ((function >= FIRST_SYSTEM_PARAM)    & (function <= LAST_SYSTEM_PARAM))    { 
 		////printf("System Level Command \n");    
@@ -712,8 +797,8 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	exit(0); 
 	}
 	
-    grabber.setInteger<Euresys::RemoteModule>("StreamPacketSizeMax",2048); 
-    status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, 2048); 
+    //grabber.setInteger<Euresys::RemoteModule>("StreamPacketSizeMax",2048); 
+    //status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, 2048); 
 	
 	status |=setStringParam (ADManufacturer, "Adimec");
 	status |= setStringParam (ADModel, "Q-12A180-Fm/CXP-6");
