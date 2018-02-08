@@ -744,33 +744,33 @@ record(mbbo, "$(P)$(R)CxpHostConnectionTestMode") {
 
 record(longin, "$(P)$(R)tErrorCount_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))tErrorCount")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))CxpHostConnectionTestErrorCount")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)tErrorCount") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))tErrorCount")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))CxpHostConnectionTestErrorCount")
   field(DISA, "0")
 }
 
 record(longin, "$(P)$(R)tPacketCount_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))tPacketCount")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))CxpHostConnectionTestPacketCount")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)tPacketCount") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))tPacketCount")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))CxpHostConnectionTestPacketCount")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)tInjectError") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))tInjectError")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))CxpHostConnectionTestInjectError")
   field(DISA, "0")
 }
 
@@ -1733,7 +1733,7 @@ record(stringin, "$(P)$(R)MultiplierDividerToolSource_RBV") {
 
 record(mbbi, "$(P)$(R)lOutputControl_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lOutputControl")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolOutputControl")
   field(ZRST, "Enable")
   field(ZRVL, "1")
   field(ONST, "Disable")
@@ -1744,7 +1744,7 @@ record(mbbi, "$(P)$(R)lOutputControl_RBV") {
 
 record(mbbo, "$(P)$(R)lOutputControl") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lOutputControl")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolOutputControl")
   field(ZRST, "Enable")
   field(ZRVL, "1")
   field(ONST, "Disable")
@@ -1754,7 +1754,7 @@ record(mbbo, "$(P)$(R)lOutputControl") {
 
 record(ai, "$(P)$(R)lMultiplicationFactor_RBV") {
   field(DTYP, "asynFloat64")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lMultiplicationFactor")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolMultiplicationFactor")
   field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
@@ -1762,14 +1762,14 @@ record(ai, "$(P)$(R)lMultiplicationFactor_RBV") {
 
 record(ao, "$(P)$(R)lMultiplicationFactor") {
   field(DTYP, "asynFloat64")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lMultiplicationFactor")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolMultiplicationFactor")
   field(PREC, "3")
   field(DISA, "0")
 }
 
 record(ai, "$(P)$(R)lDivisionFactor_RBV") {
   field(DTYP, "asynFloat64")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lDivisionFactor")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolDivisionFactor")
   field(PREC, "3")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
@@ -1777,34 +1777,34 @@ record(ai, "$(P)$(R)lDivisionFactor_RBV") {
 
 record(ao, "$(P)$(R)lDivisionFactor") {
   field(DTYP, "asynFloat64")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lDivisionFactor")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolDivisionFactor")
   field(PREC, "3")
   field(DISA, "0")
 }
 
 record(longin, "$(P)$(R)lEffectiveMultiplicationFactor_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lEffectiveMultiplicationFactor")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolEffectiveMultiplicationFactor")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)lEffectiveMultiplicationFactor") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lEffectiveMultiplicationFactor")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolEffectiveMultiplicationFactor")
   field(DISA, "0")
 }
 
 record(longin, "$(P)$(R)lEffectiveDivisionFactor_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lEffectiveDivisionFactor")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolEffectiveDivisionFactor")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)lEffectiveDivisionFactor") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lEffectiveDivisionFactor")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))MultiplierDividerToolEffectiveDivisionFactor")
   field(DISA, "0")
 }
 
@@ -1876,7 +1876,7 @@ record(mbbo, "$(P)$(R)QuadratureDecoderToolSources") {
 
 record(mbbi, "$(P)$(R)lActivation_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lActivation")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))QuadratureDecoderToolActivation")
   field(ZRST, "RisingEdgeA")
   field(ZRVL, "1")
   field(ONST, "FallingEdgeA")
@@ -1893,7 +1893,7 @@ record(mbbi, "$(P)$(R)lActivation_RBV") {
 
 record(mbbo, "$(P)$(R)lActivation") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lActivation")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))QuadratureDecoderToolActivation")
   field(ZRST, "RisingEdgeA")
   field(ZRVL, "1")
   field(ONST, "FallingEdgeA")
@@ -1909,7 +1909,7 @@ record(mbbo, "$(P)$(R)lActivation") {
 
 record(mbbi, "$(P)$(R)lForwardDirection_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lForwardDirection")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))QuadratureDecoderToolForwardDirection")
   field(ZRST, "A_Leads_B")
   field(ZRVL, "1")
   field(ONST, "B_Leads_A")
@@ -1920,7 +1920,7 @@ record(mbbi, "$(P)$(R)lForwardDirection_RBV") {
 
 record(mbbo, "$(P)$(R)lForwardDirection") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lForwardDirection")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))QuadratureDecoderToolForwardDirection")
   field(ZRST, "A_Leads_B")
   field(ZRVL, "1")
   field(ONST, "B_Leads_A")
@@ -1930,7 +1930,7 @@ record(mbbo, "$(P)$(R)lForwardDirection") {
 
 record(mbbi, "$(P)$(R)lOutputMode_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lOutputMode")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))QuadratureDecoderToolOutputMode")
   field(ZRST, "Unfiltered")
   field(ZRVL, "1")
   field(ONST, "ForwardOnly")
@@ -1943,7 +1943,7 @@ record(mbbi, "$(P)$(R)lOutputMode_RBV") {
 
 record(mbbo, "$(P)$(R)lOutputMode") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lOutputMode")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))QuadratureDecoderToolOutputMode")
   field(ZRST, "Unfiltered")
   field(ZRVL, "1")
   field(ONST, "ForwardOnly")
@@ -1983,7 +1983,7 @@ record(mbbo, "$(P)$(R)QuadratureDecoderToolDirection") {
 
 record(longout, "$(P)$(R)lPositionReset") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))lPositionReset")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))QuadratureDecoderToolPositionReset")
   field(DISA, "0")
 }
 
@@ -6829,27 +6829,27 @@ record(mbbo, "$(P)$(R)SensorRegisterReadWriteMode") {
 
 record(longin, "$(P)$(R)atileReadSelector_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileReadSelector")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileReadSelector")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)atileReadSelector") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileReadSelector")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileReadSelector")
   field(DISA, "0")
 }
 
 record(longin, "$(P)$(R)atileListSize_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileListSize")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileListSize")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)atileListSize") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileListSize")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileListSize")
   field(DISA, "0")
 }
 
@@ -7239,7 +7239,7 @@ record(longout, "$(P)$(R)DefectPixelRestoreFactory") {
 
 record(longout, "$(P)$(R)toryDefault") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))toryDefault")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))DefectPixelSaveAsFactoryDefault")
   field(DISA, "0")
 }
 
@@ -7386,7 +7386,7 @@ record(longout, "$(P)$(R)BF_CalibrationVideoLevel") {
 
 record(bi, "$(P)$(R)gCalibration_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))gCalibration")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))BF_OutputImagesDuringCalibration")
   field(SCAN, "I/O Intr")
   field(ZNAM, "No")
   field(ONAM, "Yes")
@@ -7395,7 +7395,7 @@ record(bi, "$(P)$(R)gCalibration_RBV") {
 
 record(bo, "$(P)$(R)gCalibration") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))gCalibration")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))BF_OutputImagesDuringCalibration")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")

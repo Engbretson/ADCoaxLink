@@ -1,7 +1,7 @@
 /* ./Euresys_Coaxlink_TLInterface_6_2_4 */ 
 
 try { 
-systemString = grabber.getString<Euresys::InterfaceModule>("InterfaceID"); 
+systemString = grabber.getString<Euresys::InterfaceModule>("InterfaceID+I"); 
 status = setStringParam(COAXLINK_Interface_InterfaceID, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
@@ -56,22 +56,22 @@ status = setIntegerParam(COAXLINK_Interface_DeviceSelector, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::InterfaceModule>("DeviceID"); 
+systemString = grabber.getString<Euresys::InterfaceModule>("DeviceID+I"); 
 status = setStringParam(COAXLINK_Interface_DeviceID, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::InterfaceModule>("DeviceVendorName"); 
+systemString = grabber.getString<Euresys::InterfaceModule>("DeviceVendorName+I"); 
 status = setStringParam(COAXLINK_Interface_DeviceVendorName, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::InterfaceModule>("DeviceModelName"); 
+systemString = grabber.getString<Euresys::InterfaceModule>("DeviceModelName+I"); 
 status = setStringParam(COAXLINK_Interface_DeviceModelName, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("DeviceAccessStatus"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("DeviceAccessStatus+I"); 
 status = setIntegerParam(COAXLINK_Interface_DeviceAccessStatus, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -136,7 +136,7 @@ status = setIntegerParam(COAXLINK_Interface_CxpPoCxpPowerInputStatus, systemInte
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionCount"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionCount+I"); 
 status = setIntegerParam(COAXLINK_Interface_CxpHostConnectionCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -166,12 +166,12 @@ status = setIntegerParam(COAXLINK_Interface_CxpHostConnectionTestMode, systemInt
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("tErrorCount"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionTestErrorCount"); 
 status = setIntegerParam(COAXLINK_Interface_tErrorCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("tPacketCount"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionTestPacketCount"); 
 status = setIntegerParam(COAXLINK_Interface_tPacketCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -179,7 +179,7 @@ status = setIntegerParam(COAXLINK_Interface_tPacketCount, systemInteger);
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("tInjectError"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("CxpHostConnectionTestInjectError"); 
 status = setIntegerParam(COAXLINK_Interface_tInjectError, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -326,27 +326,27 @@ status = setIntegerParam(COAXLINK_Interface_MultiplierDividerToolSource, systemI
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lOutputControl"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("MultiplierDividerToolOutputControl"); 
 status = setIntegerParam(COAXLINK_Interface_lOutputControl, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::InterfaceModule>("lMultiplicationFactor"); 
+systemDouble = grabber.getFloat<Euresys::InterfaceModule>("MultiplierDividerToolMultiplicationFactor"); 
 status = setDoubleParam(COAXLINK_Interface_lMultiplicationFactor, systemDouble); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::InterfaceModule>("lDivisionFactor"); 
+systemDouble = grabber.getFloat<Euresys::InterfaceModule>("MultiplierDividerToolDivisionFactor"); 
 status = setDoubleParam(COAXLINK_Interface_lDivisionFactor, systemDouble); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lEffectiveMultiplicationFactor"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("MultiplierDividerToolEffectiveMultiplicationFactor"); 
 status = setIntegerParam(COAXLINK_Interface_lEffectiveMultiplicationFactor, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lEffectiveDivisionFactor"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("MultiplierDividerToolEffectiveDivisionFactor"); 
 status = setIntegerParam(COAXLINK_Interface_lEffectiveDivisionFactor, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -361,17 +361,17 @@ status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolSources, system
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lActivation"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolActivation"); 
 status = setIntegerParam(COAXLINK_Interface_lActivation, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lForwardDirection"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolForwardDirection"); 
 status = setIntegerParam(COAXLINK_Interface_lForwardDirection, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lOutputMode"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolOutputMode"); 
 status = setIntegerParam(COAXLINK_Interface_lOutputMode, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -389,7 +389,7 @@ status = setIntegerParam(COAXLINK_Interface_QuadratureDecoderToolDirection, syst
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("lPositionReset"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("QuadratureDecoderToolPositionReset"); 
 status = setIntegerParam(COAXLINK_Interface_lPositionReset, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -526,7 +526,7 @@ status = setIntegerParam(COAXLINK_Interface_TemperatureSensorSelector, systemInt
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::InterfaceModule>("Temperature"); 
+systemDouble = grabber.getFloat<Euresys::InterfaceModule>("Temperature+I"); 
 status = setDoubleParam(COAXLINK_Interface_Temperature, systemDouble); 
 
 } catch (const std::exception &e) { }  
@@ -591,32 +591,32 @@ status = setIntegerParam(COAXLINK_Interface_PotBankStatus, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventSelector"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventSelector+I"); 
 status = setIntegerParam(COAXLINK_Interface_EventSelector, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotification"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotification+I"); 
 status = setIntegerParam(COAXLINK_Interface_EventNotification, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotificationContext1"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotificationContext1+I"); 
 status = setIntegerParam(COAXLINK_Interface_EventNotificationContext1, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotificationContext2"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotificationContext2+I"); 
 status = setIntegerParam(COAXLINK_Interface_EventNotificationContext2, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotificationContext3"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventNotificationContext3+I"); 
 status = setIntegerParam(COAXLINK_Interface_EventNotificationContext3, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventCount"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventCount+I"); 
 status = setIntegerParam(COAXLINK_Interface_EventCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -624,7 +624,7 @@ status = setIntegerParam(COAXLINK_Interface_EventCount, systemInteger);
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventCountReset"); 
+systemInteger = grabber.getInteger<Euresys::InterfaceModule>("EventCountReset+I"); 
 status = setIntegerParam(COAXLINK_Interface_EventCountReset, systemInteger); 
 
 } catch (const std::exception &e) { }  

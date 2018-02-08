@@ -10,4 +10,4 @@
 #define COAXLINK_System_GenTLVersionMinorString "GenTLVersionMinor" 
 #define COAXLINK_System_InterfaceUpdateListString "InterfaceUpdateList" 
 #define COAXLINK_System_InterfaceSelectorString "InterfaceSelector" 
-#define COAXLINK_System_InterfaceIDString "InterfaceID" 
+#define COAXLINK_System_InterfaceIDString "InterfaceID+S" 

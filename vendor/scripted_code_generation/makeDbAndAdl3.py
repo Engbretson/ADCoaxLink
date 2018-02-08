@@ -193,6 +193,7 @@ for node in doneNodes:
 	if nodeName in list:
 	   nodeNameSpecial = nodeName;
 	   nodeName = nodeName + '+'+ mask_name[0]
+	   fullnodeName1 = fullnodeName1+ '+' + mask_name[0]
 #	   nodeName1 = nodeName1 + '+' + mask_name[0] # this may not work
 	   specialcase = True
 	    
@@ -200,7 +201,7 @@ for node in doneNodes:
 #        print 'record(longin, "$(P)$(R)%s_RBV") {' % records[nodeName]
         print 'record(longin, "$(P)$(R)%s_RBV") {' % nodeName
         print '  field(DTYP, "asynInt32")'
-        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(SCAN, "I/O Intr")'
         print '  field(DISA, "0")'        
         print '}'
@@ -209,7 +210,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1}) 
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " << e.what() << std::endl; }  \n' % {"one":nodeName1)}  
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
@@ -219,7 +220,7 @@ for node in doneNodes:
 #        print 'record(longout, "$(P)$(R)%s") {' % records[nodeName]
         print 'record(longout, "$(P)$(R)%s") {' % nodeName
         print '  field(DTYP, "asynInt32")'
-        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(DISA, "0")'
         print '}'
         print        
@@ -227,7 +228,7 @@ for node in doneNodes:
 #        print 'record(bi, "$(P)$(R)%s_RBV") {' % records[nodeName]
         print 'record(bi, "$(P)$(R)%s_RBV") {' % nodeName
         print '  field(DTYP, "asynInt32")'
-        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(SCAN, "I/O Intr")'
         print '  field(ZNAM, "No")'
         print '  field(ONAM, "Yes")'                        
@@ -238,7 +239,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -248,7 +249,7 @@ for node in doneNodes:
 #        print 'record(bo, "$(P)$(R)%s") {' % records[nodeName]
         print 'record(bo, "$(P)$(R)%s") {' % nodeName
         print '  field(DTYP, "asynInt32")'
-        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(ZNAM, "No")'
         print '  field(ONAM, "Yes")'                                
         print '  field(DISA, "0")'
@@ -258,7 +259,7 @@ for node in doneNodes:
 #        print 'record(ai, "$(P)$(R)%s_RBV") {' % records[nodeName]
         print 'record(ai, "$(P)$(R)%s_RBV") {' % nodeName
         print '  field(DTYP, "asynFloat64")'
-        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(PREC, "3")'        
         print '  field(SCAN, "I/O Intr")'
         print '  field(DISA, "0")'
@@ -268,7 +269,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamFloat64, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemDouble = grabber.getFloat<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
+	include_4_filename.write('systemDouble = grabber.getFloat<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
 	include_4_filename.write('status = setDoubleParam(COAXLINK_%(one)s, systemDouble); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -278,7 +279,7 @@ for node in doneNodes:
 #        print 'record(ao, "$(P)$(R)%s") {' % records[nodeName]
         print 'record(ao, "$(P)$(R)%s") {' % nodeName
         print '  field(DTYP, "asynFloat64")'
-        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(PREC, "3")'
         print '  field(DISA, "0")'
         print '}'
@@ -287,7 +288,7 @@ for node in doneNodes:
 #        print 'record(stringin, "$(P)$(R)%s_RBV") {' % records[nodeName]
         print 'record(stringin, "$(P)$(R)%s_RBV") {' % nodeName
         print '  field(DTYP, "asynOctetRead")'
-        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(SCAN, "I/O Intr")'
         print '  field(DISA, "0")'
         print '}'
@@ -297,7 +298,7 @@ for node in doneNodes:
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamOctet, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
 #	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>(COAXLINK_%(three)sString); \n'  % {"three":nodeName1,"one":mask_name}) 
-	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
+	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
 	include_4_filename.write('status = setStringParam(COAXLINK_%(one)s, systemString.c_str()); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -305,7 +306,7 @@ for node in doneNodes:
 #        print 'record(longout, "$(P)$(R)%s") {' % records[nodeName]
         print 'record(longout, "$(P)$(R)%s") {' % nodeName
         print '  field(DTYP, "asynInt32")'
-        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         print '  field(DISA, "0")'
         print '}'
         print 
@@ -317,7 +318,7 @@ for node in doneNodes:
 	    include_4_filename.write('/* \n')
 	    include_5_filename.write('(function == COAXLINK_%(one)s) | \n' % {"one":nodeName1})
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -366,7 +367,7 @@ for node in doneNodes:
 	if longenum:
 		print '#record(mbbi, "$(P)$(R)%s_RBV") {' % nodeName
 	        print '#  field(DTYP, "asynInt32")'
-	        print '#  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+	        print '#  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
 	        print bigenumerations,
 	        print '#  field(SCAN, "I/O Intr")'
 	        print '#  field(DISA, "0")'
@@ -374,7 +375,7 @@ for node in doneNodes:
 	        print
 		print 'record(stringin, "$(P)$(R)%s_RBV") {' % nodeName
         	print '  field(DTYP, "asynOctetRead")'
-        	print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        	print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         	print '  field(SCAN, "I/O Intr")'
         	print '  field(DISA, "0")'
         	print '}'
@@ -383,7 +384,7 @@ for node in doneNodes:
 	else:
 		print 'record(mbbi, "$(P)$(R)%s_RBV") {' % nodeName
 	        print '  field(DTYP, "asynInt32")'
-	        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+	        print '  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
 	        print enumerations,
 	        print '  field(SCAN, "I/O Intr")'
 	        print '  field(DISA, "0")'
@@ -394,7 +395,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":nodeName0,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -404,7 +405,7 @@ for node in doneNodes:
 	if longenum:
 		print '#record(mbbo, "$(P)$(R)%s") {' % nodeName
         	print '#  field(DTYP, "asynInt32")'
-        	print '#  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        	print '#  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         	print bigenumerations,       
         	print '#  field(DISA, "0")'
         	print '#}'
@@ -412,7 +413,7 @@ for node in doneNodes:
 	else:
 		print 'record(mbbo, "$(P)$(R)%s") {' % nodeName
         	print '  field(DTYP, "asynInt32")'
-        	print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % nodeName
+        	print '  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))%s")' % fullnodeName1
         	print enumerations,       
         	print '  field(DISA, "0")'
         	print '}'

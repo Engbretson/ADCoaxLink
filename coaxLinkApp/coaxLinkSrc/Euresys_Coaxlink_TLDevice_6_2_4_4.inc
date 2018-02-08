@@ -1,22 +1,22 @@
 /* ./Euresys_Coaxlink_TLDevice_6_2_4 */ 
 
 try { 
-systemString = grabber.getString<Euresys::DeviceModule>("DeviceID"); 
+systemString = grabber.getString<Euresys::DeviceModule>("DeviceID+D"); 
 status = setStringParam(COAXLINK_Device_DeviceID, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::DeviceModule>("DeviceVendorName"); 
+systemString = grabber.getString<Euresys::DeviceModule>("DeviceVendorName+D"); 
 status = setStringParam(COAXLINK_Device_DeviceVendorName, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::DeviceModule>("DeviceModelName"); 
+systemString = grabber.getString<Euresys::DeviceModule>("DeviceModelName+D"); 
 status = setStringParam(COAXLINK_Device_DeviceModelName, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("DeviceAccessStatus"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("DeviceAccessStatus+D"); 
 status = setIntegerParam(COAXLINK_Device_DeviceAccessStatus, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -31,7 +31,7 @@ status = setIntegerParam(COAXLINK_Device_StreamSelector, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::DeviceModule>("StreamID"); 
+systemString = grabber.getString<Euresys::DeviceModule>("StreamID+D"); 
 status = setStringParam(COAXLINK_Device_StreamID, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
@@ -66,7 +66,7 @@ status = setDoubleParam(COAXLINK_Device_ExposureRecoveryTime, systemDouble);
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::DeviceModule>("ExposureTime"); 
+systemDouble = grabber.getFloat<Euresys::DeviceModule>("ExposureTime+D"); 
 status = setDoubleParam(COAXLINK_Device_ExposureTime, systemDouble); 
 
 } catch (const std::exception &e) { }  
@@ -146,7 +146,7 @@ status = setIntegerParam(COAXLINK_Device_CxpHostConnectionBase, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("CxpHostConnectionCount"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("CxpHostConnectionCount+D"); 
 status = setIntegerParam(COAXLINK_Device_CxpHostConnectionCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -176,32 +176,32 @@ status = setIntegerParam(COAXLINK_Device_CxpPacketArbiterReset, systemInteger);
 */ 
 
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventSelector"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventSelector+D"); 
 status = setIntegerParam(COAXLINK_Device_EventSelector, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotification"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotification+D"); 
 status = setIntegerParam(COAXLINK_Device_EventNotification, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotificationContext1"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotificationContext1+D"); 
 status = setIntegerParam(COAXLINK_Device_EventNotificationContext1, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotificationContext2"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotificationContext2+D"); 
 status = setIntegerParam(COAXLINK_Device_EventNotificationContext2, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotificationContext3"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventNotificationContext3+D"); 
 status = setIntegerParam(COAXLINK_Device_EventNotificationContext3, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventCount"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventCount+D"); 
 status = setIntegerParam(COAXLINK_Device_EventCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -209,19 +209,19 @@ status = setIntegerParam(COAXLINK_Device_EventCount, systemInteger);
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventCountReset"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("EventCountReset+D"); 
 status = setIntegerParam(COAXLINK_Device_EventCountReset, systemInteger); 
 
 } catch (const std::exception &e) { }  
 */ 
 
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("ErrorSelector"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("ErrorSelector+D"); 
 status = setIntegerParam(COAXLINK_Device_ErrorSelector, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("ErrorCount"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("ErrorCount+D"); 
 status = setIntegerParam(COAXLINK_Device_ErrorCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -229,7 +229,7 @@ status = setIntegerParam(COAXLINK_Device_ErrorCount, systemInteger);
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::DeviceModule>("ErrorCountReset"); 
+systemInteger = grabber.getInteger<Euresys::DeviceModule>("ErrorCountReset+D"); 
 status = setIntegerParam(COAXLINK_Device_ErrorCountReset, systemInteger); 
 
 } catch (const std::exception &e) { }  

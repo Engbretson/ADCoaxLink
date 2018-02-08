@@ -797,8 +797,8 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	exit(0); 
 	}
 	
-    //grabber.setInteger<Euresys::RemoteModule>("StreamPacketSizeMax",2048); 
-    //status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, 2048); 
+    grabber.setInteger<Euresys::RemoteModule>("StreamPacketSizeMax",2048); 
+    status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, 2048); 
 	
 	status |=setStringParam (ADManufacturer, "Adimec");
 	status |= setStringParam (ADModel, "Q-12A180-Fm/CXP-6");

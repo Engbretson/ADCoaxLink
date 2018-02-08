@@ -151,12 +151,12 @@ status = setIntegerParam(COAXLINK_Remote_HsUpconnection, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::RemoteModule>("DeviceVendorName"); 
+systemString = grabber.getString<Euresys::RemoteModule>("DeviceVendorName+R"); 
 status = setStringParam(COAXLINK_Remote_DeviceVendorName, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::RemoteModule>("DeviceModelName"); 
+systemString = grabber.getString<Euresys::RemoteModule>("DeviceModelName+R"); 
 status = setStringParam(COAXLINK_Remote_DeviceModelName, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
@@ -201,12 +201,12 @@ status = setIntegerParam(COAXLINK_Remote_SensorTemperature, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("Width"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("Width+R"); 
 status = setIntegerParam(COAXLINK_Remote_Width, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("Height"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("Height+R"); 
 status = setIntegerParam(COAXLINK_Remote_Height, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -251,7 +251,7 @@ status = setIntegerParam(COAXLINK_Remote_ReverseY, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("PixelFormat"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("PixelFormat+R"); 
 status = setIntegerParam(COAXLINK_Remote_PixelFormat, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -346,7 +346,7 @@ status = setIntegerParam(COAXLINK_Remote_ExposureMode, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::RemoteModule>("ExposureTime"); 
+systemDouble = grabber.getFloat<Euresys::RemoteModule>("ExposureTime+R"); 
 status = setDoubleParam(COAXLINK_Remote_ExposureTime, systemDouble); 
 
 } catch (const std::exception &e) { }  
@@ -426,7 +426,7 @@ status = setIntegerParam(COAXLINK_Remote_GainSelector, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemDouble = grabber.getFloat<Euresys::RemoteModule>("Gain"); 
+systemDouble = grabber.getFloat<Euresys::RemoteModule>("Gain+R"); 
 status = setDoubleParam(COAXLINK_Remote_Gain, systemDouble); 
 
 } catch (const std::exception &e) { }  
@@ -541,12 +541,12 @@ status = setIntegerParam(COAXLINK_Remote_SensorRegisterReadWriteMode, systemInte
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("atileReadSelector"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterNonVolatileReadSelector"); 
 status = setIntegerParam(COAXLINK_Remote_atileReadSelector, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("atileListSize"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterNonVolatileListSize"); 
 status = setIntegerParam(COAXLINK_Remote_atileListSize, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -636,17 +636,17 @@ status = setStringParam(COAXLINK_Remote_CustomerSpecialID, systemString.c_str())
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTEnable"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTEnable+R"); 
 status = setIntegerParam(COAXLINK_Remote_LUTEnable, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTIndex"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTIndex+R"); 
 status = setIntegerParam(COAXLINK_Remote_LUTIndex, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTValue"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTValue+R"); 
 status = setIntegerParam(COAXLINK_Remote_LUTValue, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -676,7 +676,7 @@ status = setIntegerParam(COAXLINK_Remote_LUTStatus, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("PayloadSize"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("PayloadSize+R"); 
 status = setIntegerParam(COAXLINK_Remote_PayloadSize, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -784,7 +784,7 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelRestoreFactory, systemIntege
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("toryDefault"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelSaveAsFactoryDefault"); 
 status = setIntegerParam(COAXLINK_Remote_toryDefault, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -856,7 +856,7 @@ status = setIntegerParam(COAXLINK_Remote_BF_CalibrationVideoLevel, systemInteger
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::RemoteModule>("gCalibration"); 
+systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_OutputImagesDuringCalibration"); 
 status = setIntegerParam(COAXLINK_Remote_gCalibration, systemInteger); 
 
 } catch (const std::exception &e) { }  

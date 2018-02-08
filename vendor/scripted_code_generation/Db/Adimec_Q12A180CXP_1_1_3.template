@@ -1552,27 +1552,27 @@ record(mbbo, "$(P)$(R)SensorRegisterReadWriteMode") {
 
 record(longin, "$(P)$(R)atileReadSelector_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileReadSelector")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileReadSelector")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)atileReadSelector") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileReadSelector")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileReadSelector")
   field(DISA, "0")
 }
 
 record(longin, "$(P)$(R)atileListSize_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileListSize")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileListSize")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }
 
 record(longout, "$(P)$(R)atileListSize") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))atileListSize")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SensorRegisterNonVolatileListSize")
   field(DISA, "0")
 }
 
@@ -1962,7 +1962,7 @@ record(longout, "$(P)$(R)DefectPixelRestoreFactory") {
 
 record(longout, "$(P)$(R)toryDefault") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))toryDefault")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))DefectPixelSaveAsFactoryDefault")
   field(DISA, "0")
 }
 
@@ -2109,7 +2109,7 @@ record(longout, "$(P)$(R)BF_CalibrationVideoLevel") {
 
 record(bi, "$(P)$(R)gCalibration_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))gCalibration")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))BF_OutputImagesDuringCalibration")
   field(SCAN, "I/O Intr")
   field(ZNAM, "No")
   field(ONAM, "Yes")
@@ -2118,7 +2118,7 @@ record(bi, "$(P)$(R)gCalibration_RBV") {
 
 record(bo, "$(P)$(R)gCalibration") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))gCalibration")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))BF_OutputImagesDuringCalibration")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
