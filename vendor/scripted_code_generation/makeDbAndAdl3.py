@@ -173,7 +173,7 @@ for node in doneNodes:
 
     nodeName0 = nodeName
     nodeName1 = mask_name + '_' + nodeName
-    fullnodeName1 = mask_name + '_' +fullnodeName
+    fullnodeName1 = fullnodeName
     
     ro = False
     execute = False
