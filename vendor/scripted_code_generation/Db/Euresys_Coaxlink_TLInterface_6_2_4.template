@@ -30,9 +30,9 @@ record(mbbo, "$(P)$(R)InterfaceType") {
   field(DISA, "0")
 }
 
-record(stringin, "$(P)$(R)SerialNumber_RBV") {
+record(stringin, "$(P)$(R)SerialNumber+I_RBV") {
   field(DTYP, "asynOctetRead")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SerialNumber")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SerialNumber+I")
   field(SCAN, "I/O Intr")
   field(DISA, "0")
 }

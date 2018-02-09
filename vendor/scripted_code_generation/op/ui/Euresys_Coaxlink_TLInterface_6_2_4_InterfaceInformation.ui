@@ -334,7 +334,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)SerialNumber_RBV</string>
+                <string>$(P)$(R)SerialNumber+I_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

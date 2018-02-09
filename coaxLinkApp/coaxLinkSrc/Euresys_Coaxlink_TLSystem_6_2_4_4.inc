@@ -56,7 +56,7 @@ status = setIntegerParam(COAXLINK_System_InterfaceSelector, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::SystemModule>("InterfaceID+S"); 
+systemString = grabber.getString<Euresys::SystemModule>("InterfaceID"); 
 status = setStringParam(COAXLINK_System_InterfaceID, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  

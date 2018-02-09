@@ -1,7 +1,7 @@
 /* ./Euresys_Coaxlink_TLDataStream_6_2_4 */ 
 
 try { 
-systemString = grabber.getString<Euresys::StreamModule>("StreamID+S"); 
+systemString = grabber.getString<Euresys::StreamModule>("StreamID"); 
 status = setStringParam(COAXLINK_Stream_StreamID, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
@@ -11,7 +11,7 @@ status = setIntegerParam(COAXLINK_Stream_StreamType, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("PixelFormat+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("PixelFormat"); 
 status = setIntegerParam(COAXLINK_Stream_PixelFormat, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -26,12 +26,12 @@ status = setIntegerParam(COAXLINK_Stream_PixelSize, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("Width+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("Width"); 
 status = setIntegerParam(COAXLINK_Stream_Width, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("Height+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("Height"); 
 status = setIntegerParam(COAXLINK_Stream_Height, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -66,12 +66,12 @@ status = setIntegerParam(COAXLINK_Stream_LUTSet, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("LUTIndex+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("LUTIndex"); 
 status = setIntegerParam(COAXLINK_Stream_LUTIndex, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemString = grabber.getString<Euresys::StreamModule>("LUTValue+S"); 
+systemString = grabber.getString<Euresys::StreamModule>("LUTValue"); 
 status = setStringParam(COAXLINK_Stream_LUTValue, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
@@ -81,12 +81,12 @@ status = setIntegerParam(COAXLINK_Stream_LUTReadBlockLength, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("LUTEnable+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("LUTEnable"); 
 status = setIntegerParam(COAXLINK_Stream_LUTEnable, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("PayloadSize+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("PayloadSize"); 
 status = setIntegerParam(COAXLINK_Stream_PayloadSize, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -181,12 +181,12 @@ status = setIntegerParam(COAXLINK_Stream_StripePitch, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("ErrorSelector+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("ErrorSelector"); 
 status = setIntegerParam(COAXLINK_Stream_ErrorSelector, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("ErrorCount+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("ErrorCount"); 
 status = setIntegerParam(COAXLINK_Stream_ErrorCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -194,7 +194,7 @@ status = setIntegerParam(COAXLINK_Stream_ErrorCount, systemInteger);
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("ErrorCountReset+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("ErrorCountReset"); 
 status = setIntegerParam(COAXLINK_Stream_ErrorCountReset, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -236,32 +236,32 @@ status = setIntegerParam(COAXLINK_Stream_StatisticsStopSampling, systemInteger);
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("EventSelector+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("EventSelector"); 
 status = setIntegerParam(COAXLINK_Stream_EventSelector, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotification+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotification"); 
 status = setIntegerParam(COAXLINK_Stream_EventNotification, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotificationContext1+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotificationContext1"); 
 status = setIntegerParam(COAXLINK_Stream_EventNotificationContext1, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotificationContext2+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotificationContext2"); 
 status = setIntegerParam(COAXLINK_Stream_EventNotificationContext2, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotificationContext3+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("EventNotificationContext3"); 
 status = setIntegerParam(COAXLINK_Stream_EventNotificationContext3, systemInteger); 
 
 } catch (const std::exception &e) { }  
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("EventCount+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("EventCount"); 
 status = setIntegerParam(COAXLINK_Stream_EventCount, systemInteger); 
 
 } catch (const std::exception &e) { }  
@@ -269,7 +269,7 @@ status = setIntegerParam(COAXLINK_Stream_EventCount, systemInteger);
 // start of an execute (write Only) command 
 /* 
 try { 
-systemInteger = grabber.getInteger<Euresys::StreamModule>("EventCountReset+S"); 
+systemInteger = grabber.getInteger<Euresys::StreamModule>("EventCountReset"); 
 status = setIntegerParam(COAXLINK_Stream_EventCountReset, systemInteger); 
 
 } catch (const std::exception &e) { }  

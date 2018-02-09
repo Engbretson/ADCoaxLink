@@ -220,7 +220,7 @@ text {
 	    height=20
 	    }
 	monitor {
-	chan="$(P)$(R)SerialNumber_RBV"   
+	chan="$(P)$(R)SerialNumber+I_RBV"   
 	clr=54
 	bclr=4
 	}

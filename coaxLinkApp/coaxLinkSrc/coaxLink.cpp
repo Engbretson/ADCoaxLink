@@ -797,10 +797,27 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	exit(0); 
 	}
 	
+	try { 
+systemString = grabber.getString<Euresys::RemoteModule>("DeviceFirmwareVersion"); 
+status = setStringParam(ADFirmwareVersion, systemString.c_str()); 
+
+} catch (const std::exception &e) { }  
+try { 
+systemString = grabber.getString<Euresys::RemoteModule>("DeviceSerialNumber"); 
+status = setStringParam(ADSerialNumber, systemString.c_str()); 
+
+} catch (const std::exception &e) { }  
+
+try { 
+systemString = grabber.getString<Euresys::SystemModule>("TLVersion"); 
+status = setStringParam(ADSDKVersion, systemString.c_str()); 
+
+} catch (const std::exception &e) { }  
+	
     grabber.setInteger<Euresys::RemoteModule>("StreamPacketSizeMax",2048); 
     status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, 2048); 
 	
-	status |=setStringParam (ADManufacturer, "Adimec");
+	status |= setStringParam (ADManufacturer, "Adimec");
 	status |= setStringParam (ADModel, "Q-12A180-Fm/CXP-6");
 	status |= setIntegerParam(ADMaxSizeX, 4096);
 	status |= setIntegerParam(ADMaxSizeY, 3072);

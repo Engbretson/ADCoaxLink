@@ -87,24 +87,6 @@ display {
 		1a7309,
 	}
 }
-rectangle {
-	object {
-		x=4
-		y=4
-		width=336
-		height=469
-	}
-	"basic attribute" {
-		clr=30
-		fill="outline"
-		width=10
-	}
-	"dynamic attribute" {
-		clr="discrete"
-		vis="if not zero"
-		chan="$(P)$(R)ErrorCount+D_RBV"
-	}
-}
 "text entry" {
 	object {
 		x=177
@@ -757,7 +739,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="AcqFramePeriodRaw"
+	textix="ExposureTime"
 	align="horiz. right"
 }
 "text entry" {
@@ -768,7 +750,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(R)AcquisitionFramePeriodRaw"
+		chan="$(P)$(R)ExposureTime+R"
 		clr=14
 		bclr=51
 	}
@@ -783,7 +765,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)$(R)AcquisitionFramePeriodRaw_RBV"
+		chan="$(P)$(R)ExposureTime+R_RBV"
 		clr=54
 		bclr=4
 	}

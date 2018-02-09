@@ -2,7 +2,7 @@
 
 #define COAXLINK_Interface_InterfaceIDString "InterfaceID+I" 
 #define COAXLINK_Interface_InterfaceTypeString "InterfaceType" 
-#define COAXLINK_Interface_SerialNumberString "SerialNumber" 
+#define COAXLINK_Interface_SerialNumberString "SerialNumber+I" 
 #define COAXLINK_Interface_PartNumberString "PartNumber" 
 #define COAXLINK_Interface_FirmwareRevisionString "FirmwareRevision" 
 #define COAXLINK_Interface_FirmwareVariantString "FirmwareVariant" 

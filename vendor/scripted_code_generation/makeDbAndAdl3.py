@@ -26,7 +26,8 @@ mask_name = args[2]
 list = ['DeviceVendorName','DeviceModelName','ExposureTime','Gain','PixelFormat','Width','Height','PayloadSize',
 	'ErrorSelector','ErrorCount','ErrorCountReset','EventSelector','EventNotification','EventNotificationContext1',
 	'EventNotificationContext2','EventNotificationContext3','EventCountReset','DeviceID','DeviceAccessStatus',
-	'CxpHostConnectionCount','EventCount','InterfaceID','Temperature','StreamID','LUTIndex','LUTValue','LUTEnable'
+	'CxpHostConnectionCount','EventCount','InterfaceID','Temperature','StreamID','LUTIndex','LUTValue','LUTEnable',
+	'SerialNumber'
 	] 
 
 prefix = os.path.abspath(os.path.join(os.path.dirname(__file__),"."))
@@ -210,7 +211,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1}) 
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " << e.what() << std::endl; }  \n' % {"one":nodeName1)}  
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
@@ -239,7 +240,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -269,7 +270,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamFloat64, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemDouble = grabber.getFloat<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
+	include_4_filename.write('systemDouble = grabber.getFloat<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setDoubleParam(COAXLINK_%(one)s, systemDouble); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -298,7 +299,7 @@ for node in doneNodes:
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamOctet, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
 #	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>(COAXLINK_%(three)sString); \n'  % {"three":nodeName1,"one":mask_name}) 
-	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
+	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setStringParam(COAXLINK_%(one)s, systemString.c_str()); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -318,7 +319,7 @@ for node in doneNodes:
 	    include_4_filename.write('/* \n')
 	    include_5_filename.write('(function == COAXLINK_%(one)s) | \n' % {"one":nodeName1})
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  
@@ -395,7 +396,7 @@ for node in doneNodes:
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
 	include_4_filename.write('try { \n')
-	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName1,"one":mask_name}) 
+	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
 	include_4_filename.write('} catch (const std::exception &e) { }  \n')  

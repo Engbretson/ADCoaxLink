@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=0
-		y=64
-		width=285
-		height=125
+		x=926
+		y=191
+		width=281
+		height=162
 	}
 	clr=14
 	bclr=4
@@ -462,10 +462,38 @@ rectangle {
 		x=0
 		y=0
 		width=280
-		height=120
+		height=160
 	}
 	"basic attribute" {
 		clr=14
 		fill="outline"
+	}
+}
+text {
+	object {
+		x=23
+		y=120
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="ErrorCount"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=133
+		y=120
+		width=125
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)ErrorCount+D_RBV"
+		clr=54
+		bclr=4
+	}
+	limits {
 	}
 }
