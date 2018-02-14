@@ -8,6 +8,9 @@
  * Created:  March 20, 2008
  *
  */
+ 
+#include <vector>
+#include <set>
 #include <iostream>
 
 #include <stddef.h>
@@ -80,7 +83,30 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 
 		// If we are not acquiring then do the background actions
 		if (!acquire)  {
+ 
+//     std::vector<std::string> cameraFeature1(grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BlackLevel")));
+//	 std::set<std::string> isacameraFeature1(cameraFeature1.begin(),cameraFeature1.end() );
 
+
+
+/*		
+ 	    std::vector<std::string> systemFeature1(grabber.getStringList<Euresys::SystemModule>(Euresys::Features()));
+	    std::set<std::string> isaSystemFeature1(systemFeature1.begin(),systemFeature1.end() );
+
+        std::vector<std::string> interfaceFeature1(grabber.getStringList<Euresys::InterfaceModule>(Euresys::Features()));
+	    std::set<std::string> isaInterfaceFeature1(interfaceFeature1.begin(),interfaceFeature1.end() );
+
+        std::vector<std::string> deviceFeature1(grabber.getStringList<Euresys::DeviceModule>(Euresys::Features()));
+	    std::set<std::string> isaDeviceFeature1(deviceFeature1.begin(),deviceFeature1.end() );
+
+        std::vector<std::string> cameraFeature1(grabber.getStringList<Euresys::RemoteModule>(Euresys::Features()));
+	    std::set<std::string> isaRemoteFeature1(cameraFeature1.begin(),cameraFeature1.end() );
+
+        std::vector<std::string> streamFeature1(grabber.getStringList<Euresys::StreamModule>(Euresys::Features()));
+	    std::set<std::string> isaStreamFeature1(streamFeature1.begin(),streamFeature1.end() );
+       
+*/        
+        
 #include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
 		callParamCallbacks();
 #include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
@@ -578,6 +604,19 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 		setIntegerParam(NDArraySizeY, value);
 
 	}
+	if (function == COAXLINK_Remote_ExposureMode) {
+    	if (value == 1) {
+    	grabber.setInteger<Euresys::RemoteModule>("TriggerSource",16);
+    	setIntegerParam(COAXLINK_Remote_TriggerSource,16);
+    	callParamCallbacks();
+    	}
+    	else {
+    	grabber.setInteger<Euresys::RemoteModule>("TriggerSource",65536); 
+    	setIntegerParam(COAXLINK_Remote_TriggerSource,65536); 
+    	callParamCallbacks();	
+    	}
+
+	}
 
 	if (function == COAXLINK_Remote_OffsetX) setIntegerParam(ADMinX, value); // ???
 	if (function == COAXLINK_Remote_OffsetY) setIntegerParam(ADMinY, value); // ???
@@ -595,12 +634,19 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 		}
 		else {
 		  //printf("Correcting pixelformat up\n");
-			grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17825795); 
-			setIntegerParam(COAXLINK_Remote_PixelFormat, 17825795); 
-
-			setIntegerParam(NDDataType, 3);
+////			grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17825795); 
+////			setIntegerParam(COAXLINK_Remote_PixelFormat, 17825795); 
+////
+///			setIntegerParam(NDDataType, 3);
 //			//printf("corrected to 3\n");
+
+		    grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17301505); 
+            setIntegerParam(COAXLINK_Remote_PixelFormat, 17301505); 
+
+			setIntegerParam(NDDataType, 1);
+
 	callParamCallbacks();
+	value=0;
 		}
 	}
 
@@ -866,6 +912,31 @@ status = setStringParam(ADSDKVersion, systemString.c_str());
 			driverName, functionName);
 		return;
 	}
+/*	
+	    std::vector<std::string> systemFeatures(grabber.getStringList<Euresys::SystemModule>(Euresys::Features()));
+        std::vector<std::string> interfaceFeatures(grabber.getStringList<Euresys::InterfaceModule>(Euresys::Features()));
+        std::vector<std::string> deviceFeatures(grabber.getStringList<Euresys::DeviceModule>(Euresys::Features()));
+        std::vector<std::string> cameraFeatures(grabber.getStringList<Euresys::RemoteModule>(Euresys::Features()));
+        std::vector<std::string> streamFeatures(grabber.getStringList<Euresys::StreamModule>(Euresys::Features()));
+        
+        printf("\nSystem Features \n");
+        for (std::vector<std::string>::const_iterator i = systemFeatures.begin(); 
+        i != systemFeatures.end(); ++i) std::cout << *i << std::endl;
+
+        printf("\nInterface Features \n");
+        for (std::vector<std::string>::const_iterator i = interfaceFeatures.begin(); 
+        i != interfaceFeatures.end(); ++i) std::cout << *i << std::endl;
+
+        printf("\nDevice Features \n");
+        for (std::vector<std::string>::const_iterator i = deviceFeatures.begin(); 
+        i != deviceFeatures.end(); ++i) std::cout << *i << std::endl;
+ 
+        printf("\nCamera Features \n");
+        for (std::vector<std::string>::const_iterator i = cameraFeatures.begin(); 
+        i != cameraFeatures.end(); ++i) std::cout << *i << std::endl;
+*/
+
+
 }
 
 

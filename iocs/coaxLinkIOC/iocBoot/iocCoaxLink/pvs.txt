@@ -5943,6 +5943,7 @@
 2BM_ADIMEC:cam1:TLPath_RBV
 2BM_ADIMEC:cam1:InterfaceID+S_RBV
 2BM_ADIMEC:cam1:InterfaceID+I_RBV
+2BM_ADIMEC:cam1:SerialNumber+I_RBV
 2BM_ADIMEC:cam1:PartNumber_RBV
 2BM_ADIMEC:cam1:DeviceID+I_RBV
 2BM_ADIMEC:cam1:DeviceVendorName+I_RBV
