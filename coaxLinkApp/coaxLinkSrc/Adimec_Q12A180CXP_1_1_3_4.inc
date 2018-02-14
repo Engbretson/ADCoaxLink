@@ -1,402 +1,627 @@
 /* ./Adimec_Q12A180CXP_1_1_3 */ 
 
-std::vector<std::string> RemoteFeature(grabber.getStringList<Euresys::RemoteModule>(Euresys::Features())); 
-std::set<std::string> isaRemoteFeature(RemoteFeature.begin(),RemoteFeature.end() ); 
 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Standard")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
 
-if (isaRemoteFeature.count("Standard")) 
+if (isaFeature.count("Standard")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("Standard"); 
 status = setIntegerParam(COAXLINK_Remote_Standard, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Standard \n "); } 
 
-if (isaRemoteFeature.count("Revision")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Revision")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("Revision")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("Revision"); 
 status = setIntegerParam(COAXLINK_Remote_Revision, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Revision \n "); } 
 
-if (isaRemoteFeature.count("XmlManifestSize")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("XmlManifestSize")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("XmlManifestSize")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("XmlManifestSize"); 
 status = setIntegerParam(COAXLINK_Remote_XmlManifestSize, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote XmlManifestSize \n "); } 
 
-if (isaRemoteFeature.count("XmlManifestSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("XmlManifestSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("XmlManifestSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("XmlManifestSelector"); 
 status = setIntegerParam(COAXLINK_Remote_XmlManifestSelector, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote XmlManifestSelector \n "); } 
 
-if (isaRemoteFeature.count("XmlVersion")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("XmlVersion")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("XmlVersion")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("XmlVersion"); 
 status = setIntegerParam(COAXLINK_Remote_XmlVersion, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote XmlVersion \n "); } 
 
-if (isaRemoteFeature.count("XmlSchemeVersion")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("XmlSchemeVersion")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("XmlSchemeVersion")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("XmlSchemeVersion"); 
 status = setIntegerParam(COAXLINK_Remote_XmlSchemeVersion, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote XmlSchemeVersion \n "); } 
 
-if (isaRemoteFeature.count("XmlUrlAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("XmlUrlAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("XmlUrlAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("XmlUrlAddress"); 
 status = setIntegerParam(COAXLINK_Remote_XmlUrlAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote XmlUrlAddress \n "); } 
 
-if (isaRemoteFeature.count("Iidc2Address")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Iidc2Address")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("Iidc2Address")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("Iidc2Address"); 
 status = setIntegerParam(COAXLINK_Remote_Iidc2Address, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Iidc2Address \n "); } 
 
-if (isaRemoteFeature.count("ConnectionReset")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ConnectionReset")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ConnectionReset")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ConnectionReset"); 
 status = setIntegerParam(COAXLINK_Remote_ConnectionReset, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ConnectionReset \n "); } 
 
-if (isaRemoteFeature.count("DeviceConnectionID")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceConnectionID")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceConnectionID")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DeviceConnectionID"); 
 status = setIntegerParam(COAXLINK_Remote_DeviceConnectionID, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceConnectionID \n "); } 
 
-if (isaRemoteFeature.count("MasterHostConnectionID")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("MasterHostConnectionID")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("MasterHostConnectionID")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("MasterHostConnectionID"); 
 status = setIntegerParam(COAXLINK_Remote_MasterHostConnectionID, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote MasterHostConnectionID \n "); } 
 
-if (isaRemoteFeature.count("ControlPacketSizeMax")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ControlPacketSizeMax")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ControlPacketSizeMax")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ControlPacketSizeMax"); 
 status = setIntegerParam(COAXLINK_Remote_ControlPacketSizeMax, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ControlPacketSizeMax \n "); } 
 
-if (isaRemoteFeature.count("StreamPacketSizeMax")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("StreamPacketSizeMax")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("StreamPacketSizeMax")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("StreamPacketSizeMax"); 
 status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote StreamPacketSizeMax \n "); } 
 
-if (isaRemoteFeature.count("ConnectionConfig")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ConnectionConfig")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ConnectionConfig")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ConnectionConfig"); 
 status = setIntegerParam(COAXLINK_Remote_ConnectionConfig, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ConnectionConfig \n "); }  
 
-if (isaRemoteFeature.count("ConnectionConfigDefault")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ConnectionConfigDefault")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ConnectionConfigDefault")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ConnectionConfigDefault"); 
 status = setIntegerParam(COAXLINK_Remote_ConnectionConfigDefault, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ConnectionConfigDefault \n "); }  
 
-if (isaRemoteFeature.count("TestMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TestMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TestMode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TestMode"); 
 status = setIntegerParam(COAXLINK_Remote_TestMode, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TestMode \n "); }  
 
-if (isaRemoteFeature.count("TestErrorCountSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TestErrorCountSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TestErrorCountSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TestErrorCountSelector"); 
 status = setIntegerParam(COAXLINK_Remote_TestErrorCountSelector, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TestErrorCountSelector \n "); } 
 
-if (isaRemoteFeature.count("TestErrorCount")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TestErrorCount")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TestErrorCount")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TestErrorCount"); 
 status = setIntegerParam(COAXLINK_Remote_TestErrorCount, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TestErrorCount \n "); } 
 
-if (isaRemoteFeature.count("TestPacketCountTx")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TestPacketCountTx")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TestPacketCountTx")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TestPacketCountTx"); 
 status = setIntegerParam(COAXLINK_Remote_TestPacketCountTx, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TestPacketCountTx \n "); } 
 
-if (isaRemoteFeature.count("TestPacketCountRx")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TestPacketCountRx")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TestPacketCountRx")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TestPacketCountRx"); 
 status = setIntegerParam(COAXLINK_Remote_TestPacketCountRx, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TestPacketCountRx \n "); } 
 
-if (isaRemoteFeature.count("ElectricalCompliancyTest")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ElectricalCompliancyTest")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ElectricalCompliancyTest")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ElectricalCompliancyTest"); 
 status = setIntegerParam(COAXLINK_Remote_ElectricalCompliancyTest, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ElectricalCompliancyTest \n "); }  
 
-if (isaRemoteFeature.count("WidthAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WidthAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WidthAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WidthAddress"); 
 status = setIntegerParam(COAXLINK_Remote_WidthAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote WidthAddress \n "); } 
 
-if (isaRemoteFeature.count("HeightAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("HeightAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("HeightAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("HeightAddress"); 
 status = setIntegerParam(COAXLINK_Remote_HeightAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote HeightAddress \n "); } 
 
-if (isaRemoteFeature.count("AcquisitionModeAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionModeAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionModeAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionModeAddress"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionModeAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote AcquisitionModeAddress \n "); } 
 
-if (isaRemoteFeature.count("AcquisitionStartAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionStartAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionStartAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionStartAddress"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionStartAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote AcquisitionStartAddress \n "); } 
 
-if (isaRemoteFeature.count("AcquisitionStopAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionStopAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionStopAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionStopAddress"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionStopAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote AcquisitionStopAddress \n "); } 
 
-if (isaRemoteFeature.count("PixelFormatAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("PixelFormatAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("PixelFormatAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("PixelFormatAddress"); 
 status = setIntegerParam(COAXLINK_Remote_PixelFormatAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote PixelFormatAddress \n "); } 
 
-if (isaRemoteFeature.count("DeviceTapGeometryAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceTapGeometryAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceTapGeometryAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DeviceTapGeometryAddress"); 
 status = setIntegerParam(COAXLINK_Remote_DeviceTapGeometryAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceTapGeometryAddress \n "); } 
 
-if (isaRemoteFeature.count("Image1StreamIDAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Image1StreamIDAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("Image1StreamIDAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("Image1StreamIDAddress"); 
 status = setIntegerParam(COAXLINK_Remote_Image1StreamIDAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Image1StreamIDAddress \n "); } 
 
-if (isaRemoteFeature.count("HsUpconnection")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("HsUpconnection")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("HsUpconnection")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("HsUpconnection"); 
 status = setIntegerParam(COAXLINK_Remote_HsUpconnection, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote HsUpconnection \n "); } 
 
-if (isaRemoteFeature.count("DeviceVendorName")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceVendorName")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceVendorName")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("DeviceVendorName"); 
 status = setStringParam(COAXLINK_Remote_DeviceVendorName, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceVendorName \n "); }  
 
-if (isaRemoteFeature.count("DeviceModelName")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceModelName")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceModelName")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("DeviceModelName"); 
 status = setStringParam(COAXLINK_Remote_DeviceModelName, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceModelName \n "); }  
 
-if (isaRemoteFeature.count("DeviceManufacturerInfo")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceManufacturerInfo")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceManufacturerInfo")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("DeviceManufacturerInfo"); 
 status = setStringParam(COAXLINK_Remote_DeviceManufacturerInfo, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceManufacturerInfo \n "); }  
 
-if (isaRemoteFeature.count("DeviceVersion")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceVersion")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceVersion")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("DeviceVersion"); 
 status = setStringParam(COAXLINK_Remote_DeviceVersion, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceVersion \n "); }  
 
-if (isaRemoteFeature.count("DeviceFirmwareVersion")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceFirmwareVersion")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceFirmwareVersion")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("DeviceFirmwareVersion"); 
 status = setStringParam(COAXLINK_Remote_DeviceFirmwareVersion, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceFirmwareVersion \n "); }  
 
-if (isaRemoteFeature.count("DeviceSerialNumber")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceSerialNumber")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceSerialNumber")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("DeviceSerialNumber"); 
 status = setStringParam(COAXLINK_Remote_DeviceSerialNumber, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceSerialNumber \n "); }  
 
-if (isaRemoteFeature.count("DeviceUserID")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceUserID")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceUserID")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("DeviceUserID"); 
 status = setStringParam(COAXLINK_Remote_DeviceUserID, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceUserID \n "); }  
 
-if (isaRemoteFeature.count("DeviceIndicatorMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceIndicatorMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceIndicatorMode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DeviceIndicatorMode"); 
 status = setIntegerParam(COAXLINK_Remote_DeviceIndicatorMode, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceIndicatorMode \n "); }  
 
-if (isaRemoteFeature.count("BuiltInTest")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BuiltInTest")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BuiltInTest")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BuiltInTest"); 
 status = setIntegerParam(COAXLINK_Remote_BuiltInTest, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote BuiltInTest \n "); } 
 
-if (isaRemoteFeature.count("SensorTemperature")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorTemperature")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorTemperature")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorTemperature"); 
 status = setIntegerParam(COAXLINK_Remote_SensorTemperature, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorTemperature \n "); } 
 
-if (isaRemoteFeature.count("Width")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Width")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("Width")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("Width"); 
 status = setIntegerParam(COAXLINK_Remote_Width, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Width \n "); } 
 
-if (isaRemoteFeature.count("Height")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Height")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("Height")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("Height"); 
 status = setIntegerParam(COAXLINK_Remote_Height, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Height \n "); } 
 
-if (isaRemoteFeature.count("SensorWidth")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorWidth")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorWidth")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorWidth"); 
 status = setIntegerParam(COAXLINK_Remote_SensorWidth, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorWidth \n "); } 
 
-if (isaRemoteFeature.count("SensorHeight")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorHeight")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorHeight")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorHeight"); 
 status = setIntegerParam(COAXLINK_Remote_SensorHeight, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorHeight \n "); } 
 
-if (isaRemoteFeature.count("WidthMax")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WidthMax")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WidthMax")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WidthMax"); 
 status = setIntegerParam(COAXLINK_Remote_WidthMax, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote WidthMax \n "); } 
 
-if (isaRemoteFeature.count("HeightMax")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("HeightMax")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("HeightMax")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("HeightMax"); 
 status = setIntegerParam(COAXLINK_Remote_HeightMax, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote HeightMax \n "); } 
 
-if (isaRemoteFeature.count("OffsetX")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("OffsetX")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("OffsetX")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("OffsetX"); 
 status = setIntegerParam(COAXLINK_Remote_OffsetX, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote OffsetX \n "); } 
 
-if (isaRemoteFeature.count("OffsetY")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("OffsetY")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("OffsetY")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("OffsetY"); 
 status = setIntegerParam(COAXLINK_Remote_OffsetY, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote OffsetY \n "); } 
 
-if (isaRemoteFeature.count("ReverseX")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ReverseX")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ReverseX")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ReverseX"); 
 status = setIntegerParam(COAXLINK_Remote_ReverseX, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ReverseX \n "); }  
 
-if (isaRemoteFeature.count("ReverseY")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ReverseY")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ReverseY")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ReverseY"); 
 status = setIntegerParam(COAXLINK_Remote_ReverseY, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ReverseY \n "); }  
 
-if (isaRemoteFeature.count("PixelFormat")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("PixelFormat")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("PixelFormat")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("PixelFormat"); 
 status = setIntegerParam(COAXLINK_Remote_PixelFormat, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote PixelFormat \n "); }  
 
-if (isaRemoteFeature.count("TestImageSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TestImageSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TestImageSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TestImageSelector"); 
 status = setIntegerParam(COAXLINK_Remote_TestImageSelector, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TestImageSelector \n "); }  
 
-if (isaRemoteFeature.count("TestImageVideoLevel")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TestImageVideoLevel")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TestImageVideoLevel")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TestImageVideoLevel"); 
 status = setIntegerParam(COAXLINK_Remote_TestImageVideoLevel, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TestImageVideoLevel \n "); } 
 
-if (isaRemoteFeature.count("DeviceTapGeometry")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DeviceTapGeometry")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DeviceTapGeometry")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DeviceTapGeometry"); 
 status = setIntegerParam(COAXLINK_Remote_DeviceTapGeometry, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DeviceTapGeometry \n "); }  
 
-if (isaRemoteFeature.count("Image1StreamID")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Image1StreamID")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("Image1StreamID")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("Image1StreamID"); 
 status = setIntegerParam(COAXLINK_Remote_Image1StreamID, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Image1StreamID \n "); } 
 
-if (isaRemoteFeature.count("CrosshairOverlay")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("CrosshairOverlay")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("CrosshairOverlay")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("CrosshairOverlay"); 
 status = setIntegerParam(COAXLINK_Remote_CrosshairOverlay, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote CrosshairOverlay \n "); }  
 
-if (isaRemoteFeature.count("AcquisitionMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionMode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionMode"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionMode, systemInteger); 
@@ -406,7 +631,11 @@ status = setIntegerParam(COAXLINK_Remote_AcquisitionMode, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("AcquisitionStart")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionStart")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionStart")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionStart"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionStart, systemInteger); 
@@ -418,7 +647,11 @@ status = setIntegerParam(COAXLINK_Remote_AcquisitionStart, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("AcquisitionStop")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionStop")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionStop")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionStop"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionStop, systemInteger); 
@@ -427,21 +660,33 @@ status = setIntegerParam(COAXLINK_Remote_AcquisitionStop, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("AcquisitionFrameRate")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionFrameRate")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionFrameRate")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("AcquisitionFrameRate"); 
 status = setDoubleParam(COAXLINK_Remote_AcquisitionFrameRate, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote AcquisitionFrameRate \n "); }  
 
-if (isaRemoteFeature.count("AcquisitionFramePeriod")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionFramePeriod")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionFramePeriod")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("AcquisitionFramePeriod"); 
 status = setDoubleParam(COAXLINK_Remote_AcquisitionFramePeriod, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote AcquisitionFramePeriod \n "); }  
 
-if (isaRemoteFeature.count("AcquisitionFramePeriodRaw")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionFramePeriodRaw")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionFramePeriodRaw")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionFramePeriodRaw"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionFramePeriodRaw, systemInteger); 
@@ -451,7 +696,11 @@ status = setIntegerParam(COAXLINK_Remote_AcquisitionFramePeriodRaw, systemIntege
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("AcquisitionMaxFrameRate")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AcquisitionMaxFrameRate")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AcquisitionMaxFrameRate")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AcquisitionMaxFrameRate"); 
 status = setIntegerParam(COAXLINK_Remote_AcquisitionMaxFrameRate, systemInteger); 
@@ -460,189 +709,297 @@ status = setIntegerParam(COAXLINK_Remote_AcquisitionMaxFrameRate, systemInteger)
 */ 
 
 
-if (isaRemoteFeature.count("TriggerSource")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TriggerSource")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TriggerSource")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TriggerSource"); 
 status = setIntegerParam(COAXLINK_Remote_TriggerSource, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TriggerSource \n "); }  
 
-if (isaRemoteFeature.count("TriggerActivation")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("TriggerActivation")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("TriggerActivation")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("TriggerActivation"); 
 status = setIntegerParam(COAXLINK_Remote_TriggerActivation, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote TriggerActivation \n "); }  
 
-if (isaRemoteFeature.count("ExposureMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ExposureMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ExposureMode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ExposureMode"); 
 status = setIntegerParam(COAXLINK_Remote_ExposureMode, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ExposureMode \n "); }  
 
-if (isaRemoteFeature.count("ExposureTime")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ExposureTime")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ExposureTime")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("ExposureTime"); 
 status = setDoubleParam(COAXLINK_Remote_ExposureTime, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ExposureTime \n "); }  
 
-if (isaRemoteFeature.count("ExposureTimeRaw")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ExposureTimeRaw")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ExposureTimeRaw")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ExposureTimeRaw"); 
 status = setIntegerParam(COAXLINK_Remote_ExposureTimeRaw, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ExposureTimeRaw \n "); } 
 
-if (isaRemoteFeature.count("InterfaceUtilization")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("InterfaceUtilization")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("InterfaceUtilization")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("InterfaceUtilization"); 
 status = setIntegerParam(COAXLINK_Remote_InterfaceUtilization, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote InterfaceUtilization \n "); } 
 
-if (isaRemoteFeature.count("FlashStrobeMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FlashStrobeMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FlashStrobeMode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FlashStrobeMode"); 
 status = setIntegerParam(COAXLINK_Remote_FlashStrobeMode, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FlashStrobeMode \n "); }  
 
-if (isaRemoteFeature.count("FlashStrobeDuration")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FlashStrobeDuration")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FlashStrobeDuration")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("FlashStrobeDuration"); 
 status = setDoubleParam(COAXLINK_Remote_FlashStrobeDuration, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FlashStrobeDuration \n "); }  
 
-if (isaRemoteFeature.count("FlashStrobeDurationRaw")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FlashStrobeDurationRaw")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FlashStrobeDurationRaw")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FlashStrobeDurationRaw"); 
 status = setIntegerParam(COAXLINK_Remote_FlashStrobeDurationRaw, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FlashStrobeDurationRaw \n "); } 
 
-if (isaRemoteFeature.count("FlashStrobeDelay")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FlashStrobeDelay")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FlashStrobeDelay")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("FlashStrobeDelay"); 
 status = setDoubleParam(COAXLINK_Remote_FlashStrobeDelay, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FlashStrobeDelay \n "); }  
 
-if (isaRemoteFeature.count("FlashStrobeDelayRaw")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FlashStrobeDelayRaw")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FlashStrobeDelayRaw")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FlashStrobeDelayRaw"); 
 status = setIntegerParam(COAXLINK_Remote_FlashStrobeDelayRaw, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FlashStrobeDelayRaw \n "); } 
 
-if (isaRemoteFeature.count("FlashStrobeActiveState")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FlashStrobeActiveState")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FlashStrobeActiveState")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FlashStrobeActiveState"); 
 status = setIntegerParam(COAXLINK_Remote_FlashStrobeActiveState, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FlashStrobeActiveState \n "); }  
 
-if (isaRemoteFeature.count("HDR_Mode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("HDR_Mode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("HDR_Mode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("HDR_Mode"); 
 status = setIntegerParam(COAXLINK_Remote_HDR_Mode, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote HDR_Mode \n "); }  
 
-if (isaRemoteFeature.count("SecondExposureTimeRaw")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SecondExposureTimeRaw")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SecondExposureTimeRaw")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SecondExposureTimeRaw"); 
 status = setIntegerParam(COAXLINK_Remote_SecondExposureTimeRaw, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SecondExposureTimeRaw \n "); } 
 
-if (isaRemoteFeature.count("SecondExposureTime")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SecondExposureTime")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SecondExposureTime")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("SecondExposureTime"); 
 status = setDoubleParam(COAXLINK_Remote_SecondExposureTime, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SecondExposureTime \n "); }  
 
-if (isaRemoteFeature.count("MultiSlopeNodeSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("MultiSlopeNodeSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("MultiSlopeNodeSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("MultiSlopeNodeSelector"); 
 status = setIntegerParam(COAXLINK_Remote_MultiSlopeNodeSelector, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote MultiSlopeNodeSelector \n "); } 
 
-if (isaRemoteFeature.count("MultiSlopeLevel")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("MultiSlopeLevel")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("MultiSlopeLevel")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("MultiSlopeLevel"); 
 status = setIntegerParam(COAXLINK_Remote_MultiSlopeLevel, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote MultiSlopeLevel \n "); } 
 
-if (isaRemoteFeature.count("MultiSlopeTime")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("MultiSlopeTime")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("MultiSlopeTime")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("MultiSlopeTime"); 
 status = setIntegerParam(COAXLINK_Remote_MultiSlopeTime, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote MultiSlopeTime \n "); } 
 
-if (isaRemoteFeature.count("GainSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("GainSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("GainSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("GainSelector"); 
 status = setIntegerParam(COAXLINK_Remote_GainSelector, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote GainSelector \n "); }  
 
-if (isaRemoteFeature.count("Gain")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("Gain")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("Gain")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("Gain"); 
 status = setDoubleParam(COAXLINK_Remote_Gain, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote Gain \n "); }  
 
-if (isaRemoteFeature.count("GainRaw")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("GainRaw")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("GainRaw")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("GainRaw"); 
 status = setIntegerParam(COAXLINK_Remote_GainRaw, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote GainRaw \n "); } 
 
-if (isaRemoteFeature.count("BlackLevel")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BlackLevel")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BlackLevel")) 
 try { 
 systemDouble = grabber.getFloat<Euresys::RemoteModule>("BlackLevel"); 
 status = setDoubleParam(COAXLINK_Remote_BlackLevel, systemDouble); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote BlackLevel \n "); }  
 
-if (isaRemoteFeature.count("BlackLevelRaw")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BlackLevelRaw")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BlackLevelRaw")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BlackLevelRaw"); 
 status = setIntegerParam(COAXLINK_Remote_BlackLevelRaw, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote BlackLevelRaw \n "); } 
 
-if (isaRemoteFeature.count("WhiteBalanceWidth")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WhiteBalanceWidth")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WhiteBalanceWidth")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WhiteBalanceWidth"); 
 status = setIntegerParam(COAXLINK_Remote_WhiteBalanceWidth, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote WhiteBalanceWidth \n "); } 
 
-if (isaRemoteFeature.count("WhiteBalanceHeight")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WhiteBalanceHeight")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WhiteBalanceHeight")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WhiteBalanceHeight"); 
 status = setIntegerParam(COAXLINK_Remote_WhiteBalanceHeight, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote WhiteBalanceHeight \n "); } 
 
-if (isaRemoteFeature.count("WhiteBalanceOffsetX")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WhiteBalanceOffsetX")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WhiteBalanceOffsetX")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WhiteBalanceOffsetX"); 
 status = setIntegerParam(COAXLINK_Remote_WhiteBalanceOffsetX, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote WhiteBalanceOffsetX \n "); } 
 
-if (isaRemoteFeature.count("WhiteBalanceOffsetY")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WhiteBalanceOffsetY")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WhiteBalanceOffsetY")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WhiteBalanceOffsetY"); 
 status = setIntegerParam(COAXLINK_Remote_WhiteBalanceOffsetY, systemInteger); 
@@ -652,7 +1009,11 @@ status = setIntegerParam(COAXLINK_Remote_WhiteBalanceOffsetY, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("WhiteBalanceCalibrate")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WhiteBalanceCalibrate")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WhiteBalanceCalibrate")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WhiteBalanceCalibrate"); 
 status = setIntegerParam(COAXLINK_Remote_WhiteBalanceCalibrate, systemInteger); 
@@ -661,28 +1022,44 @@ status = setIntegerParam(COAXLINK_Remote_WhiteBalanceCalibrate, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("WhiteBalanceStatus")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("WhiteBalanceStatus")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("WhiteBalanceStatus")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("WhiteBalanceStatus"); 
 status = setIntegerParam(COAXLINK_Remote_WhiteBalanceStatus, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote WhiteBalanceStatus \n "); }  
 
-if (isaRemoteFeature.count("SensorBitDepth")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorBitDepth")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorBitDepth")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorBitDepth"); 
 status = setIntegerParam(COAXLINK_Remote_SensorBitDepth, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorBitDepth \n "); }  
 
-if (isaRemoteFeature.count("ProgrammableGainAmplifier")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ProgrammableGainAmplifier")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ProgrammableGainAmplifier")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ProgrammableGainAmplifier"); 
 status = setIntegerParam(COAXLINK_Remote_ProgrammableGainAmplifier, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ProgrammableGainAmplifier \n "); } 
 
-if (isaRemoteFeature.count("UserMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("UserMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("UserMode")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("UserMode"); 
 status = setStringParam(COAXLINK_Remote_UserMode, systemString.c_str()); 
@@ -692,7 +1069,11 @@ status = setStringParam(COAXLINK_Remote_UserMode, systemString.c_str());
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("UserModeUpdate")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("UserModeUpdate")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("UserModeUpdate")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("UserModeUpdate"); 
 status = setIntegerParam(COAXLINK_Remote_UserModeUpdate, systemInteger); 
@@ -701,14 +1082,22 @@ status = setIntegerParam(COAXLINK_Remote_UserModeUpdate, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("AdvancedParameterSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AdvancedParameterSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AdvancedParameterSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AdvancedParameterSelector"); 
 status = setIntegerParam(COAXLINK_Remote_AdvancedParameterSelector, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote AdvancedParameterSelector \n "); } 
 
-if (isaRemoteFeature.count("AdvancedParameter")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AdvancedParameter")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AdvancedParameter")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AdvancedParameter"); 
 status = setIntegerParam(COAXLINK_Remote_AdvancedParameter, systemInteger); 
@@ -718,7 +1107,11 @@ status = setIntegerParam(COAXLINK_Remote_AdvancedParameter, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("AdvancedParameterSave")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("AdvancedParameterSave")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("AdvancedParameterSave")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("AdvancedParameterSave"); 
 status = setIntegerParam(COAXLINK_Remote_AdvancedParameterSave, systemInteger); 
@@ -727,56 +1120,88 @@ status = setIntegerParam(COAXLINK_Remote_AdvancedParameterSave, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("ConfigurationInfo")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ConfigurationInfo")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ConfigurationInfo")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ConfigurationInfo"); 
 status = setIntegerParam(COAXLINK_Remote_ConfigurationInfo, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ConfigurationInfo \n "); } 
 
-if (isaRemoteFeature.count("ConfigurationFactoryInfo")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("ConfigurationFactoryInfo")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("ConfigurationFactoryInfo")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("ConfigurationFactoryInfo"); 
 status = setIntegerParam(COAXLINK_Remote_ConfigurationFactoryInfo, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote ConfigurationFactoryInfo \n "); } 
 
-if (isaRemoteFeature.count("SensorRegisterReadWriteMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterReadWriteMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterReadWriteMode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterReadWriteMode"); 
 status = setIntegerParam(COAXLINK_Remote_SensorRegisterReadWriteMode, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorRegisterReadWriteMode \n "); }  
 
-if (isaRemoteFeature.count("SensorRegisterNonVolatileReadSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterNonVolatileReadSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterNonVolatileReadSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterNonVolatileReadSelector"); 
 status = setIntegerParam(COAXLINK_Remote_atileReadSelector, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorRegisterNonVolatileReadSelector \n "); } 
 
-if (isaRemoteFeature.count("SensorRegisterNonVolatileListSize")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterNonVolatileListSize")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterNonVolatileListSize")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterNonVolatileListSize"); 
 status = setIntegerParam(COAXLINK_Remote_atileListSize, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorRegisterNonVolatileListSize \n "); } 
 
-if (isaRemoteFeature.count("SensorRegisterAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterAddress"); 
 status = setIntegerParam(COAXLINK_Remote_SensorRegisterAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorRegisterAddress \n "); } 
 
-if (isaRemoteFeature.count("SensorRegisterSize")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterSize")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterSize")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterSize"); 
 status = setIntegerParam(COAXLINK_Remote_SensorRegisterSize, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote SensorRegisterSize \n "); } 
 
-if (isaRemoteFeature.count("SensorRegisterData")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterData")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterData")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterData"); 
 status = setIntegerParam(COAXLINK_Remote_SensorRegisterData, systemInteger); 
@@ -786,7 +1211,11 @@ status = setIntegerParam(COAXLINK_Remote_SensorRegisterData, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("SensorRegisterRead")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterRead")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterRead")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterRead"); 
 status = setIntegerParam(COAXLINK_Remote_SensorRegisterRead, systemInteger); 
@@ -798,7 +1227,11 @@ status = setIntegerParam(COAXLINK_Remote_SensorRegisterRead, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("SensorRegisterWrite")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterWrite")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterWrite")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterWrite"); 
 status = setIntegerParam(COAXLINK_Remote_SensorRegisterWrite, systemInteger); 
@@ -810,7 +1243,11 @@ status = setIntegerParam(COAXLINK_Remote_SensorRegisterWrite, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("SensorRegisterRemove")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("SensorRegisterRemove")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("SensorRegisterRemove")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("SensorRegisterRemove"); 
 status = setIntegerParam(COAXLINK_Remote_SensorRegisterRemove, systemInteger); 
@@ -819,21 +1256,33 @@ status = setIntegerParam(COAXLINK_Remote_SensorRegisterRemove, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("FPGA_RegisterAddress")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FPGA_RegisterAddress")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FPGA_RegisterAddress")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FPGA_RegisterAddress"); 
 status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterAddress, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FPGA_RegisterAddress \n "); } 
 
-if (isaRemoteFeature.count("FPGA_RegisterSize")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FPGA_RegisterSize")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FPGA_RegisterSize")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FPGA_RegisterSize"); 
 status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterSize, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote FPGA_RegisterSize \n "); } 
 
-if (isaRemoteFeature.count("FPGA_RegisterData")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FPGA_RegisterData")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FPGA_RegisterData")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FPGA_RegisterData"); 
 status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterData, systemInteger); 
@@ -843,7 +1292,11 @@ status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterData, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("FPGA_RegisterRead")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FPGA_RegisterRead")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FPGA_RegisterRead")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FPGA_RegisterRead"); 
 status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterRead, systemInteger); 
@@ -855,7 +1308,11 @@ status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterRead, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("FPGA_RegisterWrite")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("FPGA_RegisterWrite")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("FPGA_RegisterWrite")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("FPGA_RegisterWrite"); 
 status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterWrite, systemInteger); 
@@ -864,38 +1321,60 @@ status = setIntegerParam(COAXLINK_Remote_FPGA_RegisterWrite, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("CustomerSpecialID")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("CustomerSpecialID")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("CustomerSpecialID")) 
 try { 
 systemString = grabber.getString<Euresys::RemoteModule>("CustomerSpecialID"); 
 status = setStringParam(COAXLINK_Remote_CustomerSpecialID, systemString.c_str()); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote CustomerSpecialID \n "); }  
 
-if (isaRemoteFeature.count("LUTEnable")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("LUTEnable")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("LUTEnable")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTEnable"); 
 status = setIntegerParam(COAXLINK_Remote_LUTEnable, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote LUTEnable \n "); }  
 
-if (isaRemoteFeature.count("LUTIndex")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("LUTIndex")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("LUTIndex")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTIndex"); 
 status = setIntegerParam(COAXLINK_Remote_LUTIndex, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote LUTIndex \n "); } 
 
-if (isaRemoteFeature.count("LUTValue")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("LUTValue")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("LUTValue")) 
 try { 
+/* 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTValue"); 
 status = setIntegerParam(COAXLINK_Remote_LUTValue, systemInteger); 
 
+*/ 
 } catch (const std::exception &e) { printf("Fix me exception Remote LUTValue \n "); } 
 
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("LUTStart")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("LUTStart")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("LUTStart")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTStart"); 
 status = setIntegerParam(COAXLINK_Remote_LUTStart, systemInteger); 
@@ -907,7 +1386,11 @@ status = setIntegerParam(COAXLINK_Remote_LUTStart, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("LUTEnd")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("LUTEnd")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("LUTEnd")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTEnd"); 
 status = setIntegerParam(COAXLINK_Remote_LUTEnd, systemInteger); 
@@ -916,70 +1399,110 @@ status = setIntegerParam(COAXLINK_Remote_LUTEnd, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("LUTStatus")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("LUTStatus")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("LUTStatus")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("LUTStatus"); 
 status = setIntegerParam(COAXLINK_Remote_LUTStatus, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote LUTStatus \n "); }  
 
-if (isaRemoteFeature.count("PayloadSize")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("PayloadSize")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("PayloadSize")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("PayloadSize"); 
 status = setIntegerParam(COAXLINK_Remote_PayloadSize, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote PayloadSize \n "); } 
 
-if (isaRemoteFeature.count("DefectPixelCorrectionEnable")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelCorrectionEnable")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelCorrectionEnable")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelCorrectionEnable"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelCorrectionEnable, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DefectPixelCorrectionEnable \n "); }  
 
-if (isaRemoteFeature.count("DefectPixelTestMode")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelTestMode")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelTestMode")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelTestMode"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelTestMode, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DefectPixelTestMode \n "); }  
 
-if (isaRemoteFeature.count("DefectPixelTotal")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelTotal")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelTotal")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelTotal"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelTotal, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DefectPixelTotal \n "); } 
 
-if (isaRemoteFeature.count("DefectPixelSelect")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelSelect")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelSelect")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelSelect"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelSelect, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DefectPixelSelect \n "); } 
 
-if (isaRemoteFeature.count("DefectPixelReadX")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelReadX")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelReadX")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelReadX"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelReadX, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DefectPixelReadX \n "); } 
 
-if (isaRemoteFeature.count("DefectPixelReadY")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelReadY")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelReadY")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelReadY"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelReadY, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DefectPixelReadY \n "); } 
 
-if (isaRemoteFeature.count("DefectPixelWriteX")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelWriteX")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelWriteX")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelWriteX"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelWriteX, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DefectPixelWriteX \n "); } 
 
-if (isaRemoteFeature.count("DefectPixelWriteY")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelWriteY")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelWriteY")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelWriteY"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelWriteY, systemInteger); 
@@ -989,7 +1512,11 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelWriteY, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DefectPixelAdd")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelAdd")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelAdd")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelAdd"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelAdd, systemInteger); 
@@ -1001,7 +1528,11 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelAdd, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DefectPixelRemove")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelRemove")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelRemove")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelRemove"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelRemove, systemInteger); 
@@ -1013,7 +1544,11 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelRemove, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DefectPixelClearAll")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelClearAll")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelClearAll")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelClearAll"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelClearAll, systemInteger); 
@@ -1025,7 +1560,11 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelClearAll, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DefectPixelSave")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelSave")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelSave")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelSave"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelSave, systemInteger); 
@@ -1037,7 +1576,11 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelSave, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DefectPixelRestore")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelRestore")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelRestore")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelRestore"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelRestore, systemInteger); 
@@ -1049,7 +1592,11 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelRestore, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DefectPixelRestoreFactory")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelRestoreFactory")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelRestoreFactory")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelRestoreFactory"); 
 status = setIntegerParam(COAXLINK_Remote_DefectPixelRestoreFactory, systemInteger); 
@@ -1061,7 +1608,11 @@ status = setIntegerParam(COAXLINK_Remote_DefectPixelRestoreFactory, systemIntege
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DefectPixelSaveAsFactoryDefault")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DefectPixelSaveAsFactoryDefault")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DefectPixelSaveAsFactoryDefault")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DefectPixelSaveAsFactoryDefault"); 
 status = setIntegerParam(COAXLINK_Remote_toryDefault, systemInteger); 
@@ -1070,14 +1621,22 @@ status = setIntegerParam(COAXLINK_Remote_toryDefault, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("DF_BlackClamp")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DF_BlackClamp")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DF_BlackClamp")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DF_BlackClamp"); 
 status = setIntegerParam(COAXLINK_Remote_DF_BlackClamp, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DF_BlackClamp \n "); }  
 
-if (isaRemoteFeature.count("DF_ColumnOffsetCorrection")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DF_ColumnOffsetCorrection")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DF_ColumnOffsetCorrection")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DF_ColumnOffsetCorrection"); 
 status = setIntegerParam(COAXLINK_Remote_DF_ColumnOffsetCorrection, systemInteger); 
@@ -1087,7 +1646,11 @@ status = setIntegerParam(COAXLINK_Remote_DF_ColumnOffsetCorrection, systemIntege
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DF_Calibrate")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DF_Calibrate")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DF_Calibrate")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DF_Calibrate"); 
 status = setIntegerParam(COAXLINK_Remote_DF_Calibrate, systemInteger); 
@@ -1096,7 +1659,11 @@ status = setIntegerParam(COAXLINK_Remote_DF_Calibrate, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("DF_Status")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DF_Status")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DF_Status")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DF_Status"); 
 status = setIntegerParam(COAXLINK_Remote_DF_Status, systemInteger); 
@@ -1106,7 +1673,11 @@ status = setIntegerParam(COAXLINK_Remote_DF_Status, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DF_RestoreFactory")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DF_RestoreFactory")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DF_RestoreFactory")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DF_RestoreFactory"); 
 status = setIntegerParam(COAXLINK_Remote_DF_RestoreFactory, systemInteger); 
@@ -1118,7 +1689,11 @@ status = setIntegerParam(COAXLINK_Remote_DF_RestoreFactory, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("DF_SaveAsFactoryDefault")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DF_SaveAsFactoryDefault")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DF_SaveAsFactoryDefault")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DF_SaveAsFactoryDefault"); 
 status = setIntegerParam(COAXLINK_Remote_DF_SaveAsFactoryDefault, systemInteger); 
@@ -1127,35 +1702,55 @@ status = setIntegerParam(COAXLINK_Remote_DF_SaveAsFactoryDefault, systemInteger)
 */ 
 
 
-if (isaRemoteFeature.count("DF_IsUserCalibration")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("DF_IsUserCalibration")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("DF_IsUserCalibration")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("DF_IsUserCalibration"); 
 status = setIntegerParam(COAXLINK_Remote_DF_IsUserCalibration, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote DF_IsUserCalibration \n "); }  
 
-if (isaRemoteFeature.count("BF_ColumnGainCorrection")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_ColumnGainCorrection")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_ColumnGainCorrection")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_ColumnGainCorrection"); 
 status = setIntegerParam(COAXLINK_Remote_BF_ColumnGainCorrection, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote BF_ColumnGainCorrection \n "); }  
 
-if (isaRemoteFeature.count("BF_AutoLevelAdjust")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_AutoLevelAdjust")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_AutoLevelAdjust")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_AutoLevelAdjust"); 
 status = setIntegerParam(COAXLINK_Remote_BF_AutoLevelAdjust, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote BF_AutoLevelAdjust \n "); }  
 
-if (isaRemoteFeature.count("BF_CalibrationVideoLevel")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_CalibrationVideoLevel")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_CalibrationVideoLevel")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_CalibrationVideoLevel"); 
 status = setIntegerParam(COAXLINK_Remote_BF_CalibrationVideoLevel, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote BF_CalibrationVideoLevel \n "); } 
 
-if (isaRemoteFeature.count("BF_OutputImagesDuringCalibration")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_OutputImagesDuringCalibration")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_OutputImagesDuringCalibration")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_OutputImagesDuringCalibration"); 
 status = setIntegerParam(COAXLINK_Remote_gCalibration, systemInteger); 
@@ -1165,7 +1760,11 @@ status = setIntegerParam(COAXLINK_Remote_gCalibration, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("BF_Calibrate")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_Calibrate")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_Calibrate")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_Calibrate"); 
 status = setIntegerParam(COAXLINK_Remote_BF_Calibrate, systemInteger); 
@@ -1174,7 +1773,11 @@ status = setIntegerParam(COAXLINK_Remote_BF_Calibrate, systemInteger);
 */ 
 
 
-if (isaRemoteFeature.count("BF_Status")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_Status")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_Status")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_Status"); 
 status = setIntegerParam(COAXLINK_Remote_BF_Status, systemInteger); 
@@ -1184,7 +1787,11 @@ status = setIntegerParam(COAXLINK_Remote_BF_Status, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("BF_RestoreFactory")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_RestoreFactory")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_RestoreFactory")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_RestoreFactory"); 
 status = setIntegerParam(COAXLINK_Remote_BF_RestoreFactory, systemInteger); 
@@ -1196,7 +1803,11 @@ status = setIntegerParam(COAXLINK_Remote_BF_RestoreFactory, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("BF_SaveAsFactoryDefault")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_SaveAsFactoryDefault")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_SaveAsFactoryDefault")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_SaveAsFactoryDefault"); 
 status = setIntegerParam(COAXLINK_Remote_BF_SaveAsFactoryDefault, systemInteger); 
@@ -1205,35 +1816,55 @@ status = setIntegerParam(COAXLINK_Remote_BF_SaveAsFactoryDefault, systemInteger)
 */ 
 
 
-if (isaRemoteFeature.count("BF_IsUserCalibration")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BF_IsUserCalibration")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("BF_IsUserCalibration")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("BF_IsUserCalibration"); 
 status = setIntegerParam(COAXLINK_Remote_BF_IsUserCalibration, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote BF_IsUserCalibration \n "); }  
 
-if (isaRemoteFeature.count("CFG_FACTORY")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("CFG_FACTORY")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("CFG_FACTORY")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("CFG_FACTORY"); 
 status = setIntegerParam(COAXLINK_Remote_CFG_FACTORY, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote CFG_FACTORY \n "); }  
 
-if (isaRemoteFeature.count("CFG_COLOR")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("CFG_COLOR")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("CFG_COLOR")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("CFG_COLOR"); 
 status = setIntegerParam(COAXLINK_Remote_CFG_COLOR, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote CFG_COLOR \n "); }  
 
-if (isaRemoteFeature.count("CFG_MONO")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("CFG_MONO")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("CFG_MONO")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("CFG_MONO"); 
 status = setIntegerParam(COAXLINK_Remote_CFG_MONO, systemInteger); 
 
 } catch (const std::exception &e) { printf("Fix me exception Remote CFG_MONO \n "); }  
 
-if (isaRemoteFeature.count("UserSetSelector")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("UserSetSelector")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("UserSetSelector")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("UserSetSelector"); 
 status = setIntegerParam(COAXLINK_Remote_UserSetSelector, systemInteger); 
@@ -1243,7 +1874,11 @@ status = setIntegerParam(COAXLINK_Remote_UserSetSelector, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("UserSetLoad")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("UserSetLoad")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("UserSetLoad")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("UserSetLoad"); 
 status = setIntegerParam(COAXLINK_Remote_UserSetLoad, systemInteger); 
@@ -1255,7 +1890,11 @@ status = setIntegerParam(COAXLINK_Remote_UserSetLoad, systemInteger);
 // start of an execute (write Only) command 
 /* 
 
-if (isaRemoteFeature.count("UserSetSave")) 
+Feature.clear(); 
+Feature = grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("UserSetSave")); 
+isaFeature.insert(Feature.begin(),Feature.end() ); 
+
+if (isaFeature.count("UserSetSave")) 
 try { 
 systemInteger = grabber.getInteger<Euresys::RemoteModule>("UserSetSave"); 
 status = setIntegerParam(COAXLINK_Remote_UserSetSave, systemInteger); 

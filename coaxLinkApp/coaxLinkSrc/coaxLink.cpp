@@ -87,6 +87,8 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 //     std::vector<std::string> cameraFeature1(grabber.getStringList<Euresys::RemoteModule>(Euresys::RegexFeatures("BlackLevel")));
 //	 std::set<std::string> isacameraFeature1(cameraFeature1.begin(),cameraFeature1.end() );
 
+std::vector<std::string> Feature; 
+std::set<std::string> isaFeature; 
 
 
 /*		
@@ -106,13 +108,16 @@ void coaxLink::coaxlinkHandleReadOnlyParamsTask(void){
 	    std::set<std::string> isaStreamFeature1(streamFeature1.begin(),streamFeature1.end() );
        
 */        
-        
+     
 #include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
 		callParamCallbacks();
+
 #include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
 		callParamCallbacks();
+
 #include "Euresys_Coaxlink_TLDevice_6_2_4_4.inc"
 		callParamCallbacks();
+
 #include "Adimec_Q12A180CXP_1_1_3_4.inc"
 		callParamCallbacks();
 
@@ -820,6 +825,10 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	*/
 
 ////printf("before 4 includes \n");
+
+std::vector<std::string> Feature; 
+std::set<std::string> isaFeature; 
+
 #include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
 	callParamCallbacks();
 #include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
@@ -829,7 +838,6 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 #include "Adimec_Q12A180CXP_1_1_3_4.inc"
 	callParamCallbacks();
 #include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
-
 	callParamCallbacks();
 	
 	
@@ -859,10 +867,26 @@ systemString = grabber.getString<Euresys::SystemModule>("TLVersion");
 status = setStringParam(ADSDKVersion, systemString.c_str()); 
 
 } catch (const std::exception &e) { }  
+
+// forcing some startup values that are NOT the factory defaults
+// to fix firmware software bugs
 	
     grabber.setInteger<Euresys::RemoteModule>("StreamPacketSizeMax",2048); 
     status = setIntegerParam(COAXLINK_Remote_StreamPacketSizeMax, 2048); 
-	
+    
+// io connector
+    grabber.setInteger<Euresys::RemoteModule>("TriggerSource",65536);
+    status |= setIntegerParam(COAXLINK_Remote_TriggerSource,65536);
+
+// 8-bit data    
+	grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17301505); 
+    status |= setIntegerParam(COAXLINK_Remote_PixelFormat, 17301505); 
+
+// 8-bit sensor
+	grabber.setInteger<Euresys::RemoteModule>("SensorBitDepth",0); 
+    status |= setIntegerParam(COAXLINK_Remote_SensorBitDepth, 0); 
+
+
 	status |= setStringParam (ADManufacturer, "Adimec");
 	status |= setStringParam (ADModel, "Q-12A180-Fm/CXP-6");
 	status |= setIntegerParam(ADMaxSizeX, 4096);

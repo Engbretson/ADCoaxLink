@@ -6,14 +6,14 @@ from optparse import OptionParser
 # parse args
 parser = OptionParser("""%prog <genicam_xml> <camera_name>
 
-This script parses a genicam xml file and creates a database template and edm 
-screen to go with it. The edm screen should be used as indication of what
+This script parses a genicam xml file and creates a database template and adl 
+screen to go with it. The adl screen should be used as indication of what
 the driver supports, and the generated summary screen should be edited to make
 a more sensible summary. The Db file will be generated in:
   ../Db/<camera_name>.template
-and the edm files will be called:
-  ../opi/edl/<camera_name>.edl
-  ../opi/edl/<camera_name>-features.edl""")
+and the adl files will be called:
+  ../opi/adl/<camera_name>.adl
+  ../opi/adl/<camera_name>-features.adl""")
 options, args = parser.parse_args()
 if len(args) != 3:
     parser.error("Incorrect number of arguments")
@@ -29,9 +29,10 @@ list = ['DeviceVendorName','DeviceModelName','ExposureTime','Gain','PixelFormat'
 	'CxpHostConnectionCount','EventCount','InterfaceID','Temperature','StreamID','LUTIndex','LUTValue','LUTEnable',
 	'SerialNumber'
 	] 
+	
 unimplemented = ['AddUserAction','CheckOemSafetyKey','ProgramOemSafetyKey',
     'StartSequence','AbortSequence','StatisticsStopSampling',
-    'ScheduleUserActions'
+    'ScheduleUserActions','LUTValue','UserActions'
     ]	
 
 prefix = os.path.abspath(os.path.join(os.path.dirname(__file__),"."))
@@ -154,8 +155,10 @@ include_3_filename.write('/* %s */ \n\n' % camera_name)
 
 include_4_filename = open(include_4_filename, "w")
 include_4_filename.write('/* %s */ \n\n' % camera_name)  
-include_4_filename.write('std::vector<std::string> %(one)sFeature(grabber.getStringList<Euresys::%(one)sModule>(Euresys::Features())); \n' % {"one":mask_name})
-include_4_filename.write('std::set<std::string> isa%(one)sFeature(%(one)sFeature.begin(),%(one)sFeature.end() ); \n\n' % {"one":mask_name})
+#include_4_filename.write('std::vector<std::string> %(one)sFeature(grabber.getStringList<Euresys::%(one)sModule>(Euresys::Features())); \n' % {"one":mask_name})
+#include_4_filename.write('std::set<std::string> isa%(one)sFeature(%(one)sFeature.begin(),%(one)sFeature.end() ); \n\n' % {"one":mask_name})
+#include_4_filename.write('std::vector<std::string> Feature; \n')
+#include_4_filename.write('std::set<std::string> isaFeature; \n\n')
 
 include_5_filename = open(include_5_filename, "w")
 include_5_filename.write('/* %s */ \n\n' % camera_name)  
@@ -218,7 +221,11 @@ for node in doneNodes:
 	include_1_filename.write('int COAXLINK_%s; \n' % nodeName1)   
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1}) 
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
-	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('\nFeature.clear(); \n')
+        include_4_filename.write('Feature = grabber.getStringList<Euresys::%(one)sModule>(Euresys::RegexFeatures("%(two)s")); \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('isaFeature.insert(Feature.begin(),Feature.end() ); \n' % {"one":mask_name})
+	include_4_filename.write('\nif (isaFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+#	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
 	     include_4_filename.write('/* \n')
@@ -254,7 +261,11 @@ for node in doneNodes:
 	include_1_filename.write('int COAXLINK_%s; \n' % nodeName1)   
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
-	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('\nFeature.clear(); \n')
+        include_4_filename.write('Feature = grabber.getStringList<Euresys::%(one)sModule>(Euresys::RegexFeatures("%(two)s")); \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('isaFeature.insert(Feature.begin(),Feature.end() ); \n' % {"one":mask_name})
+	include_4_filename.write('\nif (isaFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+#	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
 	     include_4_filename.write('/* \n')
@@ -290,7 +301,11 @@ for node in doneNodes:
 	include_1_filename.write('int COAXLINK_%s; \n' % nodeName1)     
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamFloat64, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
-	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('\nFeature.clear(); \n')
+        include_4_filename.write('Feature = grabber.getStringList<Euresys::%(one)sModule>(Euresys::RegexFeatures("%(two)s")); \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('isaFeature.insert(Feature.begin(),Feature.end() ); \n' % {"one":mask_name})
+	include_4_filename.write('\nif (isaFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+#	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
 	include_4_filename.write('systemDouble = grabber.getFloat<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setDoubleParam(COAXLINK_%(one)s, systemDouble); \n\n'  % {"one":nodeName1}) 
@@ -319,7 +334,11 @@ for node in doneNodes:
 	include_1_filename.write('int COAXLINK_%s; \n' % nodeName1)  
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamOctet, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
-	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('\nFeature.clear(); \n')
+        include_4_filename.write('Feature = grabber.getStringList<Euresys::%(one)sModule>(Euresys::RegexFeatures("%(two)s")); \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('isaFeature.insert(Feature.begin(),Feature.end() ); \n' % {"one":mask_name})
+	include_4_filename.write('\nif (isaFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+#	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
 	     include_4_filename.write('/* \n')
@@ -347,7 +366,11 @@ for node in doneNodes:
 	    include_4_filename.write('\n// start of an execute (write Only) command \n')
 	    include_4_filename.write('/* \n')
 	    include_5_filename.write('(function == COAXLINK_%(one)s) | \n' % {"one":nodeName1})
-	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('\nFeature.clear(); \n')
+        include_4_filename.write('Feature = grabber.getStringList<Euresys::%(one)sModule>(Euresys::RegexFeatures("%(two)s")); \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('isaFeature.insert(Feature.begin(),Feature.end() ); \n' % {"one":mask_name})
+	include_4_filename.write('\nif (isaFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+#	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
 	     include_4_filename.write('/* \n')
@@ -430,7 +453,11 @@ for node in doneNodes:
  	include_1_filename.write('int COAXLINK_%s; \n' % nodeName1)  
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
-	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('\nFeature.clear(); \n')
+        include_4_filename.write('Feature = grabber.getStringList<Euresys::%(one)sModule>(Euresys::RegexFeatures("%(two)s")); \n' % {"one":mask_name,"two":fullnodeName})
+        include_4_filename.write('isaFeature.insert(Feature.begin(),Feature.end() ); \n' % {"one":mask_name})
+	include_4_filename.write('\nif (isaFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
+#	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
 	     include_4_filename.write('/* \n')

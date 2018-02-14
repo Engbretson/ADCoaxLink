@@ -26,8 +26,11 @@ do
 	/APSshare/caqtdm/caqtdmGIT/caQtDM_Binaries/adl2ui $f 
 done
 
+# This can all be automagic, but at the instant, need to make a small manual tweak to inc inc file
+# with maor changes, the single template files needs to be recreated from all the peices
+
 mv -f *.ui ./op/ui/
 
-cp -f ./inc/*  ../../coaxLinkApp/coaxLinkSrc/
+#cp -f ./inc/*  ../../coaxLinkApp/coaxLinkSrc/
 cp -f ./Db/*  ../../coaxLinkApp/Db/
 cp -f -r ./op/*  ../../coaxLinkApp/op/
