@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="no" ?>
+<!-- Attributes -->
+<Attributes
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../ADCore/XML_schema/NDAttributes.xsd"
+    >
+   <Attribute name="flat"              type="EPICS_PV" source="2bmb:userCalc58.A"  dbrtype="DBR_NATIVE"  description="Flat"/>
+   <Attribute name="dark"              type="EPICS_PV" source="2bmb:userCalc58.B"  dbrtype="DBR_NATIVE"  description="Dark"/>
+</Attributes>
+    
+    

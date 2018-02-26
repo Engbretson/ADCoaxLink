@@ -170,7 +170,10 @@ void coaxLink::simTask()
 	int astatus = asynSuccess;
 	int acquire;
 	int iMode, numImages, numImagesCounter;
-	
+	double acquireTime, acquirePeriod, delay;
+    epicsTimeStamp startTime, endTime;
+    double elapsedTime;
+
 	int cameraformat, camerapixelformat, width, height;
 	
 	const char *functionName = "CoaXLinkTask";
@@ -188,8 +191,6 @@ void coaxLink::simTask()
 			// Release the lock while we wait for an event that says acquire has started, then lock again
 			asynPrint(this->pasynUserSelf, ASYN_TRACE_FLOW,
 				"%s:%s: waiting for acquire to start\n", driverName, functionName);
-			setIntegerParam(ADNumImagesCounter, 0);
-			callParamCallbacks();
 			this->unlock();
 			astatus = epicsEventWait(this->startEventId);
 			this->lock();
@@ -198,6 +199,8 @@ void coaxLink::simTask()
 //		//printf("Starting Acquire \n");
 
 		// start acq
+		setIntegerParam(ADNumImagesCounter, 0);
+		callParamCallbacks();
 		getIntegerParam(ADImageMode, &iMode);
 		getIntegerParam(ADNumImages, &numImages);
 		getIntegerParam(ADNumImagesCounter, &numImagesCounter);
@@ -227,7 +230,10 @@ void coaxLink::simTask()
 			grabber.start((uint32_t)numImages);
 		else
 			// Starts a continuous transfer (live grab)
+			epicsTimeGetCurrent(&startTime);
+
 			grabber.start();
+           epicsTimeGetCurrent(&endTime);
 
 		// Wait using epicsEventWaitWithTimeout, so we can abort.
 
@@ -354,7 +360,10 @@ void coaxLink::simTask()
 					// Set the the start time
 
 					pImage->uniqueId = imageCounter;
-					pImage->timeStamp = ts1;
+//					pImage->timeStamp = ts1;
+					pImage->timeStamp = startTime.secPastEpoch + startTime.nsec / 1.e9;
+
+					updateTimeStamp(&pImage->epicsTS);
                     pImage->dataSize = size1;
 					//printf("Before Copy1 \n");
 					memcpy(pImage->pData, ptr1, size1);
@@ -639,16 +648,16 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 		}
 		else {
 		  //printf("Correcting pixelformat up\n");
-////			grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17825795); 
-////			setIntegerParam(COAXLINK_Remote_PixelFormat, 17825795); 
+			grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17825795); 
+			setIntegerParam(COAXLINK_Remote_PixelFormat, 17825795); 
 ////
-///			setIntegerParam(NDDataType, 3);
+			setIntegerParam(NDDataType, 3);
 //			//printf("corrected to 3\n");
 
-		    grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17301505); 
-            setIntegerParam(COAXLINK_Remote_PixelFormat, 17301505); 
+/////		    grabber.setInteger<Euresys::RemoteModule>("PixelFormat",17301505); 
+/////            setIntegerParam(COAXLINK_Remote_PixelFormat, 17301505); 
 
-			setIntegerParam(NDDataType, 1);
+/////			setIntegerParam(NDDataType, 1);
 
 	callParamCallbacks();
 	value=0;
@@ -659,8 +668,14 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 	callParamCallbacks();
 
 	if ((function == ADAcquire) & (value == 1)) epicsEventSignal(this->startEventId);
-	if ((function == ADAcquire) & (value == 0)) epicsEventSignal(this->stopEventId);
+	if ((function == ADAcquire) & (value == 0)) {
+//	grabber.stop();
+	grabber.execute<Euresys::RemoteModule>("AcquisitionStop"); 
+	epicsEventSignal(this->stopEventId);
+	grabber.execute<Euresys::RemoteModule>("AcquisitionStart"); 
 
+//	grabber.stop();
+    }
 	if (function < FIRST_COAXLINK_PARAM) {
 		status = ADDriver::writeInt32(pasynUser, value);
 	}
