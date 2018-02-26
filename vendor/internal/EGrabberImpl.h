@@ -11,59 +11,59 @@ namespace Internal {
 class EGrabberBase {
     public:
         virtual ~EGrabberBase() {}
-        virtual GenTL &getGenTL() = 0;
+        virtual EGenTL &getGenTL() = 0;
 };
 
 template <typename M> struct ModuleInfo {
 #ifdef EURESYS_USE_EGRABBER_DEPRECATED_API
-    std::string getInfoString(GenTL &gentl, void *handle, int32_t cmd);
+    std::string getInfoString(EGenTL &gentl, void *handle, int32_t cmd);
 #endif
-    template <typename T> T getInfo(GenTL &gentl, void *handle, int32_t cmd);
+    template <typename T> T getInfo(EGenTL &gentl, void *handle, int32_t cmd);
 };
 template <> struct ModuleInfo<SystemModule> {
 #ifdef EURESYS_USE_EGRABBER_DEPRECATED_API
-    std::string getInfoString(GenTL &gentl, void *handle, int32_t cmd) {
+    std::string getInfoString(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.tlGetInfoString(handle, cmd);
     }
 #endif
-    template <typename T> T getInfo(GenTL &gentl, void *handle, int32_t cmd) {
+    template <typename T> T getInfo(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.tlGetInfo<T>(handle, cmd);
     }
 };
 template <> struct ModuleInfo<InterfaceModule> {
 #ifdef EURESYS_USE_EGRABBER_DEPRECATED_API
-    std::string getInfoString(GenTL &gentl, void *handle, int32_t cmd) {
+    std::string getInfoString(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.ifGetInfoString(handle, cmd);
     }
 #endif
-    template <typename T> T getInfo(GenTL &gentl, void *handle, int32_t cmd) {
+    template <typename T> T getInfo(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.ifGetInfo<T>(handle, cmd);
     }
 };
 template <> struct ModuleInfo<DeviceModule> {
 #ifdef EURESYS_USE_EGRABBER_DEPRECATED_API
-    std::string getInfoString(GenTL &gentl, void *handle, int32_t cmd) {
+    std::string getInfoString(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.devGetInfoString(handle, cmd);
     }
 #endif
-    template <typename T> T getInfo(GenTL &gentl, void *handle, int32_t cmd) {
+    template <typename T> T getInfo(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.devGetInfo<T>(handle, cmd);
     }
 };
 template <> struct ModuleInfo<StreamModule> {
 #ifdef EURESYS_USE_EGRABBER_DEPRECATED_API
-    std::string getInfoString(GenTL &gentl, void *handle, int32_t cmd) {
+    std::string getInfoString(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.dsGetInfoString(handle, cmd);
     }
 #endif
-    template <typename T> T getInfo(GenTL &gentl, void *handle, int32_t cmd) {
+    template <typename T> T getInfo(EGenTL &gentl, void *handle, int32_t cmd) {
         return gentl.dsGetInfo<T>(handle, cmd);
     }
 };
 
 template <typename CallbackModel> class EGrabberImpl {
     public:
-        EGrabberImpl(GenTL &gentl, EGrabberCallbacks &callbacks, int interfaceIndex, int deviceIndex, int dataStreamIndex)
+        EGrabberImpl(EGenTL &gentl, EGrabberCallbacks &callbacks, int interfaceIndex, int deviceIndex, int dataStreamIndex, gc::DEVICE_ACCESS_FLAGS deviceOpenFlags)
         : gentl(gentl)
         , eventProcessor(gentl, callbacks)
         , tlh(GENTL_INVALID_HANDLE)
@@ -91,11 +91,18 @@ template <typename CallbackModel> class EGrabberImpl {
                     ifh = gentl.tlOpenInterface(tlh, gentl.tlGetInterfaceID(tlh, interfaceIndex));
                     gentl.ifUpdateDeviceList(ifh);
                     if (0 <= deviceIndex) {
-                        devh = gentl.ifOpenDevice(ifh, gentl.ifGetDeviceID(ifh, deviceIndex));
+                        devh = gentl.ifOpenDevice(ifh, gentl.ifGetDeviceID(ifh, deviceIndex), deviceOpenFlags);
                         camh = gentl.devGetPort(devh);
                         if (0 <= dataStreamIndex) {
                             dsh = gentl.devOpenDataStream(devh, gentl.devGetDataStreamID(devh, dataStreamIndex));
                             setup();
+                            switch (deviceOpenFlags) {
+                                case gc::DEVICE_ACCESS_READONLY:
+                                    break;
+                                default:
+                                    enableEvent<NewBufferData>();
+                                    break;
+                            }
                         }
                     }
                 }
@@ -107,7 +114,7 @@ template <typename CallbackModel> class EGrabberImpl {
             }
         }
 
-        EGrabberImpl(GenTL &gentl, EGrabberCallbacks &callbacks, gc::TL_HANDLE tlh, gc::IF_HANDLE ifh, gc::DEV_HANDLE devh, gc::DS_HANDLE dsh)
+        EGrabberImpl(EGenTL &gentl, EGrabberCallbacks &callbacks, gc::TL_HANDLE tlh, gc::IF_HANDLE ifh, gc::DEV_HANDLE devh, gc::DS_HANDLE dsh)
         : gentl(gentl)
         , eventProcessor(gentl, callbacks)
         , tlh(tlh)
@@ -134,6 +141,15 @@ template <typename CallbackModel> class EGrabberImpl {
                 }
                 if (dsh != GENTL_INVALID_HANDLE) {
                     setup();
+                    int32_t acc = gentl.devGetInfo<int32_t>(devh, gc::DEVICE_INFO_ACCESS_STATUS);
+                    switch (acc) {
+                        case gc::DEVICE_ACCESS_STATUS_READONLY:
+                        case gc::DEVICE_ACCESS_STATUS_OPEN_READONLY:
+                            break;
+                        default:
+                            enableEvent<NewBufferData>();
+                            break;
+                    }
                 }
             }
             catch (...)
@@ -146,14 +162,13 @@ template <typename CallbackModel> class EGrabberImpl {
         virtual ~EGrabberImpl() {
             shutdown();
         }
-        
+
     private:
         void setup() {
             isLineScan = 0 < gentl.genapiGetStringList(dsh, GlobFeatures("BufferHeight")).size();
             reallocBuffers(0, 0);
-            enableEvent<NewBufferData>();
         }
-    
+
         void shutdown() throw() {
             try {
                 eventProcessor.configureMode(true);
@@ -164,8 +179,9 @@ template <typename CallbackModel> class EGrabberImpl {
             } catch (...) {
             }
             try {
-                if (camh != GENTL_INVALID_HANDLE) {
+                if (camh != GENTL_INVALID_HANDLE && cameraStarted) {
                     gentl.genapiExecuteCommand(camh, "AcquisitionStop");
+                    cameraStarted = false;
                     camh = GENTL_INVALID_HANDLE;
                 }
             } catch (...) {
@@ -208,7 +224,7 @@ template <typename CallbackModel> class EGrabberImpl {
             gentl.memento(verbosity, kind, text);
         }
 
-        GenTL &getGenTL() {
+        EGenTL &getGenTL() {
             return gentl;
         }
 
@@ -227,12 +243,14 @@ template <typename CallbackModel> class EGrabberImpl {
             return BufferIndexRange(0, buffers.size());
         }
 
-        BufferIndexRange announceAndQueue(const GenTLMemory &memory) {
+        BufferIndexRange announceAndQueue(const GenTLMemory &memory, size_t bufferCount) {
             AutoLock lock(mutex);
             size_t index = buffers.size();
             size_t bufferSize = (memory.bufferSize == 0) ? getPayloadSize() : memory.bufferSize;
-            buffers.push_back(gentl.dsAllocAndAnnounceBuffer(dsh, bufferSize));
-            gentl.dsQueueBuffer(dsh, buffers.back());
+            for (size_t i = 0; i < bufferCount; ++i) {
+                buffers.push_back(gentl.dsAllocAndAnnounceBuffer(dsh, bufferSize));
+                gentl.dsQueueBuffer(dsh, buffers.back());
+            }
             return BufferIndexRange(index, buffers.size());
         }
         BufferIndexRange announceAndQueue(const UserMemory &memory) {
@@ -311,6 +329,19 @@ template <typename CallbackModel> class EGrabberImpl {
             gentl.dsQueueBuffers(dsh, buffers);
         }
 
+        void resetBufferQueue(const BufferIndexRange &range) {
+            AutoLock lock(mutex);
+            flushBuffers(gc::ACQ_QUEUE_ALL_DISCARD);
+            queue(range);
+        }
+
+        void queue(const BufferIndexRange &range) {
+            AutoLock lock(mutex);
+            for (size_t ix = range.begin; ix < range.end; ++ix) {
+                gentl.dsQueueBuffer(dsh, buffers.at(ix));
+            }
+        }
+
         void revoke(const BufferIndexRange &range) {
             AutoLock lock(mutex);
             for (size_t ix = range.begin; ix < range.end; ++ix) {
@@ -328,9 +359,12 @@ template <typename CallbackModel> class EGrabberImpl {
             std::vector<gc::BUFFER_HANDLE>(buffers).swap(buffers);
         }
 
-        void start(uint64_t frameCount) {
+        void start(uint64_t frameCount, bool controlRemoteDevice) {
             AutoLock lock(mutex);
-            if (!cameraStarted) {
+            if (!controlRemoteDevice && cameraStarted) {
+                throw client_error("invalid argument: camera has been started (controlRemoteDevice should be true)");
+            }
+            if (controlRemoteDevice && !cameraStarted) {
                 gentl.genapiExecuteCommand(camh, "AcquisitionStart");
                 cameraStarted = true;
             }
@@ -346,8 +380,10 @@ template <typename CallbackModel> class EGrabberImpl {
             AutoLock lock(mutex);
             gentl.dsStopAcquisition(dsh, gc::ACQ_STOP_FLAGS_DEFAULT);
             started = false;
-            gentl.genapiExecuteCommand(camh, "AcquisitionStop");
-            cameraStarted = false;
+            if (cameraStarted) {
+                gentl.genapiExecuteCommand(camh, "AcquisitionStop");
+                cameraStarted = false;
+            }
         }
 
         NewBufferData pop(uint64_t timeout);
@@ -394,6 +430,43 @@ template <typename CallbackModel> class EGrabberImpl {
         template<typename T> T getBufferInfo(size_t bufferIndex, gc::BUFFER_INFO_CMD cmd) {
             AutoLock lock(mutex);
             return gentl.dsGetBufferInfo<T>(dsh, buffers.at(bufferIndex), cmd);
+        }
+
+        NewBufferData getBufferData(size_t bufferIndex) {
+            AutoLock lock(mutex);
+            gc::BUFFER_HANDLE bh = buffers.at(bufferIndex);
+            NewBufferData bd = {
+                dsh, bh,
+                gentl.dsGetBufferInfo<void *>(dsh, bh, gc::BUFFER_INFO_USER_PTR),
+                0 // timestamp is not relevant here
+            };
+            return bd;
+        }
+
+        template <typename M> void gcReadPortData(uint64_t address, void *data, size_t size) {
+            gentl.gcReadPortData(getPort((M *)0), address, data, size);
+        }
+        template <typename M> void gcWritePortData(uint64_t address, const void *data, size_t size) {
+            gentl.gcWritePortData(getPort((M *)0), address, data, size);
+        }
+        template <typename M> std::vector<char> gcReadPort(uint64_t address, size_t size) {
+            std::vector<char> data(size);
+            gentl.gcReadPort(getPort((M *)0), address, data);
+            return data;
+        }
+        template <typename M> void gcWritePort(uint64_t address, const std::vector<char> &data) {
+            gentl.gcWritePort(getPort((M *)0), address, data);
+        }
+        template <typename M, typename V> V gcReadPortValue(uint64_t address) {
+            V value;
+            gentl.gcReadPortData(getPort((M *)0), address, &value, sizeof(value));
+            return value;
+        }
+        template <typename M, typename V> void gcWritePortValue(uint64_t address, V value) {
+            gentl.gcWritePortData(getPort((M *)0), address, &value, sizeof(value));
+        }
+        template <typename M> std::string gcReadPortString(int64_t address, size_t size) {
+            return gentl.gcReadPortString(getPort((M *)0), address, size);
         }
 
         template<typename M> int64_t getInteger(const std::string &feature) {
@@ -506,19 +579,19 @@ template <typename CallbackModel> class EGrabberImpl {
         // Event details for EventType<IoToolboxData>
         gc::EVENTSRC_HANDLE getEventSource(EventType<IoToolboxData>)  { return devh; }
         gc::EVENT_HANDLE *getEventHandlePtr(EventType<IoToolboxData>) { return &eh_iotoolbox; }
-        gc::EVENT_TYPE getEventType(EventType<IoToolboxData>)         { return gc::Euresys::EVENT_CUSTOM_IO_TOOLBOX; }
+        gc::EVENT_TYPE getEventType(EventType<IoToolboxData>)         { return ge::EVENT_CUSTOM_IO_TOOLBOX; }
         // Event details for EventType<CicData>
         gc::EVENTSRC_HANDLE getEventSource(EventType<CicData>)  { return devh; }
         gc::EVENT_HANDLE *getEventHandlePtr(EventType<CicData>) { return &eh_cic; }
-        gc::EVENT_TYPE getEventType(EventType<CicData>)         { return gc::Euresys::EVENT_CUSTOM_CIC; }
+        gc::EVENT_TYPE getEventType(EventType<CicData>)         { return ge::EVENT_CUSTOM_CIC; }
         // Event details for EventType<DataStreamData>
         gc::EVENTSRC_HANDLE getEventSource(EventType<DataStreamData>)  { return dsh; }
         gc::EVENT_HANDLE *getEventHandlePtr(EventType<DataStreamData>) { return &eh_datastream; }
-        gc::EVENT_TYPE getEventType(EventType<DataStreamData>)         { return gc::Euresys::EVENT_CUSTOM_DATASTREAM; }
+        gc::EVENT_TYPE getEventType(EventType<DataStreamData>)         { return ge::EVENT_CUSTOM_DATASTREAM; }
         // Event details for EventType<CxpInterfaceData>
         gc::EVENTSRC_HANDLE getEventSource(EventType<CxpInterfaceData>)  { return devh; }
         gc::EVENT_HANDLE *getEventHandlePtr(EventType<CxpInterfaceData>) { return &eh_cxpinterface; }
-        gc::EVENT_TYPE getEventType(EventType<CxpInterfaceData>)         { return gc::Euresys::EVENT_CUSTOM_CXP_INTERFACE; }
+        gc::EVENT_TYPE getEventType(EventType<CxpInterfaceData>)         { return ge::EVENT_CUSTOM_CXP_INTERFACE; }
         // Event details for EventType<Undefined>
         gc::EVENTSRC_HANDLE getEventSource(EventType<Undefined>)  { return GENTL_INVALID_HANDLE; }
         gc::EVENT_HANDLE *getEventHandlePtr(EventType<Undefined>) { return &eh_undefined; }
@@ -577,14 +650,14 @@ template <typename CallbackModel> class EGrabberImpl {
         void doCancelEvent(EventType<OneOf<D1, D2, D3, D4, D5> > tag) {
             doCancelEventFilter(filter<D1, D2, D3, D4, D5>());
         }
-        
+
         size_t doProcessEventFilter(size_t eventFilter, uint64_t timeout) {
             return eventProcessor.popNotifyOneOf(eventFilter, timeout);
         }
         void doCancelEventFilter(size_t eventFilter) {
             eventProcessor.cancelNotifyOneOf(eventFilter);
         }
-        
+
         template <typename DATA> DATA getEvent(uint64_t timeout) {
             return eventProcessor.template getEvent<DATA>(timeout);
         }
@@ -605,16 +678,8 @@ template <typename CallbackModel> class EGrabberImpl {
             return camh;
         }
 
-        size_t evalPixelSize(const std::string &pixelFormat) {
-            return static_cast<size_t>(gentl.imageGetBytesPerPixel(pixelFormat));
-        }
-
-        size_t evalPayloadSize(size_t width, size_t height, const std::string &pixelFormat) {
-            return width * height * evalPixelSize(pixelFormat);
-        }
-
         ConcurrencyLock mutex;
-        GenTL &gentl;
+        EGenTL &gentl;
         EventProcessor<CallbackModel> eventProcessor;
         gc::TL_HANDLE tlh;
         gc::IF_HANDLE ifh;
@@ -638,17 +703,17 @@ template <> inline NewBufferData EGrabberImpl<CallbackOnDemand>::pop(uint64_t ti
     return getEvent<NewBufferData>(timeout);
 }
 
-template <> template <> inline void EGrabberImpl<CallbackOnDemand>::template enableEventAll<0>() {}
-template <> template <> inline void EGrabberImpl<CallbackMultiThread>::template enableEventAll<0>() {}
-template <> template <> inline void EGrabberImpl<CallbackSingleThread>::template enableEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackOnDemand>::enableEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackMultiThread>::enableEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackSingleThread>::enableEventAll<0>() {}
 
-template <> template <> inline void EGrabberImpl<CallbackOnDemand>::template disableEventAll<0>() {}
-template <> template <> inline void EGrabberImpl<CallbackMultiThread>::template disableEventAll<0>() {}
-template <> template <> inline void EGrabberImpl<CallbackSingleThread>::template disableEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackOnDemand>::disableEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackMultiThread>::disableEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackSingleThread>::disableEventAll<0>() {}
 
-template <> template <> inline void EGrabberImpl<CallbackOnDemand>::template flushEventAll<0>() {}
-template <> template <> inline void EGrabberImpl<CallbackMultiThread>::template flushEventAll<0>() {}
-template <> template <> inline void EGrabberImpl<CallbackSingleThread>::template flushEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackOnDemand>::flushEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackMultiThread>::flushEventAll<0>() {}
+template <> template <> inline void EGrabberImpl<CallbackSingleThread>::flushEventAll<0>() {}
 
 } // namespace Internal
 } // namespace EURESYS_NAMESPACE

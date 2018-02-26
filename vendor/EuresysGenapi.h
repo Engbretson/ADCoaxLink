@@ -23,9 +23,8 @@
 
 #ifdef __cplusplus
 extern "C" {
-namespace GenICam {
-    namespace Client {
-        namespace Euresys {
+namespace GenTL {
+namespace EuresysCustomGenTL {
 #endif
 
 /** @defgroup CGenApi GenApi (C API)
@@ -63,8 +62,7 @@ GENAPI_API_P(PGenapiRunScript)(const PORT_HANDLE *hPorts, size_t iNumPorts, cons
 /** @} */
 
 #ifdef __cplusplus
-        }
-    }
+}
 }
 }
 #endif

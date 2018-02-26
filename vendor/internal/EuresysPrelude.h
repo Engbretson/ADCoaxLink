@@ -13,6 +13,7 @@
 
 #define MESSAGE_USING_DEPRECATED_EGRABBER_API "Using deprecated EGrabber API"
 #define MESSAGE_USING_DEPRECATED_BAYER_API "Using deprecated Bayer API"
+#define MESSAGE_USING_DEPRECATED_SHAREDGENTL_API "Using deprecated SharedGenTL API"
 
 #if defined(linux) || defined(__linux) || defined(__linux__)
 
@@ -22,6 +23,9 @@
 #ifdef EURESYS_USE_BAYER_DEPRECATED_API
 #warning MESSAGE_USING_DEPRECATED_BAYER_API
 #endif
+#ifdef EURESYS_USE_SHAREDGENTL_DEPRECATED_API
+#warning MESSAGE_USING_DEPRECATED_SHAREDGENTL_API
+#endif
 
 #else
 
@@ -30,6 +34,9 @@
 #endif
 #ifdef EURESYS_USE_BAYER_DEPRECATED_API
 #pragma message(MESSAGE_USING_DEPRECATED_BAYER_API)
+#endif
+#ifdef EURESYS_USE_SHAREDGENTL_DEPRECATED_API
+#pragma message(MESSAGE_USING_DEPRECATED_SHAREDGENTL_API)
 #endif
 
 #endif

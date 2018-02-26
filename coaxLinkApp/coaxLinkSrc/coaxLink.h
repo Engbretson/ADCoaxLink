@@ -21,11 +21,11 @@ public:
 
 protected:
 
-#include "Euresys_Coaxlink_TLSystem_6_2_4_1.inc"
-#include "Euresys_Coaxlink_TLInterface_6_2_4_1.inc"
-#include "Euresys_Coaxlink_TLDevice_6_2_4_1.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_1_1.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_1_1.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_1_1.inc"
 #include "Adimec_Q12A180CXP_1_1_3_1.inc"
-#include "Euresys_Coaxlink_TLDataStream_6_2_4_1.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_1_1.inc"
 #include "Decode_Errors_1.inc"
 
 
@@ -64,16 +64,18 @@ private:
 	static const uint32_t DEVICE_IX = 0;
 	static const uint32_t STREAM_IX = 0;
 	bool readonlyThreadKeepAlive;	
-	Euresys::GenTL genTL;
+//	Euresys::GenTL genTL;
+	Euresys::EGenTL mygenTL;
+
 	MyGrabber grabber;
 	Euresys::Buffer *currentBuffer;
 };
 
-#include "Euresys_Coaxlink_TLSystem_6_2_4_2.inc"
-#include "Euresys_Coaxlink_TLInterface_6_2_4_2.inc"
-#include "Euresys_Coaxlink_TLDevice_6_2_4_2.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_1_2.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_1_2.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_1_2.inc"
 #include "Adimec_Q12A180CXP_1_1_3_2.inc"
-#include "Euresys_Coaxlink_TLDataStream_6_2_4_2.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_1_2.inc"
 #include "Decode_Errors_2.inc"
 
 #define NUM_COAXLINK_PARAMS ((int)(&LAST_COAXLINK_PARAM - &FIRST_COAXLINK_PARAM + 1))

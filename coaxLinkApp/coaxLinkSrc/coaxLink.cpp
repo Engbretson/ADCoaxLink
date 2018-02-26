@@ -109,13 +109,13 @@ std::set<std::string> isaFeature;
        
 */        
      
-#include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_1_4.inc"
 		callParamCallbacks();
 
-#include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_1_4.inc"
 		callParamCallbacks();
 
-#include "Euresys_Coaxlink_TLDevice_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_1_4.inc"
 		callParamCallbacks();
 
 #include "Adimec_Q12A180CXP_1_1_3_4.inc"
@@ -143,7 +143,7 @@ std::set<std::string> isaFeature;
 
 	callParamCallbacks();
 
-#include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_1_4.inc"
 	        callParamCallbacks();
 
 #include "Decode_Errors_4.inc"
@@ -346,10 +346,17 @@ void coaxLink::simTask()
                 callParamCallbacks();
 				
 					// data and ts
-					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
+//					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
 					//printf("Image Buffer size %d \n", size1);
-					uint64_t ts1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_TIMESTAMP);
-					void *ptr1 = buf1.getInfo<void *>(GenICam::Client::BUFFER_INFO_BASE);
+//					uint64_t ts1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_TIMESTAMP);
+//					void *ptr1 = buf1.getInfo<void *>(GenICam::Client::BUFFER_INFO_BASE);
+
+
+					uint64_t size1 = buf1.getInfo<uint64_t>(GenTL::BUFFER_INFO_SIZE);
+		///			printf("Image Buffer size %d \n", size1);
+					uint64_t ts1 = buf1.getInfo<uint64_t>(GenTL::BUFFER_INFO_TIMESTAMP);
+					void *ptr1 = buf1.getInfo<void *>(GenTL::BUFFER_INFO_BASE);
+// add in the new Euresys image related stuff here.
 
 //printf(" pixel format %d other format %d Camera buffer size %d other size %d \n ", camerapixelformat, cameraformat, size1,size);
 
@@ -482,7 +489,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 // done 6
 	if (
-/* ./Euresys_Coaxlink_TLDevice_6_2_4 */ 
+/* ./Euresys_Coaxlink_TLDevice_9_5_1 */ 
 
         (function == COAXLINK_Device_DeviceReset) | 
         (function == COAXLINK_Device_StartCycle) | 
@@ -529,7 +536,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 // 10
 	if (
-/* ./Euresys_Coaxlink_TLInterface_6_2_4 */ 
+/* ./Euresys_Coaxlink_TLInterface_9_5_1 */ 
 
 (function == COAXLINK_Interface_DeviceUpdateList) | 
 (function == COAXLINK_Interface_CxpPoCxpAuto) | 
@@ -545,7 +552,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 		
 // system 1
 	if (
-/* ./Euresys_Coaxlink_TLSystem_6_2_4 */ 
+/* ./Euresys_Coaxlink_TLSystem_9_5_1 */ 
 
 (function == COAXLINK_System_InterfaceUpdateList) 
 		) CoaxInterface = 16;
@@ -554,7 +561,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 // stream 6
     if (
 
-/* ./Euresys_Coaxlink_TLDataStream_6_2_4 */ 
+/* ./Euresys_Coaxlink_TLDataStream_9_5_1 */ 
 
 (function == COAXLINK_Stream_StartScan) | 
 (function == COAXLINK_Stream_StopScan) | 
@@ -792,7 +799,7 @@ void coaxLink::report(FILE *fp, int details)
   */
 coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_t dataType,
 	int maxBuffers, size_t maxMemory, int priority, int stackSize)
-	: grabber(genTL, CARD_IX, DEVICE_IX, STREAM_IX),
+	: grabber(mygenTL, CARD_IX, DEVICE_IX, STREAM_IX),
 	ADDriver(portName, 1, NUM_COAXLINK_PARAMS, maxBuffers, maxMemory,
 	0, 0, /* No interfaces beyond those set in ADDriver.cpp */
 	0, 1, /* ASYN_CANBLOCK=0, ASYN_MULTIDEVICE=0, autoConnect=1 */
@@ -820,11 +827,11 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	// all the create Param code
 
 ////printf("before 3 includes \n");
-#include "Euresys_Coaxlink_TLSystem_6_2_4_3.inc"
-#include "Euresys_Coaxlink_TLInterface_6_2_4_3.inc"
-#include "Euresys_Coaxlink_TLDevice_6_2_4_3.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_1_3.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_1_3.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_1_3.inc"
 #include "Adimec_Q12A180CXP_1_1_3_3.inc"
-#include "Euresys_Coaxlink_TLDataStream_6_2_4_3.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_1_3.inc"
 
 #include "Decode_Errors_3.inc"
 
@@ -844,15 +851,15 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 std::vector<std::string> Feature; 
 std::set<std::string> isaFeature; 
 
-#include "Euresys_Coaxlink_TLSystem_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_1_4.inc"
 	callParamCallbacks();
-#include "Euresys_Coaxlink_TLInterface_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_1_4.inc"
 	callParamCallbacks();
-#include "Euresys_Coaxlink_TLDevice_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_1_4.inc"
 	callParamCallbacks();
 #include "Adimec_Q12A180CXP_1_1_3_4.inc"
 	callParamCallbacks();
-#include "Euresys_Coaxlink_TLDataStream_6_2_4_4.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_1_4.inc"
 	callParamCallbacks();
 	
 	

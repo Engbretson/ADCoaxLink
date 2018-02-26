@@ -16,10 +16,10 @@ rm Db/*template
 rm op/adl/*.adl
 
 ./makeDbAndAdl3.py ./Adimec_Q12A180CXP_1_1_3.xml ./Adimec_Q12A180CXP_1_1_3 Remote
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDataStream_6_2_4.xml ./Euresys_Coaxlink_TLDataStream_6_2_4 Stream
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDevice_6_2_4.xml ./Euresys_Coaxlink_TLDevice_6_2_4 Device
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLInterface_6_2_4.xml ./Euresys_Coaxlink_TLInterface_6_2_4 Interface
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLSystem_6_2_4.xml ./Euresys_Coaxlink_TLSystem_6_2_4 System
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDataStream_9_5_1.xml ./Euresys_Coaxlink_TLDataStream_9_5_1 Stream
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDevice_9_5_1.xml ./Euresys_Coaxlink_TLDevice_9_5_1 Device
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLInterface_9_5_1.xml ./Euresys_Coaxlink_TLInterface_9_5_1 Interface
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLSystem_9_5_1.xml ./Euresys_Coaxlink_TLSystem_9_5_1 System
 
 for f in ./op/adl/*.adl
 do

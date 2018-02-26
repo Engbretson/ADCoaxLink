@@ -12,16 +12,24 @@ template<typename H> struct RefCounted {
         RefCounted()
         : handle(0)
         , refcount(0)
+        , access(gc::DEVICE_ACCESS_UNKNOWN)
         {
         }
         size_t use_count() const {
             return refcount;
         }
-        void set(const H h) {
+        int32_t access_flags() const {
+            if (!refcount) {
+                return gc::DEVICE_ACCESS_UNKNOWN;
+            }
+            return access;
+        }
+        void set(const H h, int32_t a = gc::DEVICE_ACCESS_UNKNOWN) {
             if (refcount) {
                 throw gentl_error(gc::GC_ERR_RESOURCE_IN_USE, __FUNCTION__);
             }
             handle = h;
+            access = a;
         }
         H use() {
             if (!handle) {
@@ -49,6 +57,7 @@ template<typename H> struct RefCounted {
     private:
         H handle;
         size_t refcount;
+        int32_t access;
 };
 
 } // namespace Internal

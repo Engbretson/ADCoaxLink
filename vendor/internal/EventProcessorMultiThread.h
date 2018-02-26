@@ -15,14 +15,14 @@ class EventThread: public Thread {
         , callbacks(0)
         , eventHandle(GENTL_INVALID_HANDLE)
         {}
-        void start(GenTL *tl, EGrabberCallbacks *cbs, gc::EVENT_HANDLE eh) {
+        void start(EGenTL *tl, EGrabberCallbacks *cbs, gc::EVENT_HANDLE eh) {
             gentl = tl;
             callbacks = cbs;
             eventHandle = eh;
             Thread::start();
         }
     protected:
-        GenTL *gentl;
+        EGenTL *gentl;
         EGrabberCallbacks *callbacks;
         gc::EVENT_HANDLE eventHandle;
 };
@@ -84,7 +84,7 @@ template <typename DATA> class EventThreadFor: public EventThread {
 
 template <> class EventProcessor<CallbackMultiThread> {
     public:
-        EventProcessor(GenTL &gentl, EGrabberCallbacks &callbacks)
+        EventProcessor(EGenTL &gentl, EGrabberCallbacks &callbacks)
         : gentl(gentl)
         , callbacks(callbacks)
         {
@@ -149,7 +149,7 @@ template <> class EventProcessor<CallbackMultiThread> {
         }
 
         ConcurrencyLock mutex;
-        GenTL &gentl;
+        EGenTL &gentl;
         EGrabberCallbacks &callbacks;
         static const int Q_COUNT = EventQueueCount::VALUE;
         EventThread *events[Q_COUNT];

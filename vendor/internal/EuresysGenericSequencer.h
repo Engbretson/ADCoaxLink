@@ -16,7 +16,7 @@ namespace Internal {
 #endif
 class GenericSequencer: public EGrabberCallbacks {
     public:
-        GenericSequencer(GenTL &gentl, EGrabberCallbacks &callbacks)
+        GenericSequencer(EGenTL &gentl, EGrabberCallbacks &callbacks)
         : gentl(gentl)
         , callbacks(callbacks)
         , multi(gentl, *this)
@@ -331,7 +331,7 @@ class GenericSequencer: public EGrabberCallbacks {
         ConcurrencyLock mutexWaiters;
         ConcurrencyLock mutexPop;
         ConcurrencyLock mutexEnable;
-        GenTL &gentl;
+        EGenTL &gentl;
         EGrabberCallbacks &callbacks;
         EventProcessor<CallbackMultiThread> multi;
         ConcurrencyLock qMutex[Q_COUNT];

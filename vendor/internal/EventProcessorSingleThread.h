@@ -14,7 +14,7 @@ namespace Internal {
 
 template <> class EventProcessor<CallbackSingleThread>: public Thread {
     public:
-        EventProcessor(GenTL &gentl, EGrabberCallbacks &callbacks)
+        EventProcessor(EGenTL &gentl, EGrabberCallbacks &callbacks)
         : gentl(gentl)
         , sequencer(gentl, callbacks)
         , doneWithPops(false)
@@ -90,7 +90,7 @@ template <> class EventProcessor<CallbackSingleThread>: public Thread {
             }
         }
 
-        GenTL &gentl;
+        EGenTL &gentl;
 #ifdef EURESYS_GENERIC_SEQUENCER
         GenericSequencer sequencer;
 #else
