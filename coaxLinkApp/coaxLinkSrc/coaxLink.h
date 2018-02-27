@@ -1,7 +1,8 @@
 #include <epicsEvent.h>
 #include "ADDriver.h"
 #include <EGrabber.h>
-#include <RGBConverter.h>
+//#include <RGBConverter.h>
+#include <FormatConverter.h>
 
 //using namespace Euresys;
 typedef Euresys::EGrabberCallbackOnDemand MyGrabber;

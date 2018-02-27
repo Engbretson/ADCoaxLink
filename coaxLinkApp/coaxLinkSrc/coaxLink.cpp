@@ -176,6 +176,9 @@ void coaxLink::simTask()
 
 	int cameraformat, camerapixelformat, width, height;
 	
+    Euresys::FormatConverter converter(mygenTL); // create format converter environment
+
+
 	const char *functionName = "CoaXLinkTask";
 	dims[0] = 0;
 	dims[1] = 0;
@@ -255,7 +258,8 @@ void coaxLink::simTask()
 				this->unlock();
 				
 ////				Euresys::ScopedBuffer buf1(grabber, 5000); // 5 second timeout to recover from a jammed camera
-				Euresys::ScopedBuffer buf1(grabber);
+//				Euresys::ScopedBuffer buf1(grabber);
+                Euresys::ScopedBuffer buf1(grabber);  // wait and get a buffer
 
 				this->lock();
 				setIntegerParam(ADStatus, ADStatusReadout);
@@ -345,18 +349,22 @@ void coaxLink::simTask()
                 
                 callParamCallbacks();
 				
-					// data and ts
-//					uint64_t size1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_SIZE);
-					//printf("Image Buffer size %d \n", size1);
-//					uint64_t ts1 = buf1.getInfo<uint64_t>(GenICam::Client::BUFFER_INFO_TIMESTAMP);
-//					void *ptr1 = buf1.getInfo<void *>(GenICam::Client::BUFFER_INFO_BASE);
+                uint8_t *imagePointer = buf1.getInfo<uint8_t *>(GenTL::BUFFER_INFO_BASE);
+                uint64_t pixelFormat = buf1.getInfo<uint64_t>(GenTL::BUFFER_INFO_PIXELFORMAT);
+                size_t width = buf1.getInfo<size_t>(GenTL::BUFFER_INFO_WIDTH);
+                size_t height = buf1.getInfo<size_t>(GenTL::BUFFER_INFO_DELIVERED_IMAGEHEIGHT);
 
+				uint64_t size1 = buf1.getInfo<uint64_t>(GenTL::BUFFER_INFO_SIZE);
+				uint64_t ts1 = buf1.getInfo<uint64_t>(GenTL::BUFFER_INFO_TIMESTAMP);
+				void *ptr1 = buf1.getInfo<void *>(GenTL::BUFFER_INFO_BASE);
+////				uint64_t ts2 = Tools::getTimestamp();
 
-					uint64_t size1 = buf1.getInfo<uint64_t>(GenTL::BUFFER_INFO_SIZE);
-		///			printf("Image Buffer size %d \n", size1);
-					uint64_t ts1 = buf1.getInfo<uint64_t>(GenTL::BUFFER_INFO_TIMESTAMP);
-					void *ptr1 = buf1.getInfo<void *>(GenTL::BUFFER_INFO_BASE);
 // add in the new Euresys image related stuff here.
+                if (pixelFormat == 10) {
+
+        Euresys::FormatConverter::Auto myuint16buffer(converter, Euresys::FormatConverter::OutputFormat("UINT16"), imagePointer, pixelFormat, width, height);
+                }
+                
 
 //printf(" pixel format %d other format %d Camera buffer size %d other size %d \n ", camerapixelformat, cameraformat, size1,size);
 
@@ -373,6 +381,7 @@ void coaxLink::simTask()
 					updateTimeStamp(&pImage->epicsTS);
                     pImage->dataSize = size1;
 					//printf("Before Copy1 \n");
+// if 8-bit do one thing; if converted 16-bit, do something else					
 					memcpy(pImage->pData, ptr1, size1);
 					
                     setIntegerParam(NDArraySize,  (int)size1);
