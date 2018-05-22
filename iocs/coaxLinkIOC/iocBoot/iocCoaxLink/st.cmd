@@ -3,7 +3,7 @@
 epicsEnvSet("IOC","ioc2BM_Adimec")
 epicsEnvSet("ENGINEER","Engbretson")
 epicsEnvSet("LOCATION","2BM")
-epicsEnvSet("ADCOAXLINK","/local/epics/synApps_5_8/support/areaDetector-R3-1/ADCoaxLink")
+epicsEnvSet("ADCOAXLINK","/local/epics/areaDetector-3-2/ADCoaxLink")
 
 errlogInit(20000)
 

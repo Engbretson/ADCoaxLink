@@ -109,16 +109,16 @@ std::set<std::string> isaFeature;
        
 */        
      
-#include "Euresys_Coaxlink_TLSystem_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_2_4.inc"
 		callParamCallbacks();
 
-#include "Euresys_Coaxlink_TLInterface_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_2_4.inc"
 		callParamCallbacks();
 
-#include "Euresys_Coaxlink_TLDevice_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_2_4.inc"
 		callParamCallbacks();
 
-#include "Adimec_Q12A180CXP_1_1_3_4.inc"
+#include "Adimec_Q12A180CXP_1_1_5_4.inc"
 		callParamCallbacks();
 
 // certain actual values from the Adimec need to update its Area Detector equivalents 
@@ -143,7 +143,7 @@ std::set<std::string> isaFeature;
 
 	callParamCallbacks();
 
-#include "Euresys_Coaxlink_TLDataStream_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_2_4.inc"
 	        callParamCallbacks();
 
 #include "Decode_Errors_4.inc"
@@ -498,7 +498,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 // done 6
 	if (
-/* ./Euresys_Coaxlink_TLDevice_9_5_1 */ 
+/* ./Euresys_Coaxlink_TLDevice_9_5_2 */ 
 
         (function == COAXLINK_Device_DeviceReset) | 
         (function == COAXLINK_Device_StartCycle) | 
@@ -511,7 +511,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 
 	if (
-/* ./Adimec_Q12A180CXP_1_1_3 */ 
+/* ./Adimec_Q12A180CXP_1_1_5 */ 
 
 (function == COAXLINK_Remote_AcquisitionStart) | 
 (function == COAXLINK_Remote_AcquisitionStop) | 
@@ -545,7 +545,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 // 10
 	if (
-/* ./Euresys_Coaxlink_TLInterface_9_5_1 */ 
+/* ./Euresys_Coaxlink_TLInterface_9_5_2 */ 
 
 (function == COAXLINK_Interface_DeviceUpdateList) | 
 (function == COAXLINK_Interface_CxpPoCxpAuto) | 
@@ -561,7 +561,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 		
 // system 1
 	if (
-/* ./Euresys_Coaxlink_TLSystem_9_5_1 */ 
+/* ./Euresys_Coaxlink_TLSystem_9_5_2 */ 
 
 (function == COAXLINK_System_InterfaceUpdateList) 
 		) CoaxInterface = 16;
@@ -570,7 +570,7 @@ asynStatus coaxLink::writeInt32(asynUser *pasynUser, epicsInt32 value)
 // stream 6
     if (
 
-/* ./Euresys_Coaxlink_TLDataStream_9_5_1 */ 
+/* ./Euresys_Coaxlink_TLDataStream_9_5_2 */ 
 
 (function == COAXLINK_Stream_StartScan) | 
 (function == COAXLINK_Stream_StopScan) | 
@@ -836,11 +836,11 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 	// all the create Param code
 
 ////printf("before 3 includes \n");
-#include "Euresys_Coaxlink_TLSystem_9_5_1_3.inc"
-#include "Euresys_Coaxlink_TLInterface_9_5_1_3.inc"
-#include "Euresys_Coaxlink_TLDevice_9_5_1_3.inc"
-#include "Adimec_Q12A180CXP_1_1_3_3.inc"
-#include "Euresys_Coaxlink_TLDataStream_9_5_1_3.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_2_3.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_2_3.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_2_3.inc"
+#include "Adimec_Q12A180CXP_1_1_5_3.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_2_3.inc"
 
 #include "Decode_Errors_3.inc"
 
@@ -860,15 +860,15 @@ coaxLink::coaxLink(const char *portName, int maxSizeX, int maxSizeY, NDDataType_
 std::vector<std::string> Feature; 
 std::set<std::string> isaFeature; 
 
-#include "Euresys_Coaxlink_TLSystem_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_2_4.inc"
 	callParamCallbacks();
-#include "Euresys_Coaxlink_TLInterface_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_2_4.inc"
 	callParamCallbacks();
-#include "Euresys_Coaxlink_TLDevice_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_2_4.inc"
 	callParamCallbacks();
-#include "Adimec_Q12A180CXP_1_1_3_4.inc"
+#include "Adimec_Q12A180CXP_1_1_5_4.inc"
 	callParamCallbacks();
-#include "Euresys_Coaxlink_TLDataStream_9_5_1_4.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_2_4.inc"
 	callParamCallbacks();
 	
 	

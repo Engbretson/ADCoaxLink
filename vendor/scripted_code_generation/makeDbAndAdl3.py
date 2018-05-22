@@ -27,13 +27,17 @@ list = ['DeviceVendorName','DeviceModelName','ExposureTime','Gain','PixelFormat'
 	'ErrorSelector','ErrorCount','ErrorCountReset','EventSelector','EventNotification','EventNotificationContext1',
 	'EventNotificationContext2','EventNotificationContext3','EventCountReset','DeviceID','DeviceAccessStatus',
 	'CxpHostConnectionCount','EventCount','InterfaceID','Temperature','StreamID','LUTIndex','LUTValue','LUTEnable',
-	'SerialNumber'
+	'SerialNumber','EventNotificationAll','EventCountResetAll'
 	] 
 	
-unimplemented = ['AddUserAction','CheckOemSafetyKey','ProgramOemSafetyKey',
+unimplemented = [
+    'AddUserAction','CheckOemSafetyKey','ProgramOemSafetyKey',
     'StartSequence','AbortSequence','StatisticsStopSampling',
-    'ScheduleUserActions','LUTValue','UserActions'
-    ]	
+    'ScheduleUserActions','LUTValue','UserActions','FlipBit', 'LUTIndex', 'LUTEnable',
+    'SecondExposureTimeRaw','SecondExposureTime'
+    ]
+	
+#unimplemented =[]
 
 prefix = os.path.abspath(os.path.join(os.path.dirname(__file__),"."))
 db_filename = os.path.join(prefix, "Db", camera_name + ".template")
@@ -194,7 +198,10 @@ for node in doneNodes:
     
         if str(n.nodeName) == "CommandValue" and getText(n) == "1":
             execute = True
-  
+ 
+ #       if str(n.nodeName) == "CommandValue" and getText(n) == "0":
+ #           execute = True
+ 
         if str(n.nodeName) == "ImposedAccessMode" and getText(n) == "WO":
             execute = True
 
@@ -208,7 +215,6 @@ for node in doneNodes:
 #	   nodeName1 = nodeName1 + '+' + mask_name[0] # this may not work
 	   specialcase = True
 	    
-
     if node.nodeName in ["Integer", "IntConverter", "IntSwissKnife", "IntReg"]:
 #        print 'record(longin, "$(P)$(R)%s_RBV") {' % records[nodeName]
         print 'record(longin, "$(P)$(R)%s_RBV") {' % nodeName
@@ -228,7 +234,7 @@ for node in doneNodes:
 #	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
-	     include_4_filename.write('/* \n')
+	     include_4_filename.write('/* unimplemented int type\n')
 
 	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
@@ -261,6 +267,10 @@ for node in doneNodes:
 	include_1_filename.write('int COAXLINK_%s; \n' % nodeName1)   
 	include_2_filename.write('#define COAXLINK_%(one)sString "%(two)s" \n'  % {"one":nodeName1, "two":fullnodeName1})   
 	include_3_filename.write('createParam(COAXLINK_%(one)sString, asynParamInt32, &COAXLINK_%(two)s);\n\n'  % {"one":nodeName1, "two":nodeName1}) 
+        if execute:
+	    include_4_filename.write('\n// start of an execute (write Only) command \n')
+	    include_4_filename.write('/* \n')
+	    include_5_filename.write('(function == COAXLINK_%(one)s) | \n' % {"one":nodeName1})
         include_4_filename.write('\nFeature.clear(); \n')
         include_4_filename.write('Feature = grabber.getStringList<Euresys::%(one)sModule>(Euresys::RegexFeatures("%(two)s")); \n' % {"one":mask_name,"two":fullnodeName})
         include_4_filename.write('isaFeature.insert(Feature.begin(),Feature.end() ); \n' % {"one":mask_name})
@@ -268,7 +278,7 @@ for node in doneNodes:
 #	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
-	     include_4_filename.write('/* \n')
+	     include_4_filename.write('/* unimplemented Boolean type\n')
 #	     include_4_filename.write('////////////////////////// \n')
 #            include_4_filename.write('/* \n')
         include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
@@ -287,7 +297,10 @@ for node in doneNodes:
         print '  field(ONAM, "Yes")'                                
         print '  field(DISA, "0")'
         print '}'
-        print           
+        print  
+        if execute:
+	    include_4_filename.write('*/ \n\n')
+         
     elif node.nodeName in ["Float", "Converter", "SwissKnife","FloatReg"]:
 #        print 'record(ai, "$(P)$(R)%s_RBV") {' % records[nodeName]
         print 'record(ai, "$(P)$(R)%s_RBV") {' % nodeName
@@ -307,9 +320,13 @@ for node in doneNodes:
 	include_4_filename.write('\nif (isaFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 #	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
+        if fullnodeName in unimplemented:
+	     include_4_filename.write('/* unimplemented float type\n')
 	include_4_filename.write('systemDouble = grabber.getFloat<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setDoubleParam(COAXLINK_%(one)s, systemDouble); \n\n'  % {"one":nodeName1}) 
 #	include_4_filename.write('} catch (const std::exception &e) { std::cout << "error: %(one)s (" << COAXLINK_%(one)s << ") " <<e.what() << std::endl; }  \n' % {"one":nodeName1})  
+        if fullnodeName in unimplemented:
+	     include_4_filename.write('*/ \n')
 	include_4_filename.write('} catch (const std::exception &e) { printf("Fix me exception %(one)s %(two)s \\n "); }  \n' % {"one":mask_name, "two":fullnodeName})  
 
         if ro:
@@ -341,7 +358,7 @@ for node in doneNodes:
 #	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
-	     include_4_filename.write('/* \n')
+	     include_4_filename.write('/* unimplemented String type\n')
 
 #	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>(COAXLINK_%(three)sString); \n'  % {"three":nodeName1,"one":mask_name}) 
 	include_4_filename.write('systemString = grabber.getString<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
@@ -373,7 +390,7 @@ for node in doneNodes:
 #	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
-	     include_4_filename.write('/* \n')
+	     include_4_filename.write('/* unimplemented command type \n')
 #	     include_4_filename.write('////////////////////////// \n')
 	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 
@@ -460,7 +477,7 @@ for node in doneNodes:
 #	include_4_filename.write('\nif (isa%(one)sFeature.count("%(two)s")) \n' % {"one":mask_name,"two":fullnodeName})
 	include_4_filename.write('try { \n')
         if fullnodeName in unimplemented:
-	     include_4_filename.write('/* \n')
+	     include_4_filename.write('/* unimplemented enum type \n')
 #	     include_4_filename.write('////////////////////////// \n')
 	include_4_filename.write('systemInteger = grabber.getInteger<Euresys::%(one)sModule>("%(three)s"); \n'  % {"three":fullnodeName,"one":mask_name}) 
 	include_4_filename.write('status = setIntegerParam(COAXLINK_%(one)s, systemInteger); \n\n'  % {"one":nodeName1}) 

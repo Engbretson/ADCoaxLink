@@ -15,11 +15,11 @@ rm inc/*.inc
 rm Db/*template
 rm op/adl/*.adl
 
-./makeDbAndAdl3.py ./Adimec_Q12A180CXP_1_1_3.xml ./Adimec_Q12A180CXP_1_1_3 Remote
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDataStream_9_5_1.xml ./Euresys_Coaxlink_TLDataStream_9_5_1 Stream
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDevice_9_5_1.xml ./Euresys_Coaxlink_TLDevice_9_5_1 Device
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLInterface_9_5_1.xml ./Euresys_Coaxlink_TLInterface_9_5_1 Interface
-./makeDbAndAdl3.py ./Euresys_Coaxlink_TLSystem_9_5_1.xml ./Euresys_Coaxlink_TLSystem_9_5_1 System
+./makeDbAndAdl3.py ./Adimec_Q12A180CXP_1_1_5.xml ./Adimec_Q12A180CXP_1_1_5 Remote
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDataStream_9_5_2.xml ./Euresys_Coaxlink_TLDataStream_9_5_2 Stream
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLDevice_9_5_2.xml ./Euresys_Coaxlink_TLDevice_9_5_2 Device
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLInterface_9_5_2.xml ./Euresys_Coaxlink_TLInterface_9_5_2 Interface
+./makeDbAndAdl3.py ./Euresys_Coaxlink_TLSystem_9_5_2.xml ./Euresys_Coaxlink_TLSystem_9_5_2 System
 
 for f in ./op/adl/*.adl
 do
@@ -31,6 +31,6 @@ done
 
 mv -f *.ui ./op/ui/
 
-#cp -f ./inc/*  ../../coaxLinkApp/coaxLinkSrc/
+cp -f ./inc/*  ../../coaxLinkApp/coaxLinkSrc/
 cp -f ./Db/*  ../../coaxLinkApp/Db/
 cp -f -r ./op/*  ../../coaxLinkApp/op/

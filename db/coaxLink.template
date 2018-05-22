@@ -6,7 +6,7 @@ include "ADBase.template"
 #% macro, PORT, Asyn Port name
 #% macro, TIMEOUT, Timeout
 #% macro, ADDR, Asyn Port address
-#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLSystem_9_5_1.edl, P=$(P),R=$(R)
+#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLSystem_9_5_2.edl, P=$(P),R=$(R)
 
 record(stringin, "$(P)$(R)TLVendorName_RBV") {
   field(DTYP, "asynOctetRead")
@@ -106,7 +106,7 @@ record(stringin, "$(P)$(R)InterfaceID+S_RBV") {
 #% macro, PORT, Asyn Port name
 #% macro, TIMEOUT, Timeout
 #% macro, ADDR, Asyn Port address
-#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLInterface_9_5_1.edl, P=$(P),R=$(R)
+#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLInterface_9_5_2.edl, P=$(P),R=$(R)
 
 record(stringin, "$(P)$(R)InterfaceID+I_RBV") {
   field(DTYP, "asynOctetRead")
@@ -4229,26 +4229,26 @@ record(longout, "$(P)$(R)EventCountReset+I") {
   field(DISA, "0")
 }
 
-record(bi, "$(P)$(R)EventNotificationAll_RBV") {
+record(bi, "$(P)$(R)EventNotificationAll+I_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll+I")
   field(SCAN, "I/O Intr")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(bo, "$(P)$(R)EventNotificationAll") {
+record(bo, "$(P)$(R)EventNotificationAll+I") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll+I")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)EventCountResetAll") {
+record(longout, "$(P)$(R)EventCountResetAll+I") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventCountResetAll")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventCountResetAll+I")
   field(DISA, "0")
 }
 
@@ -4343,7 +4343,7 @@ record(longout, "$(P)$(R)CustomLogicReg1") {
 #% macro, PORT, Asyn Port name
 #% macro, TIMEOUT, Timeout
 #% macro, ADDR, Asyn Port address
-#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLDevice_9_5_1.edl, P=$(P),R=$(R)
+#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLDevice_9_5_2.edl, P=$(P),R=$(R)
 
 record(stringin, "$(P)$(R)DeviceID+D_RBV") {
   field(DTYP, "asynOctetRead")
@@ -6373,26 +6373,26 @@ record(longout, "$(P)$(R)EventCountReset+D") {
   field(DISA, "0")
 }
 
-record(bi, "$(P)$(R)EventNotificationAll_RBV") {
+record(bi, "$(P)$(R)EventNotificationAll+D_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll+D")
   field(SCAN, "I/O Intr")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(bo, "$(P)$(R)EventNotificationAll") {
+record(bo, "$(P)$(R)EventNotificationAll+D") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll+D")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)EventCountResetAll") {
+record(longout, "$(P)$(R)EventCountResetAll+D") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventCountResetAll")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventCountResetAll+D")
   field(DISA, "0")
 }
 
@@ -6515,7 +6515,7 @@ record(longout, "$(P)$(R)ErrorCountReset+D") {
 #% macro, PORT, Asyn Port name
 #% macro, TIMEOUT, Timeout
 #% macro, ADDR, Asyn Port address
-#% gui, $(PORT), edmtab, ./Adimec_Q12A180CXP_1_1_3.edl, P=$(P),R=$(R)
+#% gui, $(PORT), edmtab, ./Adimec_Q12A180CXP_1_1_5.edl, P=$(P),R=$(R)
 
 record(longin, "$(P)$(R)Standard_RBV") {
   field(DTYP, "asynInt32")
@@ -8797,7 +8797,7 @@ record(longout, "$(P)$(R)UserSetSave") {
 #% macro, PORT, Asyn Port name
 #% macro, TIMEOUT, Timeout
 #% macro, ADDR, Asyn Port address
-#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLDataStream_9_5_1.edl, P=$(P),R=$(R)
+#% gui, $(PORT), edmtab, ./Euresys_Coaxlink_TLDataStream_9_5_2.edl, P=$(P),R=$(R)
 
 record(stringin, "$(P)$(R)StreamID+S_RBV") {
   field(DTYP, "asynOctetRead")
@@ -12066,26 +12066,26 @@ record(longout, "$(P)$(R)EventCountReset+S") {
   field(DISA, "0")
 }
 
-record(bi, "$(P)$(R)EventNotificationAll_RBV") {
+record(bi, "$(P)$(R)EventNotificationAll+S_RBV") {
   field(DTYP, "asynInt32")
-  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll")
+  field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll+S")
   field(SCAN, "I/O Intr")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(bo, "$(P)$(R)EventNotificationAll") {
+record(bo, "$(P)$(R)EventNotificationAll+S") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventNotificationAll+S")
   field(ZNAM, "No")
   field(ONAM, "Yes")
   field(DISA, "0")
 }
 
-record(longout, "$(P)$(R)EventCountResetAll") {
+record(longout, "$(P)$(R)EventCountResetAll+S") {
   field(DTYP, "asynInt32")
-  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventCountResetAll")
+  field(OUT,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))EventCountResetAll+S")
   field(DISA, "0")
 }
 

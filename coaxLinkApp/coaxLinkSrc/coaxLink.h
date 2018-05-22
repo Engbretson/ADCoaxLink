@@ -22,11 +22,11 @@ public:
 
 protected:
 
-#include "Euresys_Coaxlink_TLSystem_9_5_1_1.inc"
-#include "Euresys_Coaxlink_TLInterface_9_5_1_1.inc"
-#include "Euresys_Coaxlink_TLDevice_9_5_1_1.inc"
-#include "Adimec_Q12A180CXP_1_1_3_1.inc"
-#include "Euresys_Coaxlink_TLDataStream_9_5_1_1.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_2_1.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_2_1.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_2_1.inc"
+#include "Adimec_Q12A180CXP_1_1_5_1.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_2_1.inc"
 #include "Decode_Errors_1.inc"
 
 
@@ -72,11 +72,11 @@ private:
 	Euresys::Buffer *currentBuffer;
 };
 
-#include "Euresys_Coaxlink_TLSystem_9_5_1_2.inc"
-#include "Euresys_Coaxlink_TLInterface_9_5_1_2.inc"
-#include "Euresys_Coaxlink_TLDevice_9_5_1_2.inc"
-#include "Adimec_Q12A180CXP_1_1_3_2.inc"
-#include "Euresys_Coaxlink_TLDataStream_9_5_1_2.inc"
+#include "Euresys_Coaxlink_TLSystem_9_5_2_2.inc"
+#include "Euresys_Coaxlink_TLInterface_9_5_2_2.inc"
+#include "Euresys_Coaxlink_TLDevice_9_5_2_2.inc"
+#include "Adimec_Q12A180CXP_1_1_5_2.inc"
+#include "Euresys_Coaxlink_TLDataStream_9_5_2_2.inc"
 #include "Decode_Errors_2.inc"
 
 #define NUM_COAXLINK_PARAMS ((int)(&LAST_COAXLINK_PARAM - &FIRST_COAXLINK_PARAM + 1))
