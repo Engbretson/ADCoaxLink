@@ -468,7 +468,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)SensorRegisterNonVolatileReadS"   
+	chan="$(P)$(R)atileReadSelector"   
 	clr=14
 	bclr=51
 	}
@@ -484,7 +484,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)SensorRegisterNonVolatileReadS_RBV"   
+		chan="$(P)$(R)atileReadSelector_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -514,7 +514,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)SensorRegisterNonVolatileListS"   
+	chan="$(P)$(R)atileListSize"   
 	clr=14
 	bclr=51
 	}
@@ -530,7 +530,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)SensorRegisterNonVolatileListS_RBV"   
+		chan="$(P)$(R)atileListSize_RBV"   
 		clr=54
 		bclr=4
 		}

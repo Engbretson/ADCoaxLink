@@ -505,7 +505,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolOutputCon</string>
+                <string>$(P)$(R)lOutputControl</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -574,7 +574,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolMultiplic</string>
+                <string>$(P)$(R)lMultiplicationFactor</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -625,7 +625,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolMultiplic_RBV</string>
+                <string>$(P)$(R)lMultiplicationFactor_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -715,7 +715,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolDivisionF</string>
+                <string>$(P)$(R)lDivisionFactor</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -766,7 +766,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolDivisionF_RBV</string>
+                <string>$(P)$(R)lDivisionFactor_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -856,7 +856,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolEffective</string>
+                <string>$(P)$(R)lEffectiveMultiplicationFactor</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -907,7 +907,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolEffective_RBV</string>
+                <string>$(P)$(R)lEffectiveMultiplicationFactor_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -997,7 +997,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolEffectiv0</string>
+                <string>$(P)$(R)lEffectiveDivisionFactor</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1048,7 +1048,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)MultiplierDividerToolEffectiv0_RBV</string>
+                <string>$(P)$(R)lEffectiveDivisionFactor_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1267,7 +1267,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)$(R)QuadratureDecoderToolActivatio</string>
+                <string>$(P)$(R)lActivation</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1333,7 +1333,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)$(R)QuadratureDecoderToolForwardDi</string>
+                <string>$(P)$(R)lForwardDirection</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1399,7 +1399,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)$(R)QuadratureDecoderToolOutputMod</string>
+                <string>$(P)$(R)lOutputMode</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1624,7 +1624,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)QuadratureDecoderToolPositionR.PROC</string>
+                <string>$(P)$(R)lPositionReset.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

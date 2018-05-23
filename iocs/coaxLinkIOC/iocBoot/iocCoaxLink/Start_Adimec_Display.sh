@@ -2,7 +2,7 @@
 #export EPICS_CA_MAX_ARRAY_BYTES=25165824
 
 
-export EPICS_DISPLAY_PATH='/local/epics/synApps_5_8/support/areaDetector-R3-1/ADCoaxLink/coaxLinkApp/op/adl:/local/epics/synApps_5_8/support/areaDetector-R3-1/ADCore/ADApp/op/adl'
+export EPICS_DISPLAY_PATH='/local/epics/areaDetector-3-2/ADCoaxLink/coaxLinkApp/op/adl:/local/epics/areaDetector-3-2/ADCore-3-2/ADApp/op/adl'
 
 /APSshare/epics/extensions/bin/linux-x86_64/medm -x -macro "P=2BM_ADIMEC:, R=cam1:" CoaxlinkDetector.adl &
 

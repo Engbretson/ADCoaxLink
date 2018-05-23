@@ -448,7 +448,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)$(R)BF_OutputImagesDuringCalibrati</string>
+                <string>$(P)$(R)gCalibration</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

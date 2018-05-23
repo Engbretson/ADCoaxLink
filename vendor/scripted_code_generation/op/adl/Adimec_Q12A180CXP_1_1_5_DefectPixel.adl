@@ -685,7 +685,7 @@ text {
 	    height=20
 	    }
 	control {
-		chan="$(P)$(R)DefectPixelSaveAsFactoryDefaul.PROC"   
+		chan="$(P)$(R)toryDefault.PROC"   
 		clr=14
 		bclr=51
 		}

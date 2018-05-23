@@ -301,7 +301,7 @@ menu {
 	    height=20
 	    }
 	control {
-		chan="$(P)$(R)MultiplierDividerToolOutputCon"
+		chan="$(P)$(R)lOutputControl"
 		clr=14
 		bclr=51
 	}
@@ -329,7 +329,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)MultiplierDividerToolMultiplic"   
+	chan="$(P)$(R)lMultiplicationFactor"   
 	clr=14
 	bclr=51
 	}
@@ -345,7 +345,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)MultiplierDividerToolMultiplic_RBV"   
+		chan="$(P)$(R)lMultiplicationFactor_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -375,7 +375,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)MultiplierDividerToolDivisionF"   
+	chan="$(P)$(R)lDivisionFactor"   
 	clr=14
 	bclr=51
 	}
@@ -391,7 +391,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)MultiplierDividerToolDivisionF_RBV"   
+		chan="$(P)$(R)lDivisionFactor_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -421,7 +421,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)MultiplierDividerToolEffective"   
+	chan="$(P)$(R)lEffectiveMultiplicationFactor"   
 	clr=14
 	bclr=51
 	}
@@ -437,7 +437,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)MultiplierDividerToolEffective_RBV"   
+		chan="$(P)$(R)lEffectiveMultiplicationFactor_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -467,7 +467,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)MultiplierDividerToolEffectiv0"   
+	chan="$(P)$(R)lEffectiveDivisionFactor"   
 	clr=14
 	bclr=51
 	}
@@ -483,7 +483,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)MultiplierDividerToolEffectiv0_RBV"   
+		chan="$(P)$(R)lEffectiveDivisionFactor_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -569,7 +569,7 @@ menu {
 	    height=20
 	    }
 	control {
-		chan="$(P)$(R)QuadratureDecoderToolActivatio"
+		chan="$(P)$(R)lActivation"
 		clr=14
 		bclr=51
 	}
@@ -597,7 +597,7 @@ menu {
 	    height=20
 	    }
 	control {
-		chan="$(P)$(R)QuadratureDecoderToolForwardDi"
+		chan="$(P)$(R)lForwardDirection"
 		clr=14
 		bclr=51
 	}
@@ -625,7 +625,7 @@ menu {
 	    height=20
 	    }
 	control {
-		chan="$(P)$(R)QuadratureDecoderToolOutputMod"
+		chan="$(P)$(R)lOutputMode"
 		clr=14
 		bclr=51
 	}
@@ -712,7 +712,7 @@ text {
 	    height=20
 	    }
 	control {
-		chan="$(P)$(R)QuadratureDecoderToolPositionR.PROC"   
+		chan="$(P)$(R)lPositionReset.PROC"   
 		clr=14
 		bclr=51
 		}

@@ -828,7 +828,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)CxpHostConnectionTestErrorCoun"   
+	chan="$(P)$(R)tErrorCount"   
 	clr=14
 	bclr=51
 	}
@@ -844,7 +844,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)CxpHostConnectionTestErrorCoun_RBV"   
+		chan="$(P)$(R)tErrorCount_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -874,7 +874,7 @@ text {
 	    height=20
 	    }
 	control {
-	chan="$(P)$(R)CxpHostConnectionTestPacketCou"   
+	chan="$(P)$(R)tPacketCount"   
 	clr=14
 	bclr=51
 	}
@@ -890,7 +890,7 @@ text {
 	    height=20
 	    }
 	monitor {
-		chan="$(P)$(R)CxpHostConnectionTestPacketCou_RBV"   
+		chan="$(P)$(R)tPacketCount_RBV"   
 		clr=54
 		bclr=4
 		}
@@ -920,7 +920,7 @@ text {
 	    height=20
 	    }
 	control {
-		chan="$(P)$(R)CxpHostConnectionTestInjectErr.PROC"   
+		chan="$(P)$(R)tInjectError.PROC"   
 		clr=14
 		bclr=51
 		}

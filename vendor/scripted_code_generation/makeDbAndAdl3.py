@@ -92,7 +92,8 @@ def handle_node(node):
 #        if len(recordName) > 16:
 #            recordName = recordName[:16]
         if len(recordName) > 30:
-            recordName = recordName[:30]
+#            recordName = recordName[:30]
+            recordName = recordName[20:]
         i = 0
         while recordName in records.values():
             recordName = recordName[:-len(str(i))] + str(i)
@@ -183,8 +184,9 @@ for node in doneNodes:
     nodeName = str(node.getAttribute("Name"))
     fullnodeName = nodeName
     if len(nodeName) > 30:
+ #           nodeName = nodeName[20:]
             nodeName = nodeName[20:]
-
+#    fullnodeName = nodeName
     nodeName0 = nodeName
     nodeName1 = mask_name + '_' + nodeName
     fullnodeName1 = fullnodeName

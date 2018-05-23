@@ -1054,7 +1054,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)SensorRegisterNonVolatileReadS</string>
+                <string>$(P)$(R)atileReadSelector</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1105,7 +1105,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)SensorRegisterNonVolatileReadS_RBV</string>
+                <string>$(P)$(R)atileReadSelector_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1195,7 +1195,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)SensorRegisterNonVolatileListS</string>
+                <string>$(P)$(R)atileListSize</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1246,7 +1246,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)SensorRegisterNonVolatileListS_RBV</string>
+                <string>$(P)$(R)atileListSize_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

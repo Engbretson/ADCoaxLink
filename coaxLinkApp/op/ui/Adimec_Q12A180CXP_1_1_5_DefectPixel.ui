@@ -1624,7 +1624,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)DefectPixelSaveAsFactoryDefaul.PROC</string>
+                <string>$(P)$(R)toryDefault.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

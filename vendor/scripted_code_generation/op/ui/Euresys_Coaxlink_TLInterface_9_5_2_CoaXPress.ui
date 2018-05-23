@@ -1840,7 +1840,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)CxpHostConnectionTestErrorCoun</string>
+                <string>$(P)$(R)tErrorCount</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1891,7 +1891,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)CxpHostConnectionTestErrorCoun_RBV</string>
+                <string>$(P)$(R)tErrorCount_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1981,7 +1981,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)CxpHostConnectionTestPacketCou</string>
+                <string>$(P)$(R)tPacketCount</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2032,7 +2032,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)CxpHostConnectionTestPacketCou_RBV</string>
+                <string>$(P)$(R)tPacketCount_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2122,7 +2122,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>EPushButton::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)$(R)CxpHostConnectionTestInjectErr.PROC</string>
+                <string>$(P)$(R)tInjectError.PROC</string>
             </property>
             <property name="foreground">
                 <color alpha="255">

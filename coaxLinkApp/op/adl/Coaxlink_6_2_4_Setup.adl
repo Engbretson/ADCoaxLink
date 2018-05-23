@@ -1,6 +1,6 @@
 
 file {
-	name="/local/epics/synApps_5_8/support/areaDetector-R3-1/ADCoaxLink/coaxLinkApp/op/adl/Coaxlink_6_2_4_Setup.adl"
+	name="/local/epics/synApps_5_8/support/areaDetector-R3-1/ADCoaxLink/coaxLinkApp/op/adl/Coaxlink_9_5_2_Setup.adl"
 	version=030111
 }
 display {
@@ -96,82 +96,82 @@ display {
 	}
 	display[0] {
 		label="Acquisition Control"
-		name="Adimec_Q12A180CXP_1_1_3_AcquisitionControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_AcquisitionControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[1] {
 		label="Analog Control"
-		name="Adimec_Q12A180CXP_1_1_3_AnalogControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_AnalogControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[2] {
 		label="Bootstrap CoaXPress"
-		name="Adimec_Q12A180CXP_1_1_3_BootstrapCoaXPress.adl"
+		name="Adimec_Q12A180CXP_1_1_5_BootstrapCoaXPress.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[3] {
 		label="Bright Field"
-		name="Adimec_Q12A180CXP_1_1_3_BrightField.adl"
+		name="Adimec_Q12A180CXP_1_1_5_BrightField.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[4] {
 		label="Configuration"
-		name="Adimec_Q12A180CXP_1_1_3_Configuration.adl"
+		name="Adimec_Q12A180CXP_1_1_5_Configuration.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[5] {
 		label="Counter And Timer Control"
-		name="Adimec_Q12A180CXP_1_1_3_CounterAndTimerControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_CounterAndTimerControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[6] {
 		label="Dark Field"
-		name="Adimec_Q12A180CXP_1_1_3_DarkField.adl"
+		name="Adimec_Q12A180CXP_1_1_5_DarkField.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[7] {
 		label="Defect Pixel"
-		name="Adimec_Q12A180CXP_1_1_3_DefectPixel.adl"
+		name="Adimec_Q12A180CXP_1_1_5_DefectPixel.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[8] {
 		label="Device Control"
-		name="Adimec_Q12A180CXP_1_1_3_DeviceControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_DeviceControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[9] {
 		label="Factory"
-		name="Adimec_Q12A180CXP_1_1_3_Factory.adl"
+		name="Adimec_Q12A180CXP_1_1_5_Factory.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[10] {
 		label="HDR"
-		name="Adimec_Q12A180CXP_1_1_3_HDR.adl"
+		name="Adimec_Q12A180CXP_1_1_5_HDR.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[11] {
 		label="Image Format Control"
-		name="Adimec_Q12A180CXP_1_1_3_ImageFormatControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_ImageFormatControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[12] {
 		label="LUT Control"
-		name="Adimec_Q12A180CXP_1_1_3_LUTControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_LUTControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[13] {
 		label="Sensor"
-		name="Adimec_Q12A180CXP_1_1_3_Sensor.adl"
+		name="Adimec_Q12A180CXP_1_1_5_Sensor.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[14] {
 		label="Transport Layer Control"
-		name="Adimec_Q12A180CXP_1_1_3_TransportLayerControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_TransportLayerControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[15] {
 		label="User Set Control"
-		name="Adimec_Q12A180CXP_1_1_3_UserSetControl.adl"
+		name="Adimec_Q12A180CXP_1_1_5_UserSetControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	clr=14
@@ -212,62 +212,62 @@ text {
 	}
 	display[0] {
 		label="Buffer Handling Control"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_BufferHandlingControl.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_BufferHandlingControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[1] {
 		label="Errors"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_Errors.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_Errors.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[2] {
 		label="Event Control"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_EventControl.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_EventControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[3] {
 		label="Image Format Control"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_ImageFormatControl.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_ImageFormatControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[4] {
 		label="Laser Line Extractor"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_LaserLineExtractor.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_LaserLineExtractor.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[5] {
 		label="Line Scan Acquisition Control"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_LineScanAcquisitionControl.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_LineScanAcquisitionControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[6] {
 		label="LUT Control"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_LUTControl.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_LUTControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[7] {
 		label="Pixel Processing"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_PixelProcessing.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_PixelProcessing.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[8] {
 		label="Stream Control"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_StreamControl.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_StreamControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[9] {
 		label="Stream Information"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_StreamInformation.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_StreamInformation.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[10] {
 		label="Stream Statistics"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_StreamStatistics.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_StreamStatistics.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[11] {
 		label="Transport Layer Control"
-		name="Euresys_Coaxlink_TLDataStream_6_2_4_TransportLayerControl.adl"
+		name="Euresys_Coaxlink_TLDataStream_9_5_2_TransportLayerControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	clr=14
@@ -295,52 +295,52 @@ text {
 	}
 	display[0] {
 		label="Camera And Illumination Control"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_CameraAndIlluminationControl.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_CameraAndIlluminationControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[1] {
 		label="Camera Model"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_CameraModel.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_CameraModel.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[2] {
 		label="CoaXPress"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_CoaXPress.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_CoaXPress.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[3] {
 		label="Cycle Control"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_CycleControl.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_CycleControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[4] {
 		label="Cycle Timing"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_CycleTiming.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_CycleTiming.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[5] {
 		label="Device Information"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_DeviceInformation.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_DeviceInformation.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[6] {
 		label="Errors"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_Errors.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_Errors.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[7] {
 		label="Event Control"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_EventControl.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_EventControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[8] {
 		label="Sequence Control"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_SequenceControl.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_SequenceControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[9] {
 		label="Stream Enumeration"
-		name="Euresys_Coaxlink_TLDevice_6_2_4_StreamEnumeration.adl"
+		name="Euresys_Coaxlink_TLDevice_9_5_2_StreamEnumeration.adl"
 		args="P=$(P),R=$(R)"
 	}
 	clr=14
@@ -368,57 +368,57 @@ text {
 	}
 	display[0] {
 		label="CoaXPress"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_CoaXPress.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_CoaXPress.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[1] {
 		label="Device Enumeration"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_DeviceEnumeration.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_DeviceEnumeration.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[2] {
 		label="Digital IO Control"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_DigitalIOControl.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_DigitalIOControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[3] {
 		label="Event Control"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_EventControl.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_EventControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[4] {
 		label="Interface Control"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_InterfaceControl.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_InterfaceControl.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[5] {
 		label="Interface Details"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_InterfaceDetails.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_InterfaceDetails.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[6] {
 		label="Interface Information"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_InterfaceInformation.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_InterfaceInformation.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[7] {
 		label="IO Toolbox"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_IOToolbox.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_IOToolbox.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[8] {
 		label="OEM Safety Key"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_OemSafetyKey.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_OemSafetyKey.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[9] {
 		label="PCI Express"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_PCIExpress.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_PCIExpress.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[10] {
 		label="User Output Register"
-		name="Euresys_Coaxlink_TLInterface_6_2_4_UserOutputRegister.adl"
+		name="Euresys_Coaxlink_TLInterface_9_5_2_UserOutputRegister.adl"
 		args="P=$(P),R=$(R)"
 	}
 	clr=14
@@ -446,12 +446,12 @@ text {
 	}
 	display[0] {
 		label="Interface Enumeration"
-		name="Euresys_Coaxlink_TLSystem_6_2_4_InterfaceEnumeration.adl"
+		name="Euresys_Coaxlink_TLSystem_9_5_2_InterfaceEnumeration.adl"
 		args="P=$(P),R=$(R)"
 	}
 	display[1] {
 		label="System Information"
-		name="Euresys_Coaxlink_TLSystem_6_2_4_SystemInformation.adl"
+		name="Euresys_Coaxlink_TLSystem_9_5_2_SystemInformation.adl"
 		args="P=$(P),R=$(R)"
 	}
 	clr=14

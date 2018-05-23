@@ -253,7 +253,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 </rect>
             </property>
             <property name="channel">
-                <string>$(P)$(R)CameraAndIlluminationControlle</string>
+                <string>$(P)$(R)nControllerStream</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
