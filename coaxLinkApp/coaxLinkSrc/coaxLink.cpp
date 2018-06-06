@@ -234,7 +234,9 @@ void coaxLink::simTask() {
       //				Euresys::ScopedBuffer buf1(grabber);
 
       try {
-      	Euresys::ScopedBuffer buf1(grabber,1000); // wait and then get a buffer
+
+ //	Euresys::ScopedBuffer buf1(grabber,5000); // wait and then get a buffer with a timeout for easy aborts
+        Euresys::ScopedBuffer buf1(grabber);
 
 //  } catch (const std::exception & e) {
 //    printf("Exception getting image and buffer \n");
@@ -245,8 +247,19 @@ void coaxLink::simTask() {
       epicsTimeGetCurrent( & endTime);
 
       this -> lock();
+
+
       setIntegerParam(ADStatus, ADStatusReadout);
       callParamCallbacks();
+
+// if your aborting, do so without generating possibly dubious data
+
+      this -> unlock();
+      astatus = epicsEventWaitWithTimeout(this -> stopEventId, 0.0);
+      this -> lock();
+
+      if (astatus == epicsEventWaitOK) break;
+
 
       getIntegerParam(NDDataType, (int * ) & dataType);
       getIntegerParam(COAXLINK_Remote_PixelFormat, & camerapixelformat);
@@ -317,10 +330,13 @@ void coaxLink::simTask() {
       void * ptr1 = buf1.getInfo < void * > (GenTL::BUFFER_INFO_BASE);
       ////				uint64_t ts2 = Tools::getTimestamp();
 
+//printf("Pixel Format %d height %d width %d size %d \n",pixelFormat, width, height, size1);
       // add in the new Euresys image related stuff here.
+
+// data is already in 8-bit or 16-bit mode, so this is redunadant
       if (pixelFormat == 10) {
 
-        Euresys::FormatConverter::Auto myuint16buffer(converter, Euresys::FormatConverter::OutputFormat("UINT16"), imagePointer, pixelFormat, width, height);
+//        Euresys::FormatConverter::Auto myuint16buffer(converter, Euresys::FormatConverter::OutputFormat("UINT16"), imagePointer, pixelFormat, width, height);
       }
 
       //printf(" pixel format %d other format %d Camera buffer size %d other size %d \n ", camerapixelformat, cameraformat, size1,size);
@@ -362,13 +378,6 @@ void coaxLink::simTask() {
       doCallbacksGenericPointer(pImage, NDArrayData, 0);
       this -> lock();
 
-
-      pImage -> release();
-
-  } catch (const std::exception & e) {
-    printf("Image Timed out \n");
-  }
-
       getIntegerParam(ADNumImagesCounter, & numImagesCounter);
       getIntegerParam(NDArrayCounter, & imageCounter);
 
@@ -380,11 +389,19 @@ void coaxLink::simTask() {
 
       callParamCallbacks();
 
-      this -> unlock();
-      astatus = epicsEventWaitWithTimeout(this -> stopEventId, 0.0);
-      this -> lock();
+      pImage -> release();
+
+  } catch (const std::exception & e) {
+    this -> lock();
+//    printf("Image Timed out \n");
+  }
+
+//       this -> unlock();
+//      astatus = epicsEventWaitWithTimeout(this -> stopEventId, 0.0);
+//      this -> lock();
 
       if (astatus == epicsEventWaitOK) break;
+
       if ((numImagesCounter >= numImages) && (iMode == ADImageMultiple)) break;
       if ((numImagesCounter >= 1) && (iMode == ADImageSingle)) break;
     }
@@ -404,11 +421,11 @@ void coaxLink::simTask() {
 
 asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
   static const char * functionName = "writeInt32";
-  int
-  function = pasynUser -> reason;
+  int function = pasynUser -> reason;
   asynStatus status = asynSuccess;
   char * whoami;
   int CoaxInterface = 0;
+  int exposuremode = 0;
 
   getParamName(function, (const char * * ) & whoami);
 
@@ -473,84 +490,94 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
 
   // done 6
   if (
-    /* ./Euresys_Coaxlink_TLDevice_9_5_2 */
+/* ./Euresys_Coaxlink_TLDevice_9_5_2 */ 
 
-    (function == COAXLINK_Device_DeviceReset) |
-    (function == COAXLINK_Device_StartCycle) |
-    (function == COAXLINK_Device_CycleLostTriggerCountReset) |
-    (function == COAXLINK_Device_CxpPacketArbiterReset) |
-    (function == COAXLINK_Device_EventCountReset) |
-    (function == COAXLINK_Device_ErrorCountReset)
+(function == COAXLINK_Device_DeviceReset) | 
+(function == COAXLINK_Device_StartCycle) | 
+(function == COAXLINK_Device_CycleLostTriggerCountReset) | 
+(function == COAXLINK_Device_CxpPacketArbiterReset) | 
+(function == COAXLINK_Device_EventCountReset) | 
+(function == COAXLINK_Device_EventNotificationAll) | 
+(function == COAXLINK_Device_EventCountResetAll) | 
+(function == COAXLINK_Device_ErrorCountReset)  
 
   ) CoaxInterface = 13;
 
   if (
-    /* ./Adimec_Q12A180CXP_1_1_5 */
+ /* ./Adimec_Q12A180CXP_1_1_5 */ 
 
-    (function == COAXLINK_Remote_AcquisitionStart) |
-    (function == COAXLINK_Remote_AcquisitionStop) |
-    (function == COAXLINK_Remote_AcquisitionMaxFrameRate) |
-    (function == COAXLINK_Remote_WhiteBalanceCalibrate) |
-    (function == COAXLINK_Remote_UserModeUpdate) |
-    (function == COAXLINK_Remote_AdvancedParameterSave) |
-    (function == COAXLINK_Remote_SensorRegisterRead) |
-    (function == COAXLINK_Remote_SensorRegisterWrite) |
-    (function == COAXLINK_Remote_SensorRegisterRemove) |
-    (function == COAXLINK_Remote_FPGA_RegisterRead) |
-    (function == COAXLINK_Remote_FPGA_RegisterWrite) |
-    (function == COAXLINK_Remote_LUTStart) |
-    (function == COAXLINK_Remote_LUTEnd) |
-    (function == COAXLINK_Remote_DefectPixelAdd) |
-    (function == COAXLINK_Remote_DefectPixelRemove) |
-    (function == COAXLINK_Remote_DefectPixelClearAll) |
-    (function == COAXLINK_Remote_DefectPixelSave) |
-    (function == COAXLINK_Remote_DefectPixelRestore) |
-    (function == COAXLINK_Remote_DefectPixelRestoreFactory) |
-    (function == COAXLINK_Remote_toryDefault) |
-    (function == COAXLINK_Remote_DF_Calibrate) |
-    (function == COAXLINK_Remote_DF_RestoreFactory) |
-    (function == COAXLINK_Remote_DF_SaveAsFactoryDefault) |
-    (function == COAXLINK_Remote_BF_Calibrate) |
-    (function == COAXLINK_Remote_BF_RestoreFactory) |
-    (function == COAXLINK_Remote_BF_SaveAsFactoryDefault) |
-    (function == COAXLINK_Remote_UserSetLoad) |
-    (function == COAXLINK_Remote_UserSetSave)
-  ) CoaxInterface = 14;
+(function == COAXLINK_Remote_AcquisitionStart) | 
+(function == COAXLINK_Remote_AcquisitionStop) | 
+(function == COAXLINK_Remote_AcquisitionMaxFrameRate) | 
+(function == COAXLINK_Remote_WhiteBalanceCalibrate) | 
+(function == COAXLINK_Remote_UserModeUpdate) | 
+(function == COAXLINK_Remote_AdvancedParameterSave) | 
+(function == COAXLINK_Remote_SensorRegisterRead) | 
+(function == COAXLINK_Remote_SensorRegisterWrite) | 
+(function == COAXLINK_Remote_SensorRegisterRemove) | 
+(function == COAXLINK_Remote_FPGA_RegisterRead) | 
+(function == COAXLINK_Remote_FPGA_RegisterWrite) | 
+(function == COAXLINK_Remote_LUTStart) | 
+(function == COAXLINK_Remote_LUTEnd) | 
+(function == COAXLINK_Remote_DefectPixelAdd) | 
+(function == COAXLINK_Remote_DefectPixelRemove) | 
+(function == COAXLINK_Remote_DefectPixelClearAll) | 
+(function == COAXLINK_Remote_DefectPixelSave) | 
+(function == COAXLINK_Remote_DefectPixelRestore) | 
+(function == COAXLINK_Remote_DefectPixelRestoreFactory) | 
+(function == COAXLINK_Remote_toryDefault) | 
+(function == COAXLINK_Remote_DF_Calibrate) | 
+(function == COAXLINK_Remote_DF_RestoreFactory) | 
+(function == COAXLINK_Remote_DF_SaveAsFactoryDefault) | 
+(function == COAXLINK_Remote_BF_Calibrate) | 
+(function == COAXLINK_Remote_BF_RestoreFactory) | 
+(function == COAXLINK_Remote_BF_SaveAsFactoryDefault) | 
+(function == COAXLINK_Remote_UserSetLoad) | 
+(function == COAXLINK_Remote_UserSetSave) 
+
+   ) CoaxInterface = 14;
 
   // 10
   if (
-    /* ./Euresys_Coaxlink_TLInterface_9_5_2 */
+/* ./Euresys_Coaxlink_TLInterface_9_5_2 */ 
 
-    (function == COAXLINK_Interface_DeviceUpdateList) |
-    (function == COAXLINK_Interface_CxpPoCxpAuto) |
-    (function == COAXLINK_Interface_CxpPoCxpTurnOff) |
-    (function == COAXLINK_Interface_CxpPoCxpTripReset) |
-    (function == COAXLINK_Interface_tInjectError) |
-    (function == COAXLINK_Interface_ClearUserActions) |
-    (function == COAXLINK_Interface_ExecuteUserActions) |
-    (function == COAXLINK_Interface_DiscardScheduledUserActions) |
-    (function == COAXLINK_Interface_lPositionReset) |
-    (function == COAXLINK_Interface_EventCountReset)
+(function == COAXLINK_Interface_DeviceUpdateList) | 
+(function == COAXLINK_Interface_CxpPoCxpAuto) | 
+(function == COAXLINK_Interface_CxpPoCxpTurnOff) | 
+(function == COAXLINK_Interface_CxpPoCxpTripReset) | 
+(function == COAXLINK_Interface_tInjectError) | 
+(function == COAXLINK_Interface_ClearUserActions) | 
+(function == COAXLINK_Interface_ExecuteUserActions) | 
+(function == COAXLINK_Interface_DiscardScheduledUserActions) | 
+(function == COAXLINK_Interface_lPositionReset) | 
+(function == COAXLINK_Interface_EventCountReset) | 
+(function == COAXLINK_Interface_EventNotificationAll) | 
+(function == COAXLINK_Interface_EventCountResetAll)  
+
   ) CoaxInterface = 15;
 
   // system 1
   if (
-    /* ./Euresys_Coaxlink_TLSystem_9_5_2 */
+ /* ./Euresys_Coaxlink_TLSystem_9_5_2 */ 
 
-    (function == COAXLINK_System_InterfaceUpdateList)
+(function == COAXLINK_System_InterfaceUpdateList) 
+
   ) CoaxInterface = 16;
 
   // stream 6
   if (
 
-    /* ./Euresys_Coaxlink_TLDataStream_9_5_2 */
+ /* ./Euresys_Coaxlink_TLDataStream_9_5_2 */ 
 
-    (function == COAXLINK_Stream_StartScan) |
-    (function == COAXLINK_Stream_StopScan) |
-    (function == COAXLINK_Stream_StreamReset) |
-    (function == COAXLINK_Stream_ErrorCountReset) |
-    (function == COAXLINK_Stream_StatisticsStartSampling) |
-    (function == COAXLINK_Stream_EventCountReset)
+(function == COAXLINK_Stream_StartScan) | 
+(function == COAXLINK_Stream_StopScan) | 
+(function == COAXLINK_Stream_StreamReset) | 
+(function == COAXLINK_Stream_ErrorCountReset) | 
+(function == COAXLINK_Stream_StatisticsStartSampling) | 
+(function == COAXLINK_Stream_EventCountReset) | 
+(function == COAXLINK_Stream_EventNotificationAll) | 
+(function == COAXLINK_Stream_EventCountResetAll)  
+
   ) CoaxInterface = 17;
 
   try {
@@ -627,7 +654,7 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
     if (value == 0) {
       //printf("Correcting pixelformat down\n");
       grabber.setInteger < Euresys::RemoteModule > ("PixelFormat", 17301505);
-      //		 systemInteger = grabber.getInteger<Euresys::RemoteModule>("PixelFormat"); 
+//      systemInteger = grabber.getInteger<Euresys::RemoteModule>("PixelFormat"); 
       setIntegerParam(COAXLINK_Remote_PixelFormat, 17301505);
 
       setIntegerParam(NDDataType, 1);
@@ -647,6 +674,7 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
       /////			setIntegerParam(NDDataType, 1);
 
       callParamCallbacks();
+
       value = 0;
     }
   }
@@ -657,13 +685,29 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
   if ((function == ADAcquire) & (value == 1)) epicsEventSignal(this -> startEventId);
 
   if ((function == ADAcquire) & (value == 0)) {
-//printf("Trying to abort aquire . . . \n");
-    //	grabber.stop();
- // 	  Euresys::ScopedBuffer buf1(grabber, 100);
-//    grabber.execute < Euresys::RemoteModule > ("AcquisitionStop");
+
+// If we have a timeout values, everything is covered by normal signal stop events
+
     epicsEventSignal(this -> stopEventId);
-//    grabber.execute < Euresys::RemoteModule > ("AcquisitionStart");
-    
+
+// If we don't have a timeout and in one of the odd modes, we have to do a bit more magic to clean the wait for trigger
+// tentatively something like this
+    getIntegerParam(COAXLINK_Remote_ExposureMode, &exposuremode);
+
+    if (exposuremode > 0) { 
+       grabber.execute < Euresys::RemoteModule > ("AcquisitionStop");
+       epicsThreadSleep(0.250);
+       grabber.setInteger <Euresys::RemoteModule>("ExposureMode",0); 
+       epicsThreadSleep(0.250);
+       grabber.execute < Euresys::RemoteModule > ("AcquisitionStart");
+       epicsThreadSleep(0.250);
+       grabber.execute < Euresys::RemoteModule > ("AcquisitionStop");
+       epicsThreadSleep(0.250);
+       grabber.setInteger <Euresys::RemoteModule>("ExposureMode",exposuremode); 
+ //      epicsThreadSleep(0.250);
+ //      grabber.execute < Euresys::RemoteModule > ("AcquisitionStart");
+	printf("...\n");
+    }
     	
   }
   if (function < FIRST_COAXLINK_PARAM) {

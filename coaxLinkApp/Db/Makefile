@@ -12,7 +12,8 @@ include $(TOP)/configure/CONFIG
 # databases, templates, substitutions like this
 
 DB += coaxLink.template
-
+#DB += $(ADRAWFILEPLUGIN)/App/db/NDFileRaw.template
+#DB += NDFileRaw.template
 
 
 #----------------------------------------------------

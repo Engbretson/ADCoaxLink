@@ -13,11 +13,17 @@ CODE_CXXFLAGS=
 endif
 
 INC += coaxLink.h
+#INC += NDFileRaw.h
 
 LIBRARY_IOC = coaxLink
 LIB_SRCS += coaxLink.cpp
+#LIB_SRCS += NDFileRaw.cpp
 
 DBD += coaxLinkSupport.dbd
+#DBD += NDFileRaw.dbd
+
+#LIB_LIBS  += FileRawPlugin
+#DIRS += $(ADRAWPFILEPLUGIN)/App
 
 include $(ADCORE)/ADApp/commonLibraryMakefile
 

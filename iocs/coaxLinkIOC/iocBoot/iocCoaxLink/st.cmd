@@ -54,10 +54,9 @@ coaxLinkConfig("$(PORT)", $(XSIZE), $(YSIZE), 3, 0, 0)
 
 dbLoadRecords("$(ADCOAXLINK)/db/coaxLink.template","P=$(PREFIX),R=cam1:,PORT=$(PORT),ADDR=0,TIMEOUT=1")
 
-#kennan Raw binary file plugin, built in ADCore on my system, fastest way to dump data
-
-#NDFileRawConfigure("Raw1", 20, 0, "$(PORT)", 0, 0, 0)
-#dbLoadRecords("$(ADCORE)/ADApp/Db/NDFileRaw.template", "P=$(PREFIX), R=raw1:, PORT=$(PORT), ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT), NDARRAY_ADDR=0") 
+# Optional: Load Keenan Raw Binary file plugin
+NDFileRawConfigure("Raw1", 20, 0, "$(PORT)", 0, 0, 0)
+dbLoadRecords("$(ADCORE)/db/NDFileRaw.template", "P=$(PREFIX), R=raw1:, PORT=Raw1, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT), NDARRAY_ADDR=0") 
 
 # Load an NDFile database.  This is not supported for the simDetector which does not write files.
 dbLoadRecords("NDFile.template","P=$(PREFIX),R=cam1:,PORT=$(PORT),ADDR=0,TIMEOUT=1")

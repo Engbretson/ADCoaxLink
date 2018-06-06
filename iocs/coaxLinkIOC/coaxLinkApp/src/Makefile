@@ -17,6 +17,7 @@ PROD_IOC = $(PROD_NAME)
 # <name>.dbd will be created from <name>Include.dbd
 DBD += $(PROD_NAME).dbd
 $(PROD_NAME)_DBD += coaxLinkSupport.dbd
+$(PROD_NAME)_DBD += NDFileRaw.dbd
 #DBD += coaxLinkSupport.dbd
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
 PROD_SRCS_DEFAULT += $(PROD_NAME)_registerRecordDeviceDriver.cpp $(PROD_NAME)Main.cpp
