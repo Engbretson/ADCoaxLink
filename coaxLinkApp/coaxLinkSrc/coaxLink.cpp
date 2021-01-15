@@ -426,6 +426,9 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
   char * whoami;
   int CoaxInterface = 0;
   int exposuremode = 0;
+  int adstatus;
+  int acquiring;
+  int imageMode;
 
   getParamName(function, (const char * * ) & whoami);
 
@@ -438,6 +441,10 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
 
   //	//printf("^^^ %d -> %d %d -> %d %d -> %d %d -> %d \n",
   //ADSizeX,COAXLINK_Remote_Width,ADSizeY,COAXLINK_Remote_Height,ADMinX,COAXLINK_Remote_OffsetX,ADMinY,COAXLINK_Remote_OffsetY);
+
+    getIntegerParam(ADStatus, &adstatus);
+    getIntegerParam(ADAcquire, &acquiring);
+    getIntegerParam(ADImageMode, &imageMode);
 
   if ((function == ADBinX) || (function == ADBinY))
     return (asynStatus) asynSuccess;
@@ -682,9 +689,17 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
   status = setIntegerParam(function, value);
   callParamCallbacks();
 
-  if ((function == ADAcquire) & (value == 1)) epicsEventSignal(this -> startEventId);
+    if (function == ADAcquire) {
+        if (value && !acquiring) { 
+	epicsEventSignal(this -> startEventId);
+	}
+	}
 
-  if ((function == ADAcquire) & (value == 0)) {
+  if (function == ADAcquire){
+ if (!value && acquiring) {
+            /* This was a command to stop acquisition */
+            /* Send the stop event */
+   
 
 // If we have a timeout values, everything is covered by normal signal stop events
 
@@ -708,7 +723,7 @@ asynStatus coaxLink::writeInt32(asynUser * pasynUser, epicsInt32 value) {
  //      grabber.execute < Euresys::RemoteModule > ("AcquisitionStart");
 	printf("...\n");
     }
-    	
+   } 	
   }
   if (function < FIRST_COAXLINK_PARAM) {
     status = ADDriver::writeInt32(pasynUser, value);

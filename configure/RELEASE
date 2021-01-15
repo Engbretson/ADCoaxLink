@@ -8,4 +8,4 @@
 -include $(TOP)/RELEASE.local
 -include $(TOP)/configure/RELEASE.local
 
-ADRAWFILEPLUGIN=$(AREA_DETECTOR)/ADrawFilePlugin
+ADRAWFILEPLUGIN=$(AREA_DETECTOR)/ADPluginRaw

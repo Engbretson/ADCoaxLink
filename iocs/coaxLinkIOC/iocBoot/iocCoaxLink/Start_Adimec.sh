@@ -12,5 +12,5 @@ export EPICS_DISPLAY_PATH
 
 # medm -x -macro "P=2BM_ADIMEC:, R=cam1:" CoaxlinkDetector.adl &
 
-../../bin/linux-x86_64-static/coaxLinkApp st.cmd.linux
+../../bin/linux-x86_64/coaxLinkApp st.cmd.linux
 
